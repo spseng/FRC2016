@@ -30,7 +30,12 @@ public class DriveWithJoystick extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
    // 	 	drive.shift((.75)*(oi.driveStick.getRawAxis(0)), (-.75)*oi.driveStick.getRawAxis(1), (.75)*(oi.driveStick.getRawAxis(4)));
- //we THINK that rawaxis 2 is the back z-axis
+
+    	/* 12/15/15
+    	 * changed DriveWithJoystick:  Replaced 3rd parameter of execute(), which controls mecanum-drive spin.  
+    	 * Instead of axis 4 (XBOX controller 2nd joystick) 
+    	   we used axis 2, which is the LogitechAttack3 joystick throttle lever on back rear of joystick.
+ */
     	drive.shift((.75)*(oi.driveStick.getRawAxis(0)), (-.75)*oi.driveStick.getRawAxis(1), (.75)*(oi.driveStick.getRawAxis(2)));
     	 	
     	
