@@ -10,14 +10,33 @@ import edu.wpi.first.wpilibj.networktables2.util.List;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
+ * 
+ * 	1. drive and hit something
+	2. figure out how to drive through obstacles
+	3. can we shoot/score the low goal
+	4. can we score the high goal
  *
  */
 public class AutonomousMode extends CommandGroup{
+	
+	
+	DigitalInput = hitLS;
 	
 	DipSwitch dip = new DipSwitch();
     
 	public  AutonomousMode()  {
 		
+		if(Dipswitch1.get() == true){
+			
+			addSequential(new Auto_DriveForward());
+		}else if(){
+			
+		}
+		
+		
+		
+		
+		/*
 		for(int i = 0; i <= 60; i++) {
 			addSequential(new Auto_DriveForward());
 			System.out.println("Driving");
@@ -26,8 +45,17 @@ public class AutonomousMode extends CommandGroup{
 		for(int i=0; i<=10; i++)
 		{
 			addSequential(new Auto_DriveBackward());
-		}		
+		}	
+		*/
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 //		for(int i = 0; i<= 30; i++) {
 //			addSequential(new Auto_RaiseTower());
 //			System.out.println("Lifting");
