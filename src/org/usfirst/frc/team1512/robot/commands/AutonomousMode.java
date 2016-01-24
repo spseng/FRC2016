@@ -8,6 +8,8 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.networktables2.util.List;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.Ultrasonic;
+import edu.wpi.first.wpilibj.AnalogInput;
 
 /**
  * 
@@ -19,24 +21,59 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class AutonomousMode extends CommandGroup{
 	
+	//documentation suggests that analog-input distance-sensors 
+	//	should be set up as generic analog inputs.  Here is
+	//	documentation: http://wpilib.screenstepslive.com/s/4485/m/13810/l/241876-analog-inputs
 	
-	DigitalInput = hitLS;
+	AnalogInput exampleAnalog = new AnalogInput(0);
+	int bits;
+	
+	
+	//DigitalInput = hitLS;
 	
 	DipSwitch dip = new DipSwitch();
+	DipSwitch Dipswitch1 = new DipSwitch();
+	
+	double range; //to store distance (inches) from distance sensor
     
 	public  AutonomousMode()  {
+		
+		exampleAnalog.setOversampleBits(4);
+		bits = exampleAnalog.getOversampleBits();
+		exampleAnalog.setAverageBits(2);
+		bits = exampleAnalog.getAverageBits();
+		AnalogInput.setGlobalSampleRate(62500);
+		int raw;
+		double volts;
+		int averageRaw;
+		double averageVolts;
+		
+		while (1==1)
+		{
+			raw = exampleAnalog.getValue();
+			volts = exampleAnalog.getVoltage();
+			averageRaw = exampleAnalog.getAverageValue();
+			averageVolts = exampleAnalog.getAverageVoltage();	
+			
+			SmartDashboard.putString("DB/String 0", "raw" + raw);
+			SmartDashboard.putString("DB/String 1", "volts" + volts);
+			}
+		
+		/*
 		
 		if(Dipswitch1.get() == true){
 			
 			addSequential(new Auto_DriveForward());
-		}else if(){
+		}
+		
+		else if(){
 			
 		}
 		
 		
 		
 		
-		/*
+		
 		for(int i = 0; i <= 60; i++) {
 			addSequential(new Auto_DriveForward());
 			System.out.println("Driving");
