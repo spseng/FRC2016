@@ -1,7 +1,7 @@
 package org.usfirst.frc.team1512.robot.commands;
 
 import org.usfirst.frc.team1512.robot.RobotMap;
-import org.usfirst.frc.team1512.robot.subsystems.DriveSystem;
+import org.usfirst.frc.team1512.robot.subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;

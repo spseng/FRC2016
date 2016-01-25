@@ -1,29 +1,40 @@
 package org.usfirst.frc.team1512.robot.commands;
 
-import org.usfirst.frc.team1512.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team1512.robot.OI;
+import org.usfirst.frc.team1512.robot.subsystems.TowerControl;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class Auto_DriveLeft extends CommandBase {
+public class TowerAction extends CommandBase {
 	
-    public Auto_DriveLeft() {
+    public TowerAction() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(drive);
+    	requires(tower);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	drive.driveL();
+    	if(oi.AButton.get()&&tower.getTLS()&&tower.getTLS2())
+    	{
+        	tower.LiftTower();
+    	}
+    	else if(oi.BButton.get()&&tower.getBLS())
+    	{
+    		tower.DropTower();
+    	}
+    	else tower.ResetTower();
+    	
     }
-
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         return false;
@@ -31,7 +42,6 @@ public class Auto_DriveLeft extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
-    	drive.stop();
     }
 
     // Called when another command which requires one or more of the same

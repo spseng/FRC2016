@@ -1,40 +1,39 @@
 package org.usfirst.frc.team1512.robot.commands;
 
 import org.usfirst.frc.team1512.robot.OI;
-import org.usfirst.frc.team1512.robot.subsystems.TowerSystem;
+import org.usfirst.frc.team1512.robot.subsystems.ArmControl;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class TowerCommand extends CommandBase {
-
-    public TowerCommand() {
+public class GripperAction extends CommandBase {
+	
+    public GripperAction() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(tower);
+    	requires(arm);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-
-
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(oi.AButton.get()&&tower.getTLS()&&tower.getTLS2())
+    	if (oi.LBumper.get())
     	{
-        	tower.LiftTower();
+    		arm.OpenGripper();
     	}
-    	else if(oi.BButton.get()&&tower.getBLS())
+    	else if (oi.RBumper.get())
     	{
-    		tower.DropTower();
+    		arm.CloseGripper();
     	}
-    	else tower.ResetTower();
-
+    	
+    	else arm.ResetGripper();
     }
+
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         return false;

@@ -2,7 +2,7 @@ package org.usfirst.frc.team1512.robot.subsystems;
 
 import org.usfirst.frc.team1512.robot.OI;
 import org.usfirst.frc.team1512.robot.RobotMap;
-import org.usfirst.frc.team1512.robot.commands.DriveCommand;
+import org.usfirst.frc.team1512.robot.commands.DriveWithJoystick;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -14,8 +14,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class DriveSystem extends Subsystem {
-
+public class DriveTrain extends Subsystem {
+    
 	double deadzone = 0.2;
 	double expoIncre = 1;
 	double upperLimit = 0.1;
@@ -27,11 +27,11 @@ public class DriveSystem extends Subsystem {
 	boolean flag;
 	Timer time;
 
-
+	
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
-	public DriveSystem(){
+	public DriveTrain(){
 		fl = new Talon(0);
 		fr = new Talon(1);
 		bl = new Talon(2);
@@ -39,25 +39,13 @@ public class DriveSystem extends Subsystem {
 		MD = true;
 		TD = false;
 	}
-
-
+		
+	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
-
-    public void simple(double right, double left)
-    {
-        if (Math.abs(y) <= deadzone)
-    		{y = 0.0;}
-    	if (Math.abs(rot) <= deadzone)
-    		{rot = 0.0;}
-        fl.set(left);
-        bl.set(left);
-        fr.set(right);
-        br.set(right);
-    }
-
+    
     public void tank(double y, double rot)
     {
     	if (Math.abs(y) <= deadzone)
@@ -68,38 +56,38 @@ public class DriveSystem extends Subsystem {
     	fr.set(y-rot);
     	bl.set(y+rot);
     	fr.set(y-rot);
-
+    	
     	TD = true;
     	MD = false;
     }
-
-    public void mecanum(double x, double y, double rot){
-    	if (Math.abs(x) <= deadzone)
+    
+    public void mecanum(double x, double y, double rot){   	 	
+    	if (Math.abs(x) <= deadzone) 
     		{x = 0.0;}
-    	if (Math.abs(y) <= deadzone)
+    	if (Math.abs(y) <= deadzone) 
     		{y = 0.0;}
-    	if (Math.abs(rot) <= deadzone)
+    	if (Math.abs(rot) <= deadzone) 
     		{rot = 0.0;}
-
-
+    	
+    
     	fl.set((y+x+rot));
        	fr.set((y-x-rot)*(-1));
     	bl.set((y+rot-x));
     	br.set((y-rot+x)*(-1));
-
+        
     	MD = true;
     	TD = false;
     }
-
+    
     public void shift(double x, double y , double rot)
-    {
+    {	
 
 			if (oi.AButton.get())
 	    	{
 	    		MD = !MD;
 	    		TD = !TD;
 	    	}
-
+	    	
 //	    	if (MD&&!TD)
 //	    	{
 	    		mecanum(x, y, rot);
@@ -109,41 +97,42 @@ public class DriveSystem extends Subsystem {
 //	    	{
 //	    		tank(y, rot);
 //	    		System.out.println("Tank Mode");
-//	    	}
+//	    	}	
 	    }
-
+    
     public void driveF()
     {
     	mecanum(0, 1, 0);
     }
-
+    
     public void driveB()
     {
     	mecanum(0, -1, 0);
     }
-
+    
     public void driveL()
     {
     	mecanum(1, 0, 0);
     }
-
+    
     public void driveR()
     {
     	mecanum(-1, 0, 0);
     }
-
+    
     public void turnR()
     {
     	mecanum(0, 0, 1);
     }
-
+    
     public void turnL()
     {
     	mecanum(0, 0, -1);
     }
-
+    
     public void stop()
     {
     	mecanum(0, 0 ,0);
     }
 }
+

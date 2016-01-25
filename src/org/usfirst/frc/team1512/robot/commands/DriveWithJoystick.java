@@ -1,38 +1,37 @@
 package org.usfirst.frc.team1512.robot.commands;
 
 import org.usfirst.frc.team1512.robot.OI;
-import org.usfirst.frc.team1512.robot.subsystems.ArmSystem;
+import org.usfirst.frc.team1512.robot.subsystems.DriveTrain;
 
+import com.ni.vision.NIVision;
+import com.ni.vision.NIVision.Image;
+
+import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class ArmCommand extends CommandBase {
-
-    public ArmCommand() {
+public class DriveWithJoystick extends CommandBase {	
+	
+    public DriveWithJoystick() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(arm);
+    	requires(drive);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-		arm.Compress();
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (oi.LBumper.get())
-    	{
-    		arm.OpenGripper();
-    	}
-    	else if (oi.RBumper.get())
-    	{
-    		arm.CloseGripper();
-    	}
-
-    	else arm.ResetGripper();
+    	 	drive.shift((.75)*(oi.driveStick.getRawAxis(0)), (-.75)*oi.driveStick.getRawAxis(1), (.75)*(oi.driveStick.getRawAxis(4)));
+    	 	
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()

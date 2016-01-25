@@ -1,18 +1,19 @@
 package org.usfirst.frc.team1512.robot.commands;
 
-import org.usfirst.frc.team1512.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team1512.robot.subsystems.ArmControl;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class Auto_DriveLeft extends CommandBase {
+public class Compress extends CommandBase {
+
 	
-    public Auto_DriveLeft() {
+    public Compress() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(drive);
+    	requires(arm);
     }
 
     // Called just before this Command runs the first time
@@ -21,7 +22,7 @@ public class Auto_DriveLeft extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	drive.driveL();
+    	arm.Compress();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -31,7 +32,6 @@ public class Auto_DriveLeft extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
-    	drive.stop();
     }
 
     // Called when another command which requires one or more of the same
