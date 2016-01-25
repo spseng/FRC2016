@@ -2,8 +2,8 @@ package org.usfirst.frc.team1512.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-import org.usfirst.frc.team1512.robot.subsystems.ArmControl;
-import org.usfirst.frc.team1512.robot.subsystems.TowerControl;
+import org.usfirst.frc.team1512.robot.subsystems.ArmSystem;
+import org.usfirst.frc.team1512.robot.subsystems.TowerSystem;
 
 
 /**
@@ -41,7 +41,7 @@ public class Auto_CloseGripper extends CommandBase {
     // Called once after isFinished returns true
     protected void end() {
     	arm.ResetGripper();
-    	
+
     }
 
     // Called when another command which requires one or more of the same

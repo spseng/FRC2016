@@ -19,14 +19,14 @@ import org.usfirst.frc.team1512.robot.commands.Accelerometer;
 import org.usfirst.frc.team1512.robot.commands.AutonomousMode;
 import org.usfirst.frc.team1512.robot.commands.Camera;
 import org.usfirst.frc.team1512.robot.commands.Compress;
-import org.usfirst.frc.team1512.robot.commands.DriveWithJoystick;
-import org.usfirst.frc.team1512.robot.commands.GripperAction;
+import org.usfirst.frc.team1512.robot.commands.DriveCommand;
+import org.usfirst.frc.team1512.robot.commands.ArmCommand;
 import org.usfirst.frc.team1512.robot.commands.Reset;
-import org.usfirst.frc.team1512.robot.commands.TowerAction;
+import org.usfirst.frc.team1512.robot.commands.TowerCommand;
 import org.usfirst.frc.team1512.robot.commands.CommandBase;
 import org.usfirst.frc.team1512.robot.commands.testCompressor;
 import org.usfirst.frc.team1512.robot.subsystems.DipSwitch;
-import org.usfirst.frc.team1512.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team1512.robot.subsystems.DriveSystem;
 
 import com.ni.vision.NIVision;
 import com.ni.vision.NIVision.Image;
@@ -42,10 +42,10 @@ public class Robot extends IterativeRobot {
 		
     Command autonomousCommand;
     DigitalInput limit;
-    DriveWithJoystick drive = new DriveWithJoystick(); 
+    DriveCommand drive = new DriveCommand(); 
     Compress compress = new Compress();
-    TowerAction tower = new TowerAction();
-    GripperAction gripper = new GripperAction();
+    TowerCommand tower = new TowerCommand();
+    ArmCommand gripper = new ArmCommand();
     testCompressor test = new testCompressor();
     OI oi = new OI();
     Camera camera = new Camera();

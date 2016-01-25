@@ -8,19 +8,19 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class ArmControl extends Subsystem {
-    
+public class ArmSystem extends Subsystem {
+
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	
+
 	Compressor main;
 	DoubleSolenoid contract;
 	DoubleSolenoid gripper1;
 	DoubleSolenoid gripper2;
-	
-	ArmControl arm;
-	
-	public ArmControl()
+
+	ArmSystem arm;
+
+	public ArmSystem()
 	{
 		super();
 		main = new Compressor();
@@ -33,7 +33,7 @@ public class ArmControl extends Subsystem {
 	{
 		main.start();
 	}
-	
+
 	public void endC()
 	{
 		main.stop();
@@ -44,13 +44,13 @@ public class ArmControl extends Subsystem {
 		gripper1.set(Value.kForward);
 		gripper2.set(Value.kForward);
 	}
-	
+
 	public void CloseGripper()
 	{
 		gripper1.set(Value.kReverse);
 		gripper2.set(Value.kReverse);
 	}
-	
+
 	public void ResetGripper()
 	{
 		gripper1.set(Value.kOff);
@@ -61,9 +61,8 @@ public class ArmControl extends Subsystem {
 	@Override
 	protected void initDefaultCommand() {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 
 }
-

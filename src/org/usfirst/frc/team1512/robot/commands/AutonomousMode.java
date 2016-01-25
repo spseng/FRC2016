@@ -1,7 +1,7 @@
 package org.usfirst.frc.team1512.robot.commands;
 
 import org.usfirst.frc.team1512.robot.subsystems.DipSwitch;
-import org.usfirst.frc.team1512.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team1512.robot.subsystems.DriveSystem;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Timer;

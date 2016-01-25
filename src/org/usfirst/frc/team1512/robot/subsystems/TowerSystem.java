@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class TowerControl extends Subsystem {
+public class TowerSystem extends Subsystem {
 
 	Relay winchSpike;
 	Relay spike2;
@@ -22,13 +22,13 @@ public class TowerControl extends Subsystem {
 	DigitalInput topLS2;
 	DigitalInput bottomLS;
 	OI oi = new OI();
-	
-	TowerControl Tower;
-	
+
+	TowerSystem Tower;
+
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	
-	public TowerControl()
+
+	public TowerSystem()
 	{
 		super();
 		winchSpike = new Relay(RobotMap.winchRelay);
@@ -36,17 +36,17 @@ public class TowerControl extends Subsystem {
 		bottomLS = new DigitalInput(1);
 		topLS2 = new DigitalInput(2);
 	}
-	
+
 	public void LiftTower()
-	{			
+	{
 		winchSpike.set(Value.kForward);
 	}
-	
+
 	public void DropTower()
 	{
 		winchSpike.set(Value.kReverse);
 	}
-	
+
 	public void ResetTower()
 	{
 		winchSpike.set(Value.kOff);
@@ -60,12 +60,12 @@ public class TowerControl extends Subsystem {
     {
     	return topLS.get();
     }
-    
+
     public boolean getTLS2()
     {
     	return topLS2.get();
     }
-    
+
     public boolean getBLS()
     {
     	return bottomLS.get();

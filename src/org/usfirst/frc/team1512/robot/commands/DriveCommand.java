@@ -1,27 +1,35 @@
 package org.usfirst.frc.team1512.robot.commands;
 
 import org.usfirst.frc.team1512.robot.OI;
-import org.usfirst.frc.team1512.robot.subsystems.ArmControl;
+import org.usfirst.frc.team1512.robot.subsystems.DriveSystem;
 
+import com.ni.vision.NIVision;
+import com.ni.vision.NIVision.Image;
+
+import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class testCompressor extends CommandBase {
-	
-    public testCompressor() {
+public class DriveCommand extends CommandBase {
+
+    public DriveCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(drive);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	arm.endC();
+			drive.simple((.75)*(oi.leftStick.getRawAxis(0)), (.75)*(oi.rightStick.getRawAxis(0)));
     }
 
     // Make this return true when this Command no longer needs to run execute()
