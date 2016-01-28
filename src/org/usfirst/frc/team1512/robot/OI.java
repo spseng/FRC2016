@@ -14,6 +14,7 @@ public class OI {
 
 	public Joystick stick;
 	public Joystick driveStick;
+	public Joystick shooterStick;
 	public JoystickButton AButton;
 	public JoystickButton BButton;
 	public JoystickButton XButton;
@@ -28,6 +29,7 @@ public class OI {
 	public OI(){
 		stick = new Joystick(0);
 		driveStick = new Joystick(1);
+		shooterStick = new Joystick(2);
 		AButton = new JoystickButton(stick, 1);
 		BButton = new JoystickButton(stick, 2);
 		XButton = new JoystickButton(stick, 3);
@@ -72,7 +74,7 @@ public class OI {
     // commands the same as any other Button.
     
     //// TRIGGERING COMMANDS WITH BUTTONS
-    // Once you have a button, it's trivial to bind it to a button in one of
+    // Once you have a button, it's trivial to bind it to a command in one of
     // three ways:
     
     // Start the command when the button is pressed and let it run the command
