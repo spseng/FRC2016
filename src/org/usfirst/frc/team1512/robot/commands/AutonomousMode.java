@@ -1,3 +1,5 @@
+//add auto new getditance
+
 package org.usfirst.frc.team1512.robot.commands;
 
 import org.usfirst.frc.team1512.robot.subsystems.DipSwitch;
@@ -15,13 +17,14 @@ import edu.wpi.first.wpilibj.AnalogInput;
  * 
  * 	1. drive and hit something
 	2. figure out how to drive through obstacles
-	3. can we shoot/score the low goal
+   Z																																																					
 	4. can we score the high goal
  *
  */
 public class AutonomousMode extends CommandGroup{
 	
-	//documentation suggests that analog-input distance-sensors 
+<<<<<<< Updated upstream
+	//  documentation suggests that analog-input distance-sensors 
 	//	should be set up as generic analog inputs.  Here is
 	//	documentation: http://wpilib.screenstepslive.com/s/4485/m/13810/l/241876-analog-inputs
 	
@@ -30,6 +33,9 @@ public class AutonomousMode extends CommandGroup{
 	
 	
 	//DigitalInput = hitLS;
+=======
+	DigitalInput = hitLS;
+>>>>>>> Stashed changes
 	
 	DipSwitch dip = new DipSwitch();
 	DipSwitch Dipswitch1 = new DipSwitch();
@@ -37,6 +43,12 @@ public class AutonomousMode extends CommandGroup{
 	double range; //to store distance (inches) from distance sensor
     
 	public  AutonomousMode()  {
+		
+		//shows that autonomous mode is on
+		
+		SmartDashboard.putString("HI autonomous is on");
+		
+		//variables needed for the autonomous mode
 		
 		exampleAnalog.setOversampleBits(4);
 		bits = exampleAnalog.getOversampleBits();
@@ -47,17 +59,56 @@ public class AutonomousMode extends CommandGroup{
 		double volts;
 		int averageRaw;
 		double averageVolts;
+		int distance;
 		
-		while (1==1)
+		//1. drive and hit something
+		//drive forward
+		
+		while (Dipswitch1.get() == true){
+		
+		addSequential(new Auto_DriveForward());
+		System.out.println("Driving");
+		
+		}
+		
+		//2. figure out how to drive through obstacles
+		
+		while (Dipswitch2.get() == true)
 		{
+			
+		//displays a dashboard that displays the voltage, and therefore the distance
+
 			raw = exampleAnalog.getValue();
 			volts = exampleAnalog.getVoltage();
 			averageRaw = exampleAnalog.getAverageValue();
 			averageVolts = exampleAnalog.getAverageVoltage();	
 			
+			
 			SmartDashboard.putString("DB/String 0", "raw" + raw);
 			SmartDashboard.putString("DB/String 1", "volts" + volts);
+			distance=volts*100;
+		
+			
+		//if the distance sensor senses an opening which it can pass though an obstacle
+		//100 inches is only a guess
+		//if the distance sensor does not sense an opening, move left/right
+			
+			while (distance<100)
+			{
+				
+			addSequential(new Auto_DriveLeft());
+			
+				if(distance>100)
+				{	
+					addSequential(new Auto_DriveForward());
+					System.out.println("Driving to an obtacle");
+				}
 			}
+		}
+		
+		while (Dipswitch1.get() == true){
+			
+		}
 		
 		/*
 		
