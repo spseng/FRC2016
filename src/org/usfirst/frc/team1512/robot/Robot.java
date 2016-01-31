@@ -75,6 +75,7 @@ public class Robot extends IterativeRobot {
     	System.out.println("auto Initiated");
     	compress.start();
     	auto.start();
+    	drive.start();
     	//if (autonomousCommand != null) autonomousCommand.start();
     }
 
