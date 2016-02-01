@@ -1,6 +1,5 @@
 package org.usfirst.frc.team1512.robot.commands;
 
-
 import org.usfirst.frc.team1512.robot.subsystems.DipSwitch;
 import org.usfirst.frc.team1512.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -39,12 +38,19 @@ public class AutonomousMode extends CommandGroup{
 		int averageRaw;
 		double averageVolts;
 		int distance;
+		boolean ObstacleCrossed = false;
 		
 		//1. drive and hit something
-		if (dip.auto1()&&!dip.auto2()&&!dip.auto3()&&!dip.auto4()){
+		if (dip.auto1()&&!dip.auto2()&&!dip.auto3()&&!dip.auto4())
+		{
 			SmartDashboard.putNumber("Dipswitch activated #1", 1);
 			System.out.println("Dip#1");
+			
+			//repeat function 100 times to make sure it has hit something
+			for(int i = 0; i<= 100; i++) {
 			addSequential(new Auto_DriveForward());
+			}
+			
 			System.out.println("Driving to hit something");
 		}
 		
@@ -55,7 +61,7 @@ public class AutonomousMode extends CommandGroup{
 			 System.out.println("Dip#2");
 			
 		//if distance is shorter than the supposed value of 100 inches, get distance repeatedly
-			 while(distance<100)
+			 while(distance<100 && !ObstacleCrossed)
 			 {
 				 //variables for the distance sensor
 				 raw = exampleAnalog.getValue();
@@ -75,6 +81,7 @@ public class AutonomousMode extends CommandGroup{
 				 {	
 					addSequential(new Auto_DriveForward());
 					System.out.println("Driving to an obtacle");
+					ObstacleCrossed = true;
 				 }
 			 }
 		}
