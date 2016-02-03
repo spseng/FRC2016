@@ -41,13 +41,13 @@ import com.ni.vision.NIVision.Image;
 public class Robot extends IterativeRobot {
 		
     Command autonomousCommand;
+    OI oi = new OI();
     DigitalInput limit;
     DriveWithJoystick drive = new DriveWithJoystick(); 
     Compress compress = new Compress();
     TowerAction tower = new TowerAction();
     GripperAction gripper = new GripperAction();
     testCompressor test = new testCompressor();
-    OI oi = new OI();
     Camera camera = new Camera();
     Accelerometer accelerometer = new Accelerometer();
     AutonomousMode auto = new AutonomousMode();
