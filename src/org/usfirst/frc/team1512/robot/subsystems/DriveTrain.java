@@ -32,10 +32,10 @@ public class DriveTrain extends Subsystem {
     // here. Call these from Commands.
 
 	public DriveTrain(){
-		fl = new Talon(0);
-		fr = new Talon(1);
-		bl = new Talon(2);
-		br = new Talon(3);
+		//fl = new Talon(0);
+		//fr = new Talon(1);
+		//bl = new Talon(2);
+		//br = new Talon(3);
 		leftTalons = new Talon(0);
 		rightTalons = new Talon(1);
 		MD = true;

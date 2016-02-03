@@ -26,8 +26,8 @@ public class OI {
 
 	
 	public OI(){
-		leftDrive = new Joystick(0);
-		rightDrive = new Joystick(1);
+		leftDrive = new Joystick(1);
+		rightDrive = new Joystick(0);
 		xbox = new Joystick(2);
 		AButton = new JoystickButton(xbox, 1);
 		BButton = new JoystickButton(xbox, 2);
