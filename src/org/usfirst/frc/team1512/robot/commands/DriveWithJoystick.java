@@ -3,12 +3,6 @@ package org.usfirst.frc.team1512.robot.commands;
 import org.usfirst.frc.team1512.robot.OI;
 import org.usfirst.frc.team1512.robot.subsystems.DriveTrain;
 
-import com.ni.vision.NIVision;
-import com.ni.vision.NIVision.Image;
-
-import edu.wpi.first.wpilibj.CameraServer;
-import edu.wpi.first.wpilibj.Talon;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -29,9 +23,7 @@ public class DriveWithJoystick extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	 	drive.shift((.75)*(oi.driveStick.getRawAxis(0)), (-.75)*oi.driveStick.getRawAxis(1), (.75)*(oi.driveStick.getRawAxis(4)));
-    	 	
-    	
+    	drive.arcade((-.75)*(oi.leftDrive.getRawAxis(1)), (.75)*(oi.rightDrive.getRawAxis(1)));
     }
 
     // Make this return true when this Command no longer needs to run execute()

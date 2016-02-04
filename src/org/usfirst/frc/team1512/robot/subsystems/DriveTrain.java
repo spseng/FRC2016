@@ -19,7 +19,7 @@ public class DriveTrain extends Subsystem {
 	double deadzone = 0.2;
 	double expoIncre = 1;
 	double upperLimit = 0.1;
-	public Talon fl, fr, bl, br;
+	public Talon fl, fr, bl, br, leftTalons, rightTalons;
 	RobotDrive drive;
 	OI oi = new OI();
 	boolean MD;
@@ -32,10 +32,12 @@ public class DriveTrain extends Subsystem {
     // here. Call these from Commands.
 
 	public DriveTrain(){
-		fl = new Talon(0);
-		fr = new Talon(1);
-		bl = new Talon(2);
-		br = new Talon(3);
+		//fl = new Talon(0);
+		//fr = new Talon(1);
+		//bl = new Talon(2);
+		//br = new Talon(3);
+		leftTalons = new Talon(0);
+		rightTalons = new Talon(1);
 		MD = true;
 		TD = false;
 	}
@@ -44,6 +46,17 @@ public class DriveTrain extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+    }
+    
+    public void arcade(double left, double right)
+    {
+    	if (Math.abs(left) <= deadzone)
+			{left = 0.0;}
+    	if (Math.abs(right) <= deadzone)
+			{right = 0.0;}
+    	
+    	leftTalons.set(left);
+    	rightTalons.set(right);
     }
     
     public void tank(double y, double rot)
