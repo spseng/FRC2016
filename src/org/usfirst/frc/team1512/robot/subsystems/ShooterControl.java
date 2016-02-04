@@ -20,7 +20,6 @@ public class ShooterControl extends Subsystem {
 	OI oi = new OI();
 	public Talon shooter, collector;
 	
-	double shooterspeed;
 	
 	ShooterControl Shooter;
 	
@@ -35,25 +34,22 @@ public class ShooterControl extends Subsystem {
 	
 	public double getshooterspeed()
 	{
-		return shooterspeed);
+		return shooter;
 	}
 	
 	public void startshooter ()
 	{
-		shooter.set(.5);
-		shooterspeed=0.5;
+		shooter.set(0.5);
 	}
 	
 	public void speedupshooter()
 	{
-		shooter.set(getshooterspeed()+0.1);
-		
-		shooterspeed=shooterspeed+0.1;
+		shooter.set(shooter+0.1);
 	}
 	
 	public void speeddownshooter()
 	{
-		shooter.set(getshooterspeed()-0.1);
+		shooter.set(shooter-0.1);
 	}
 	
 	public void stopshooter()
@@ -63,22 +59,22 @@ public class ShooterControl extends Subsystem {
 	
 	public double getcollectorspeed()
 	{
-		return collector.get();
+		return collector;
 	}
 	
 	public void startcollector()
 	{
-		collector.set(.5);
+		collector.set(0.5);
 	}
 	
 	public void speedupcollector()
 	{
-		collector.set(getcollectorspeed()+0.1);
+		collector.set(collector+0.1);
 	}
 	
 	public void speeddowncollector()
 	{
-		collector.set(getcollectorspeed()-0.1);
+		collector.set(collector-0.1);
 	}
 	
 	public void stopcollector()
