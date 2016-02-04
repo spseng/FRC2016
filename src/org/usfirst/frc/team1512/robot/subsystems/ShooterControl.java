@@ -20,8 +20,9 @@ public class ShooterControl extends Subsystem {
 	OI oi = new OI();
 	public Talon shooter, collector;
 	
+	double shooterspeed;
 	
-	ShooterControl Tower;
+	ShooterControl Shooter;
 	
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -34,17 +35,20 @@ public class ShooterControl extends Subsystem {
 	
 	public double getshooterspeed()
 	{
-		return shooter.get();
+		return shooterspeed);
 	}
 	
 	public void startshooter ()
 	{
 		shooter.set(.5);
+		shooterspeed=0.5;
 	}
 	
 	public void speedupshooter()
 	{
 		shooter.set(getshooterspeed()+0.1);
+		
+		shooterspeed=shooterspeed+0.1;
 	}
 	
 	public void speeddownshooter()

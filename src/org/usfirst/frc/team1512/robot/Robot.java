@@ -23,6 +23,7 @@ import org.usfirst.frc.team1512.robot.commands.DriveWithJoystick;
 import org.usfirst.frc.team1512.robot.commands.GripperAction;
 import org.usfirst.frc.team1512.robot.commands.Reset;
 import org.usfirst.frc.team1512.robot.commands.TowerAction;
+import org.usfirst.frc.team1512.robot.commands.ShooterAction;
 import org.usfirst.frc.team1512.robot.commands.CommandBase;
 import org.usfirst.frc.team1512.robot.commands.testCompressor;
 import org.usfirst.frc.team1512.robot.subsystems.DipSwitch;
@@ -45,6 +46,7 @@ public class Robot extends IterativeRobot {
     DriveWithJoystick drive = new DriveWithJoystick(); 
     Compress compress = new Compress();
     TowerAction tower = new TowerAction();
+    ShooterAction shooter = new ShooterAction();
     GripperAction gripper = new GripperAction();
     testCompressor test = new testCompressor();
     OI oi = new OI();
