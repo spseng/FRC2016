@@ -31,6 +31,9 @@ import org.usfirst.frc.team1512.robot.subsystems.DriveTrain;
 import com.ni.vision.NIVision;
 import com.ni.vision.NIVision.Image;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.AnalogInput;
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -40,7 +43,8 @@ import com.ni.vision.NIVision.Image;
  */
 public class Robot extends IterativeRobot {
 		
-    Command autonomousCommand;
+    double counter = 0.0;
+	Command autonomousCommand;
     OI oi = new OI();
     DigitalInput limit;
     DriveWithJoystick drive = new DriveWithJoystick(); 
@@ -52,6 +56,16 @@ public class Robot extends IterativeRobot {
     Accelerometer accelerometer = new Accelerometer();
     AutonomousMode auto = new AutonomousMode();
     Reset reset = new Reset();
+    AnalogInput exampleAnalog = new AnalogInput(0);
+	double range; //to store distance (inches) from distance sensor
+	int bits;
+	
+	
+	int raw;
+	double volts;
+	int averageRaw;
+	double averageVolts;
+
 //    TowerOp towerOp = new TowerOp();
     
     
@@ -75,12 +89,31 @@ public class Robot extends IterativeRobot {
     	System.out.println("auto Initiated");
     	compress.start();
     	auto.start();
+    	
+    	//initialize the distance sensor
+	//	exampleAnalog.setOversampleBits(4);
+	//	bits = exampleAnalog.getOversampleBits();
+	//	exampleAnalog.setAverageBits(2);
+	//	bits = exampleAnalog.getAverageBits();
+	//	AnalogInput.setGlobalSampleRate(62500);
+		
+		
+        SmartDashboard.putNumber("Counter", counter++);	
     	//if (autonomousCommand != null) autonomousCommand.start();
     }
 
 
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
+        SmartDashboard.putNumber("Counter2", counter++);
+   //     raw = exampleAnalog.getValue();
+	//	volts = exampleAnalog.getVoltage();
+	//	averageRaw = exampleAnalog.getAverageValue();
+	//	averageVolts = exampleAnalog.getAverageVoltage();	
+		
+	//	SmartDashboard.putString("DB/String 0", "raw" + raw);
+	//	SmartDashboard.putString("DB/String 1", "volts" + volts);
+        SmartDashboard.putNumber("Counter", counter++);	
     }
 
     public void teleopInit() {
@@ -110,6 +143,7 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
         oi.testBack.whenPressed(test);
+        SmartDashboard.putNumber("Counter", counter++);
         }
     
     /**

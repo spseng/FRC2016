@@ -9,23 +9,35 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 //import edu.wpi.first.wpilibj.networktables2.util.List;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+
 /**
  *
  */
 public class AutonomousMode extends CommandGroup{
 	
-	DipSwitch dip = new DipSwitch();
-    
-	public  AutonomousMode()  {
-		
-		for(int i = 0; i <= 60; i++) {
-			addSequential(new Auto_DriveForward());
-			System.out.println("Driving");
-		}
+//	DipSwitch dip = new DipSwitch();
 	
+	
+	public  AutonomousMode()  {
+	
+        
+        
+		for(int i = 0; i <= 10; i++) {
+			addSequential(new Auto_DriveForward());
+			
+		}
+		
+		for(int i=0; i<=10; i++)
+		{
+			addSequential(new Auto_Stop());
+		}		
 		for(int i=0; i<=10; i++)
 		{
 			addSequential(new Auto_DriveBackward());
+		}		
+		for(int i=0; i<=10; i++)
+		{
+			addSequential(new Auto_Stop());
 		}		
 	}
 //		for(int i = 0; i<= 30; i++) {
