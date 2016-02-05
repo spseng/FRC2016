@@ -56,18 +56,16 @@ public class Robot extends IterativeRobot {
     Accelerometer accelerometer = new Accelerometer();
     AutonomousMode auto = new AutonomousMode();
     Reset reset = new Reset();
-    AnalogInput exampleAnalog = new AnalogInput(0);
-	double range; //to store distance (inches) from distance sensor
-	int bits;
-	
-	
-	int raw;
-	double volts;
-	int averageRaw;
-	double averageVolts;
-
-//    TowerOp towerOp = new TowerOp();
     
+    //setting up the analog distance sensor
+    AnalogInput exampleAnalog = new AnalogInput(0);
+    int bits;
+    exampleAnalog.setOversampleBits(4);
+    bits = exampleAnalog.getOversampleBits();
+    exampleAnalog.setAverageBits(2);
+    bits = exampleAnalog.getAverageBits();
+    AnalogInput.setGlobalSampleRate(62500);
+
     
     /**
      * This function is run when the robot is first started up and should be
@@ -90,20 +88,19 @@ public class Robot extends IterativeRobot {
     	compress.start();
     	auto.start();
     	drive.start();
-    	//if (autonomousCommand != null) autonomousCommand.start();
     }
 
 
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
-        SmartDashboard.putNumber("Counter2", counter++);
-   //     raw = exampleAnalog.getValue();
-	//	volts = exampleAnalog.getVoltage();
-	//	averageRaw = exampleAnalog.getAverageValue();
-	//	averageVolts = exampleAnalog.getAverageVoltage();	
+	
+		int raw = exampleAnalog.getValue();
+		double volts = exampleAnalog.getVoltage();
+		int averageRaw = exampleAnalog.getAverageValue();
+		double averageVolts = exampleAnalog.getAverageVoltage();
 		
-	//	SmartDashboard.putString("DB/String 0", "raw" + raw);
-	//	SmartDashboard.putString("DB/String 1", "volts" + volts);
+		SmartDashboard.putString("DB/String 0", "raw" + raw);
+    	SmartDashboard.putString("DB/String 1", "volts" + volts);
         SmartDashboard.putNumber("Counter", counter++);	
     }
 

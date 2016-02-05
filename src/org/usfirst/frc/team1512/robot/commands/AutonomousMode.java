@@ -17,77 +17,28 @@ public class AutonomousMode extends CommandGroup{
 	//  documentation suggests that analog-input distance-sensors 
 	//	should be set up as generic analog inputs.  Here is
 	//	documentation: http://wpilib.screenstepslive.com/s/4485/m/13810/l/241876-analog-inputs
-	
-	AnalogInput exampleAnalog = new AnalogInput(0);
-	int bits;
 
-	DigitalInput = hitLS;
 	
 	public  AutonomousMode()  
 	{
 		
-		SmartDashboard.putString("HI autonomous is on");
+		autonomousInit();
 		
-		exampleAnalog.setOversampleBits(4);
-		bits = exampleAnalog.getOversampleBits();
-		exampleAnalog.setAverageBits(2);
-		bits = exampleAnalog.getAverageBits();
-		AnalogInput.setGlobalSampleRate(62500);
-		int raw;
-		double volts;
-		int averageRaw;
-		double averageVolts;
-		int distance;
 		
-		//1. drive and hit something
-		if (dip.auto1()&&!dip.auto2()&&!dip.auto3()&&!dip.auto4()){
-			SmartDashboard.putNumber("Dipswitch activated #1", 1);
-			System.out.println("Dip#1");
-			addSequential(new Auto_DriveForward());
-			System.out.println("Driving to hit something");
-		}
-		
-		//2. figure out how to drive through obstacles
-		 else if (!dip.auto1()&&dip.auto2()&&!dip.auto3()&&!dip.auto4())
+		for(int i=0; i<=10; i++)
 		{
-			 SmartDashboard.putNumber("Dipswitch activated #", 2);
-			 System.out.println("Dip#2");
-			
-		//if distance is shorter than the supposed value of 100 inches, get distance repeatedly
-			 while(distance<100)
-			 {
-				 //variables for the distance sensor
-				 raw = exampleAnalog.getValue();
-				 volts = exampleAnalog.getVoltage();
-				 averageRaw = exampleAnalog.getAverageValue();
-				 averageVolts = exampleAnalog.getAverageVoltage();	
-				 SmartDashboard.putString("DB/String 0", "raw" + raw);
-				 SmartDashboard.putString("DB/String 1", "volts" + volts);
-				 distance=volts*100;
-			 
-				 //100 inches is only a guess
-				 //if the distance sensor does not sense an opening, move left/right		
-				 addSequential(new Auto_DriveLeft());
-				 //if the distance sensor senses an opening which it can pass though an obstacle
-				 //move forward
-				 if(distance>100)
-				 {	
-					addSequential(new Auto_DriveForward());
-					System.out.println("Driving to an obtacle");
-				 }
-			 }
-		}
+			addSequential(new Auto_DriveForward());
+			autonomousPeriodic();
+		}		
 		for(int i=0; i<=10; i++)
 		{
 			addSequential(new Auto_Stop());
+			autonomousPeriodic();
 		}		
 		for(int i=0; i<=10; i++)
 		{
 			addSequential(new Auto_DriveBackward());
-		}		
-		for(int i=0; i<=10; i++)
-		{
-			addSequential(new Auto_Stop());
+			autonomousPeriodic();
 		}		
 	}
 //		for(int i = 0; i<= 30; i++) {
