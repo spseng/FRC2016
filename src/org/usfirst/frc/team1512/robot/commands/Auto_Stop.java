@@ -1,16 +1,17 @@
 package org.usfirst.frc.team1512.robot.commands;
 
-import org.usfirst.frc.team1512.robot.OI;
+import org.usfirst.frc.team1512.robot.RobotMap;
 import org.usfirst.frc.team1512.robot.subsystems.DriveTrain;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class DriveWithJoystick extends CommandBase {	
-	
-    public DriveWithJoystick() {
+public class Auto_Stop extends CommandBase {
+	int timer = 0;    
+	public Auto_Stop() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(drive);
@@ -18,22 +19,29 @@ public class DriveWithJoystick extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-   // 	drive.arcade((-.75)*(oi.leftDrive.getRawAxis(1)), (.75)*(oi.rightDrive.getRawAxis(1)));
-    	drive.tank((-.75)*(oi.leftDrive.getRawAxis(1)), (.75)*(oi.rightDrive.getRawAxis(1)));
+    	
+    	drive.stop();
+    	Timer.delay(0.1);
+    	timer = 1;
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        if(timer == 1) {
+        	return true;
+        }
+        else {
+        	return false;
+        }
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	drive.stop();
     }
 
     // Called when another command which requires one or more of the same

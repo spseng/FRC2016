@@ -8,10 +8,9 @@ import edu.wpi.first.wpilibj.SimpleRobot;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import edu.wpi.first.wpilibj.networktables2.util.List;
+//import edu.wpi.first.wpilibj.networktables2.util.List;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.Ultrasonic;
-import edu.wpi.first.wpilibj.AnalogInput;
+
 
 public class AutonomousMode extends CommandGroup{
 
@@ -78,41 +77,19 @@ public class AutonomousMode extends CommandGroup{
 				 }
 			 }
 		}
-		
-		//3. shoot the low goal
-		
-		else if (!dip.auto1()&&!dip.auto2()&&dip.auto3()&&!dip.auto4())
+		for(int i=0; i<=10; i++)
 		{
-			SmartDashboard.putNumber("Dipswitch activated #", 3);
-	   		System.out.println("Dip#3");
-			
-		}
-		
-		//4. shoot the high goal
-		
-		else if (!dip.auto1()&&!dip.auto2()&&!dip.auto3()&&dip.auto4())
+			addSequential(new Auto_Stop());
+		}		
+		for(int i=0; i<=10; i++)
 		{
-			SmartDashboard.putNumber("Dipswitch activated #", 4);
-			System.out.println("Dip#4");
-		}
-		
-		else 
+			addSequential(new Auto_DriveBackward());
+		}		
+		for(int i=0; i<=10; i++)
 		{
-			String message = "Or there are too many!";
-   		 	SmartDashboard.putString("There are currently no dipswitches activated", message);
-   		 	System.out.println("Dip XD");
-		}
+			addSequential(new Auto_Stop());
+		}		
 	}
-		
-}
-	
-	
-	
-	
-	
-	
-	
-	
 //		for(int i = 0; i<= 30; i++) {
 //			addSequential(new Auto_RaiseTower());
 //			System.out.println("Lifting");

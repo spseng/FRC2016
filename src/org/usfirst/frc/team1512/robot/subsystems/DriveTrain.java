@@ -19,7 +19,7 @@ public class DriveTrain extends Subsystem {
 	double deadzone = 0.2;
 	double expoIncre = 1;
 	double upperLimit = 0.1;
-	public Talon fl, fr, bl, br;
+	public Talon fl, fr, bl, br, leftTalons, rightTalons;
 	RobotDrive drive;
 	OI oi = new OI();
 	boolean MD;
@@ -32,10 +32,12 @@ public class DriveTrain extends Subsystem {
     // here. Call these from Commands.
 
 	public DriveTrain(){
-		fl = new Talon(0);
-		fr = new Talon(1);
-		bl = new Talon(2);
-		br = new Talon(3);
+		//fl = new Talon(0);
+		//fr = new Talon(1);
+		//bl = new Talon(2);
+		//br = new Talon(3);
+		leftTalons = new Talon(0);
+		rightTalons = new Talon(1);
 		MD = true;
 		TD = false;
 	}
@@ -46,17 +48,26 @@ public class DriveTrain extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     
-    public void tank(double y, double rot)
+    public void arcade(double left, double right)
     {
-    	if (Math.abs(y) <= deadzone)
-    		{y = 0.0;}
-    	if (Math.abs(rot) <= deadzone)
-    		{rot = 0.0;}
-    	fl.set(y+rot);
-    	fr.set(y-rot);
-    	bl.set(y+rot);
-    	fr.set(y-rot);
+    	if (Math.abs(left) <= deadzone)
+			{left = 0.0;}
+    	if (Math.abs(right) <= deadzone)
+			{right = 0.0;}
     	
+    	leftTalons.set(left);
+    	rightTalons.set(right);
+    }
+    
+    public void tank(double left, double right)
+    {
+    	if (Math.abs(left) <= deadzone)
+    		{left = 0.0;}
+    	if (Math.abs(right) <= deadzone)
+    		{right = 0.0;}
+    	leftTalons.set(left);
+    	rightTalons.set(right);
+   	
     	TD = true;
     	MD = false;
     }
@@ -102,12 +113,14 @@ public class DriveTrain extends Subsystem {
     
     public void driveF()
     {
-    	mecanum(0, 1, 0);
+//    	mecanum(0, 1, 0);
+    	tank(1.0,-1.0);
     }
     
     public void driveB()
     {
-    	mecanum(0, -1, 0);
+    	tank(-1.0,1.0);
+//    	mecanum(0, -1, 0);
     }
     
     public void driveL()
@@ -122,17 +135,20 @@ public class DriveTrain extends Subsystem {
     
     public void turnR()
     {
-    	mecanum(0, 0, 1);
+    	tank(1.0,1.0);
+//    	mecanum(0, 0, 1);
     }
     
     public void turnL()
     {
-    	mecanum(0, 0, -1);
+    	tank(-1.0,-1.0);
+//   	mecanum(0, 0, -1);
     }
     
     public void stop()
     {
-    	mecanum(0, 0 ,0);
+    	tank(0.0,.0);
+//    	mecanum(0, 0 ,0);
     }
 }
 
