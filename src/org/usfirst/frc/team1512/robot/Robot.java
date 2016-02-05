@@ -28,10 +28,11 @@ import org.usfirst.frc.team1512.robot.commands.CommandBase;
 import org.usfirst.frc.team1512.robot.commands.testCompressor;
 import org.usfirst.frc.team1512.robot.subsystems.DipSwitch;
 import org.usfirst.frc.team1512.robot.subsystems.DriveTrain;
-import org.usfirst.frc.team1512.robot.subsystems.smartdasboard.Smartdashboard;
 
 import com.ni.vision.NIVision;
 import com.ni.vision.NIVision.Image;
+
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
