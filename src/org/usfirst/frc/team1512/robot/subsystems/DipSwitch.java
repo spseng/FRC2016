@@ -26,9 +26,7 @@ public class DipSwitch extends Subsystem {
 		auto4 = new DigitalInput(9);
 		
 	}
-	
-	SmartDashboard.putNumber("Dipswitch activated #1", 1);
-	
+		
 	public boolean getswitch(int switchnumber)
 	{
 		switch (switchnumber)
@@ -38,14 +36,34 @@ public class DipSwitch extends Subsystem {
 			case 3: return auto3.get();
 			case 4: return auto4.get();
 		}
+		return false; //hopefully it won't get to this!
 	}
 
+	public int booltoint(int switchnumber)
+	{	boolean switchvalue=false;
+		switch (switchnumber)
+		{
+		case 1:switchvalue=auto1.get(); break;
+		case 2:switchvalue=auto2.get(); break;
+		case 3:switchvalue=auto3.get(); break;
+		case 4:switchvalue=auto4.get(); break;
+		}
+		if (switchvalue==true)
+		{
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
+	}
+	
 	public void displayswitches()
 	{
-		SmartDashboard.putNumber("Dipswitch 1 set to: ", auto1.get());
-		SmartDashboard.putNumber("Dipswitch 2 set to: ", auto2.get());
-		SmartDashboard.putNumber("Dipswitch 3 set to: ", auto3.get());
-		SmartDashboard.putNumber("Dipswitch 4 set to: ", auto4.get());
+		SmartDashboard.putNumber("Dipswitch 1 set to: ", booltoint(1));
+		SmartDashboard.putNumber("Dipswitch 2 set to: ", booltoint(2));
+		SmartDashboard.putNumber("Dipswitch 3 set to: ", booltoint(3));
+		SmartDashboard.putNumber("Dipswitch 4 set to: ", booltoint(4));
 	}
 
 	public boolean auto1()

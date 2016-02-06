@@ -46,7 +46,7 @@ public class Auto_DriveBackward extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
-    	drive.stop();
+    	//drive.stop();
     }
 
     // Called when another command which requires one or more of the same

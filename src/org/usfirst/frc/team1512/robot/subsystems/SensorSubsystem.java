@@ -3,75 +3,66 @@ package org.usfirst.frc.team1512.robot.subsystems;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.Ultrasonic;
+import edu.wpi.first.wpilibj.AnalogInput;
 /**
  *
  */
-public class DipSwitch extends Subsystem {
+public class SensorSubsystem extends Subsystem {
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
-	DigitalInput auto1;
-	DigitalInput auto2;
-	DigitalInput auto3;
-	DigitalInput auto4;
+	//documentation suggests that analog-input distance-sensors 
+		//	should be set up as generic analog inputs.  Here is
+		//	documentation: http://wpilib.screenstepslive.com/s/4485/m/13810/l/241876-analog-inputs
+		
+		AnalogInput DistanceSensor1;
+		int bits;
 
 	
-	public DipSwitch()
+	public SensorSubsystem()
 	{
 		super();
-		auto1 = new DigitalInput(6);
-		auto2 = new DigitalInput(7);
-		auto3 = new DigitalInput(8);
-		auto4 = new DigitalInput(9);
+		//documentation suggests that analog-input distance-sensors 
+		//	should be set up as generic analog inputs.  Here is
+		//	documentation: http://wpilib.screenstepslive.com/s/4485/m/13810/l/241876-analog-inputs
 		
+		DistanceSensor1 = new AnalogInput(0);
+		DistanceSensor1.setOversampleBits(4);
+		bits = DistanceSensor1.getOversampleBits();
+		DistanceSensor1.setAverageBits(2);
+		bits = DistanceSensor1.getAverageBits();
+		DistanceSensor1.setGlobalSampleRate(62500);
 	}
 	
-	SmartDashboard.putNumber("Dipswitch activated #1", 1);
 	
-	public boolean getswitch(int switchnumber)
+	
+	public void displaydistance1()
 	{
-		switch (switchnumber)
-		{	
-			case 1: return auto1.get();
-			case 2: return auto2.get();
-			case 3: return auto3.get();
-			case 4: return auto4.get();
-		}
+		int raw;
+		double volts;
+		int averageRaw;
+		double averageVolts;
+		
+		raw = DistanceSensor1.getValue();
+		volts = DistanceSensor1.getVoltage();
+		averageRaw = DistanceSensor1.getAverageValue();
+		averageVolts = DistanceSensor1.getAverageVoltage();	
+		
+		SmartDashboard.putString("DB/String 0", "raw" + raw);
+		SmartDashboard.putString("DB/String 1", "volts" + volts);
+
 	}
 
-	public void displayswitches()
-	{
-		SmartDashboard.putNumber("Dipswitch 1 set to: ", auto1.get());
-		SmartDashboard.putNumber("Dipswitch 2 set to: ", auto2.get());
-		SmartDashboard.putNumber("Dipswitch 3 set to: ", auto3.get());
-		SmartDashboard.putNumber("Dipswitch 4 set to: ", auto4.get());
-	}
+	
 
-	public boolean auto1()
-	{
-		return auto1.get();
-	}
 	
-	public boolean auto2()
-	{
-		return auto2.get();
-	}
-	
-	public boolean auto3()
-	{
-		return auto3.get();
-	}
-	
-	public boolean auto4()
-	{
-		return auto4.get();
-	}
-	
-	
-    public void initDefaultCommand() {
+    public void initDefaultCommand() 
+    {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+
     }
 }
 
