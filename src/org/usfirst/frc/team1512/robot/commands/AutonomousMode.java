@@ -23,17 +23,29 @@ public class AutonomousMode extends CommandGroup{
         
         
 		for(int i = 0; i <= 10; i++) {
-			addSequential(new Auto_DriveForward());
+			double speed=((double) i)/10.0;
+			addSequential(new Auto_DriveForward(speed));
 			
 		}
 		
-		for(int i=0; i<=10; i++)
+		for(int i=10; i>=0; i--)  //slow down to stop
 		{
-			addSequential(new Auto_Stop());
+			double speed=((double) i)/10.0;
+			addSequential(new Auto_DriveForward(speed));
 		}		
+//		for(int i=0; i<=10; i++)
+//		{
+//			addSequential(new Auto_Stop());
+//		}		
 		for(int i=0; i<=10; i++)
 		{
-			addSequential(new Auto_DriveBackward());
+			double speed=((double) i)/10.0;
+			addSequential(new Auto_DriveBackward(speed));
+		}		
+		for(int i=10; i>=0; i--)  //slow down to stop
+		{
+			double speed=((double) i)/10.0;
+			addSequential(new Auto_DriveBackward(speed));
 		}		
 		for(int i=0; i<=10; i++)
 		{

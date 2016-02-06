@@ -57,6 +57,8 @@ public class DriveTrain extends Subsystem {
     		{left = 0.0;}
     	if (Math.abs(right) <= deadzone)
     		{right = 0.0;}
+    	
+    	left=left*-1.0; //reverse left motor control
     	leftTalons.set(left);
     	rightTalons.set(right);
    	
