@@ -19,11 +19,9 @@ public class DriveTrain extends Subsystem {
 	double deadzone = 0.2;
 	double expoIncre = 1;
 	double upperLimit = 0.1;
-	public Talon fl, fr, bl, br, leftTalons, rightTalons;
+	public Talon leftTalons, rightTalons;
 	RobotDrive drive;
 	OI oi = new OI();
-	boolean MD;
-	boolean TD;
 	boolean flag;
 	Timer time;
 
@@ -32,14 +30,8 @@ public class DriveTrain extends Subsystem {
     // here. Call these from Commands.
 
 	public DriveTrain(){
-		//fl = new Talon(0);
-		//fr = new Talon(1);
-		//bl = new Talon(2);
-		//br = new Talon(3);
 		leftTalons = new Talon(0);
 		rightTalons = new Talon(1);
-		MD = true;
-		TD = false;
 	}
 		
 	
@@ -68,87 +60,52 @@ public class DriveTrain extends Subsystem {
     	leftTalons.set(left);
     	rightTalons.set(right);
    	
-    	TD = true;
-    	MD = false;
+    }
+       
+   
+    public void driveF(double speed)
+    {	double reverse=speed*-1.0;
+    	tank(speed,reverse);
     }
     
-    public void mecanum(double x, double y, double rot){   	 	
-    	if (Math.abs(x) <= deadzone) 
-    		{x = 0.0;}
-    	if (Math.abs(y) <= deadzone) 
-    		{y = 0.0;}
-    	if (Math.abs(rot) <= deadzone) 
-    		{rot = 0.0;}
-    	
-    
-    	fl.set((y+x+rot));
-       	fr.set((y-x-rot)*(-1));
-    	bl.set((y+rot-x));
-    	br.set((y-rot+x)*(-1));
+    public void driveB(double speed)
+    {	double reverse=speed*-1.0;
+    	tank(reverse,speed);
+    }
         
-    	MD = true;
-    	TD = false;
+    public void turnR(double speed)
+    {	double reverse=speed*-1.0;
+    	tank(speed,speed);
     }
     
-    public void shift(double x, double y , double rot)
-    {	
-
-			if (oi.AButton.get())
-	    	{
-	    		MD = !MD;
-	    		TD = !TD;
-	    	}
-	    	
-//	    	if (MD&&!TD)
-//	    	{
-	    		mecanum(x, y, rot);
-//	    		System.out.println("Mecanum Mode");
-//	    	}
-//	    	else if (!MD&&TD)
-//	    	{
-//	    		tank(y, rot);
-//	    		System.out.println("Tank Mode");
-//	    	}	
-	    }
+    public void turnL(double speed)
+    {	double reverse=speed*-1.0;
+    	tank(reverse,reverse);
+    }
     
     public void driveF()
     {
-//    	mecanum(0, 1, 0);
     	tank(1.0,-1.0);
     }
     
     public void driveB()
     {
     	tank(-1.0,1.0);
-//    	mecanum(0, -1, 0);
     }
-    
-    public void driveL()
-    {
-    	mecanum(1, 0, 0);
-    }
-    
-    public void driveR()
-    {
-    	mecanum(-1, 0, 0);
-    }
-    
+        
     public void turnR()
     {
     	tank(1.0,1.0);
-//    	mecanum(0, 0, 1);
     }
     
     public void turnL()
     {
     	tank(-1.0,-1.0);
-//   	mecanum(0, 0, -1);
     }
-    
+
     public void stop()
     {
     	tank(0.0,.0);
-//    	mecanum(0, 0 ,0);
     }
 }
 

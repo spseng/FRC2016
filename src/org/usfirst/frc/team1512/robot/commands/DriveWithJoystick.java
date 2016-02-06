@@ -24,7 +24,13 @@ public class DriveWithJoystick extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
    // 	drive.arcade((-.75)*(oi.leftDrive.getRawAxis(1)), (.75)*(oi.rightDrive.getRawAxis(1)));
-    	drive.tank((-.75)*(oi.leftDrive.getRawAxis(1)), (.75)*(oi.rightDrive.getRawAxis(1)));
+    //	drive.tank((-.75)*(oi.leftDrive.getRawAxis(1)), (.75)*(oi.rightDrive.getRawAxis(1)));
+
+   //This is an experiment, but I don't see why this won't work.  It uses the DriveTrain class,
+   //	where the tank function already has a more sophisticated system of driving
+   //	- including a deadzone around 0:
+    	drive.tank(oi.leftDrive.getRawAxis(1), oi.rightDrive.getRawAxis(1));
+    
     }
 
     // Make this return true when this Command no longer needs to run execute()

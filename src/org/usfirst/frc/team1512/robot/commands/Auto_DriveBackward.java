@@ -9,11 +9,19 @@ import edu.wpi.first.wpilibj.command.Command;
 public class Auto_DriveBackward extends CommandBase {
 
 	boolean finished = false;
+	double speed = 1.0; //this is the default speed.  Second constructor can set speed
 	
     public Auto_DriveBackward() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(drive);
+    }
+
+    public Auto_DriveBackward(double inspeed) {
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
+    	requires(drive);
+    	speed=inspeed;
     }
 
     // Called just before this Command runs the first time
@@ -22,7 +30,7 @@ public class Auto_DriveBackward extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	drive.driveB();
+    	drive.driveB(speed);
     	Timer.delay(0.1);
     	finished = true;
     }
