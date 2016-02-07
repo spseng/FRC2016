@@ -19,8 +19,11 @@ public class SensorSubsystem extends Subsystem {
 		
 		AnalogInput DistanceSensor1;
 		int bits;
+		
+		
 
-	
+		SensorSubsystem sensors;
+		
 	public SensorSubsystem()
 	{
 		super();
