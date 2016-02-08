@@ -24,7 +24,6 @@ public class OI {
 	
 	public JoystickButton testBack;
 	public JoystickButton testStart;
-
 	
 	public OI(){
 		stick = new Joystick(0);

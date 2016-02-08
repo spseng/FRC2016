@@ -82,6 +82,11 @@ public class ShooterControl extends Subsystem {
 		collector.set(0);
 	}
 	
+	public void setcollector(double x)
+	{
+		collector.set(x);
+	}
+	
 	public void shoottop()
 	{
 		collector.set(1);

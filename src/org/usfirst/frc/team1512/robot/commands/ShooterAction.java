@@ -24,19 +24,22 @@ public class ShooterAction extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(oi.AButton.get())
+    	
+    	ShooterControl.setcollector(oi.driveStick.getRawAxis(1));
+    	
+    	if(oi.RBumper.get())
     	{
     		ShooterControl.shoottop();
     	}
-    	else if(oi.BButton.get())
+    	else if(oi.LBumper.get())
     	{
     		ShooterControl.shootbot();
     	}
-    	else if(oi.RBumper.get())
+    	else if(oi.BButton.get())
     	{
     		ShooterControl.speedupshooter;
     	}
-    	else if(oi.LBumper.get())
+    	else if(oi.ABumper.get())
     	{
     		ShooterControl.speeddownshooter;
     	}
@@ -48,7 +51,7 @@ public class ShooterAction extends CommandBase {
     	{
     		ShooterControl.stopshooter;
     	}
-    	
+    		
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
