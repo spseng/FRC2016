@@ -114,12 +114,6 @@ public class AutonomousMode extends CommandGroup{
 }
 	
 	
-	
-	
-	
-	
-	
-	
 //		for(int i = 0; i<= 30; i++) {
 //			addSequential(new Auto_RaiseTower());
 //			System.out.println("Lifting");
