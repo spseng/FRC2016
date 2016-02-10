@@ -107,7 +107,7 @@ public class DriveTrain extends Subsystem {
 
     public void stop()
     {
-    	tank(0.0,.0);
+    	tank(0.0,0.0);
     }
 }
 
