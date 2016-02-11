@@ -1,6 +1,7 @@
 package org.usfirst.frc.team1512.robot.subsystems;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
@@ -59,18 +60,8 @@ public class DistanceSensor extends Subsystem {
 	public double getDistance()
 	{
 		volts = AnalogPin.getVoltage();
-		Return (volts * 10.0);	//tests suggest distance in inches = volts value * 10
+		return (volts * 10.0);	//tests suggest distance in inches = volts value * 10
 	}
-
-	
-	public void displayswitches()
-	{
-		SmartDashboard.putNumber("Dipswitch 1 set to: ", booltoint(1));
-		SmartDashboard.putNumber("Dipswitch 2 set to: ", booltoint(2));
-		SmartDashboard.putNumber("Dipswitch 3 set to: ", booltoint(3));
-		SmartDashboard.putNumber("Dipswitch 4 set to: ", booltoint(4));
-	}
-
 
 	
     public void initDefaultCommand() {
