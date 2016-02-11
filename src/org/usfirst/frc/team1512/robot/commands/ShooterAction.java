@@ -1,7 +1,7 @@
 package org.usfirst.frc.team1512.robot.commands;
 
 import org.usfirst.frc.team1512.robot.OI;
-import org.usfirst.frc.team1512.robot.subsystems.TowerControl;
+import org.usfirst.frc.team1512.robot.subsystems.ShooterControl;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -23,33 +23,34 @@ public class ShooterAction extends CommandBase {
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
+    protected void execute() 
+    {
     	
-    	ShooterControl.setcollector(oi.driveStick.getRawAxis(1));
+    	ShooterControl.setcollector(oi.xbox.getRawAxis(1));
     	
     	if(oi.RBumper.get())
     	{
-    		ShooterControl.shoottop();
+    		shooter.shoottop();
     	}
-    	else if(oi.LBumper.get())
+    	else if(oi.xbox.LBumper.get())
     	{
-    		ShooterControl.shootbot();
+    		shooter.shootbot();
     	}
-    	else if(oi.BButton.get())
+    	else if(oi.xbox.BButton.get())
     	{
-    		ShooterControl.speedupshooter;
+    		shooter.speedupshooter();
     	}
-    	else if(oi.ABumper.get())
+    	else if(oi.xbox.ABumper.get())
     	{
-    		ShooterControl.speeddownshooter;
+    		shooter.speeddownshooter();
     	}
-    	else if(oi.YButton.get())
+    	else if(oi.xbox.YButton.get())
     	{
-    		ShooterControl.startshooter;
+    		shooter.startshooter();
     	}
-    	else if(oi.XButton.get())
+    	else if(oi.xbox.XButton.get())
     	{
-    		ShooterControl.stopshooter;
+    		shooter.stopshooter();
     	}
     		
     }
@@ -60,6 +61,8 @@ public class ShooterAction extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
+    	shooter.stopshooter();
+    	shooter.stopcollector();
     }
 
     // Called when another command which requires one or more of the same

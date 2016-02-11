@@ -24,11 +24,11 @@ import org.usfirst.frc.team1512.robot.commands.DriveWithJoystick;
 import org.usfirst.frc.team1512.robot.commands.GripperAction;
 import org.usfirst.frc.team1512.robot.commands.Reset;
 import org.usfirst.frc.team1512.robot.commands.TowerAction;
-<<<<<<< HEAD
+//<<<<<<< HEAD
 import org.usfirst.frc.team1512.robot.commands.ShooterAction;
-=======
+//=======
 import org.usfirst.frc.team1512.robot.commands.SensorsAction;
->>>>>>> refs/remotes/origin/master
+//>>>>>>> refs/remotes/origin/master
 import org.usfirst.frc.team1512.robot.commands.CommandBase;
 import org.usfirst.frc.team1512.robot.commands.testCompressor;
 import org.usfirst.frc.team1512.robot.subsystems.DipSwitch;
@@ -41,10 +41,7 @@ import com.ni.vision.NIVision.Image;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-<<<<<<< HEAD
-=======
 
->>>>>>> refs/remotes/origin/master
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -61,11 +58,8 @@ public class Robot extends IterativeRobot {
     DriveWithJoystick drive = new DriveWithJoystick(); 
     Compress compress = new Compress();
     TowerAction tower = new TowerAction();
-<<<<<<< HEAD
     ShooterAction shooter = new ShooterAction();
-=======
     SensorsAction sensors = new SensorsAction();
->>>>>>> refs/remotes/origin/master
     GripperAction gripper = new GripperAction();
     testCompressor test = new testCompressor();
     Camera camera = new Camera();
@@ -122,11 +116,8 @@ public class Robot extends IterativeRobot {
     	compress.start();
     	tower.start();
     	gripper.start();
-<<<<<<< HEAD
     	shooter.start();
-=======
     	sensors.start();
->>>>>>> refs/remotes/origin/master
     }
 
     /**
@@ -143,11 +134,7 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
         oi.testBack.whenPressed(test);
-<<<<<<< HEAD
-        
-=======
         SmartDashboard.putNumber("Counter", counter++);
->>>>>>> refs/remotes/origin/master
         }
     
     /**

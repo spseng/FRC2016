@@ -12,15 +12,9 @@ import org.usfirst.frc.team1512.robot.commands.*;
  */
 public class OI {
 
-<<<<<<< HEAD
-	public Joystick stick;
-	public Joystick driveStick;
-	public Joystick shooterStick;
-=======
 	public Joystick xbox;
 	public Joystick leftDrive;
 	public Joystick rightDrive;
->>>>>>> refs/remotes/origin/master
 	public JoystickButton AButton;
 	public JoystickButton BButton;
 	public JoystickButton XButton;
@@ -31,19 +25,6 @@ public class OI {
 	public JoystickButton testStart;
 	
 	public OI(){
-<<<<<<< HEAD
-		stick = new Joystick(0);
-		driveStick = new Joystick(1);
-		shooterStick = new Joystick(2);
-		AButton = new JoystickButton(stick, 1);
-		BButton = new JoystickButton(stick, 2);
-		XButton = new JoystickButton(stick, 3);
-		YButton = new JoystickButton(stick, 4);
-		LBumper = new JoystickButton(stick, 5);
-		RBumper = new JoystickButton(stick, 6);
-		testBack = new JoystickButton(stick, 7);
-		testStart = new JoystickButton(stick, 8);
-=======
 		leftDrive = new Joystick(1);
 		rightDrive = new Joystick(0);
 		xbox = new Joystick(2);
@@ -55,7 +36,6 @@ public class OI {
 		RBumper = new JoystickButton(xbox, 6);
 		testBack = new JoystickButton(xbox, 7);
 		testStart = new JoystickButton(xbox, 8);
->>>>>>> refs/remotes/origin/master
 	}
 	
 //	public double getX(){

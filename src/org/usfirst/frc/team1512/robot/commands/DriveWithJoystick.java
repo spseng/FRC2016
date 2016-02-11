@@ -23,13 +23,6 @@ public class DriveWithJoystick extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-<<<<<<< HEAD
-    	 	drive.shift((.75)*(oi.driveStick.getRawAxis(0)), 
-    	 			(-.75)*oi.driveStick.getRawAxis(1), 
-    	 			(.75)*(oi.driveStick.getRawAxis(4)));
-    	 	
-    	
-=======
    // 	drive.arcade((-.75)*(oi.leftDrive.getRawAxis(1)), (.75)*(oi.rightDrive.getRawAxis(1)));
     //	drive.tank((-.75)*(oi.leftDrive.getRawAxis(1)), (.75)*(oi.rightDrive.getRawAxis(1)));
 
@@ -38,7 +31,6 @@ public class DriveWithJoystick extends CommandBase {
    //	- including a deadzone around 0:
     	drive.tank(oi.leftDrive.getRawAxis(1), oi.rightDrive.getRawAxis(1));
     
->>>>>>> refs/remotes/origin/master
     }
 
     // Make this return true when this Command no longer needs to run execute()
