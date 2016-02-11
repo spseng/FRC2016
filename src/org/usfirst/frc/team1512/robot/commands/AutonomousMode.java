@@ -1,6 +1,6 @@
 package org.usfirst.frc.team1512.robot.commands;
 
-import org.usfirst.frc.team1512.robot.subsystems.DipSwitch;
+
 import org.usfirst.frc.team1512.robot.subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -22,21 +22,7 @@ public class AutonomousMode extends CommandGroup
 	public  AutonomousMode()  
 	{
 	
-        int i=0;
-        
-		for( i = 0; i <= 5; i++) 
-		{
-			double speed=((double) i)/10.0;
-			addSequential(new Auto_DriveForward(speed, 0.5));
-			
-		}
-		
-		for( i = 5; i >= 0; i--) 
-		{
-			double speed=((double) i)/10.0;
-			addSequential(new Auto_DriveForward(speed, 0.5));
-			
-		}
+ 
 	}
 }
 

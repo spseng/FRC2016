@@ -16,7 +16,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team1512.robot.RobotMap;
-import org.usfirst.frc.team1512.robot.commands.Accelerometer;
+
 import org.usfirst.frc.team1512.robot.commands.AutonomousMode;
 import org.usfirst.frc.team1512.robot.commands.Camera;
 import org.usfirst.frc.team1512.robot.commands.Compress;
@@ -27,9 +27,7 @@ import org.usfirst.frc.team1512.robot.commands.TowerAction;
 import org.usfirst.frc.team1512.robot.commands.SensorsAction;
 import org.usfirst.frc.team1512.robot.commands.CommandBase;
 import org.usfirst.frc.team1512.robot.commands.testCompressor;
-import org.usfirst.frc.team1512.robot.subsystems.DipSwitch;
-import org.usfirst.frc.team1512.robot.subsystems.DistanceSensor;
-import org.usfirst.frc.team1512.robot.subsystems.RotationSensor;
+
 import org.usfirst.frc.team1512.robot.subsystems.DriveTrain;
 
 import com.ni.vision.NIVision;
@@ -60,7 +58,7 @@ public class Robot extends IterativeRobot {
     Camera camera = new Camera();
     AutonomousMode auto = new AutonomousMode();
     Reset reset = new Reset();
-    DistanceSensor distance = new DistanceSensor(0);//distance sensor connected to analog port 0.
+ 
 
 //    TowerOp towerOp = new TowerOp();
     
@@ -83,6 +81,8 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
+    	/* JUST DRIVE, SO COMMENT OUT AUTONOMOUS:
+
     	System.out.println("auto Initiated");
     	compress.start();
     	auto.start();
@@ -90,15 +90,19 @@ public class Robot extends IterativeRobot {
 		
         SmartDashboard.putNumber("Counter", counter++);	
     	//if (autonomousCommand != null) autonomousCommand.start();
-    }
+   	 */
+     }
 
 
     public void autonomousPeriodic() {
-        Scheduler.getInstance().run();
+    	/* JUST DRIVE, SO COMMENT OUT AUTONOMOUS:
+       Scheduler.getInstance().run();
         SmartDashboard.putNumber("Counter2", counter++);
 
         SmartDashboard.putNumber("Counter", counter++);	
-    }
+ 
+    */
+    	}
 
     public void teleopInit() {
 		// This makes sure that the autonomous stops running when
