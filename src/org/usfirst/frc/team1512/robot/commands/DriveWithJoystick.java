@@ -3,12 +3,6 @@ package org.usfirst.frc.team1512.robot.commands;
 import org.usfirst.frc.team1512.robot.OI;
 import org.usfirst.frc.team1512.robot.subsystems.DriveTrain;
 
-import com.ni.vision.NIVision;
-import com.ni.vision.NIVision.Image;
-
-import edu.wpi.first.wpilibj.CameraServer;
-import edu.wpi.first.wpilibj.Talon;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -29,11 +23,22 @@ public class DriveWithJoystick extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+<<<<<<< HEAD
     	 	drive.shift((.75)*(oi.driveStick.getRawAxis(0)), 
     	 			(-.75)*oi.driveStick.getRawAxis(1), 
     	 			(.75)*(oi.driveStick.getRawAxis(4)));
     	 	
     	
+=======
+   // 	drive.arcade((-.75)*(oi.leftDrive.getRawAxis(1)), (.75)*(oi.rightDrive.getRawAxis(1)));
+    //	drive.tank((-.75)*(oi.leftDrive.getRawAxis(1)), (.75)*(oi.rightDrive.getRawAxis(1)));
+
+   //This is an experiment, but I don't see why this won't work.  It uses the DriveTrain class,
+   //	where the tank function already has a more sophisticated system of driving
+   //	- including a deadzone around 0:
+    	drive.tank(oi.leftDrive.getRawAxis(1), oi.rightDrive.getRawAxis(1));
+    
+>>>>>>> refs/remotes/origin/master
     }
 
     // Make this return true when this Command no longer needs to run execute()
