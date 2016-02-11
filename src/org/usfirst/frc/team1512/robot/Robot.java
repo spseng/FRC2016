@@ -86,13 +86,10 @@ public class Robot extends IterativeRobot {
     	System.out.println("auto Initiated");
     	compress.start();
     	auto.start();
-<<<<<<< HEAD
     	drive.start();
-=======
-    			
-		
+
         SmartDashboard.putNumber("Counter", counter++);	
->>>>>>> master
+
     	//if (autonomousCommand != null) autonomousCommand.start();
     }
 
