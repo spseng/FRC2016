@@ -7,84 +7,44 @@ import edu.wpi.first.wpilibj.SimpleRobot;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import edu.wpi.first.wpilibj.networktables2.util.List;
+
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.Ultrasonic;
-import edu.wpi.first.wpilibj.AnalogInput;
 
-public class AutonomousMode extends CommandGroup{
 
-	//  documentation suggests that analog-input distance-sensors 
-	//	should be set up as generic analog inputs.  Here is
-	//	documentation: http://wpilib.screenstepslive.com/s/4485/m/13810/l/241876-analog-inputs
+
+public class AutonomousMode extends CommandGroup
+{
 	
-	AnalogInput exampleAnalog = new AnalogInput(0);
-	int bits;
-
-	DigitalInput = hitLS;
+//	DipSwitch dip = new DipSwitch();
+	
 	
 	public  AutonomousMode()  
 	{
-		
-		SmartDashboard.putString("HI autonomous is on");
-		
-		exampleAnalog.setOversampleBits(4);
-		bits = exampleAnalog.getOversampleBits();
-		exampleAnalog.setAverageBits(2);
-		bits = exampleAnalog.getAverageBits();
-		AnalogInput.setGlobalSampleRate(62500);
-		int raw;
-		double volts;
-		int averageRaw;
-		double averageVolts;
-		int distance;
-		boolean ObstacleCrossed = false;
-		
-		//1. drive and hit something
-		if (dip.auto1()&&!dip.auto2()&&!dip.auto3()&&!dip.auto4())
+	
+        int i=0;
+        
+		for( i = 0; i <= 5; i++) 
 		{
-			SmartDashboard.putNumber("Dipswitch activated #1", 1);
-			System.out.println("Dip#1");
+			double speed=((double) i)/10.0;
+			addSequential(new Auto_DriveForward(speed, 0.5));
 			
-			//repeat function 100 times to make sure it has hit something
-			for(int i = 0; i<= 100; i++) {
-			addSequential(new Auto_DriveForward());
-			}
-			
-			System.out.println("Driving to hit something");
 		}
 		
-		//2. figure out how to drive through obstacles
-		 else if (!dip.auto1()&&dip.auto2()&&!dip.auto3()&&!dip.auto4())
+		for( i = 5; i >= 0; i--) 
 		{
-			 SmartDashboard.putNumber("Dipswitch activated #", 2);
-			 System.out.println("Dip#2");
-			
-		//if distance is shorter than the supposed value of 100 inches, get distance repeatedly
-			 while(distance<100 && !ObstacleCrossed)
-			 {
-				 //variables for the distance sensor
-				 raw = exampleAnalog.getValue();
-				 volts = exampleAnalog.getVoltage();
-				 averageRaw = exampleAnalog.getAverageValue();
-				 averageVolts = exampleAnalog.getAverageVoltage();	
-				 SmartDashboard.putString("DB/String 0", "raw" + raw);
-				 SmartDashboard.putString("DB/String 1", "volts" + volts);
-				 distance=volts*100;
-			 
-				 //100 inches is only a guess
-				 //if the distance sensor does not sense an opening, move left/right		
-				 addSequential(new Auto_DriveLeft());
-				 //if the distance sensor senses an opening which it can pass though an obstacle
-				 //move forward
-				 if(distance>100)
-				 {	
-					addSequential(new Auto_DriveForward());
-					System.out.println("Driving to an obtacle");
-					ObstacleCrossed = true;
-				 }
-			 }
+			double speed=((double) i)/10.0;
+			addSequential(new Auto_DriveForward(speed, 0.5));
+
+		
 		}
+	}
+}
+
+		/*		
+//		for(int i = 0; i <= 10; i++) {
+//			addSequential(new Auto_Timer(0.1));  //I hope this will keep it driving for 1 sec
+//			
+//		}
 		
 		//3. shoot the low goal
 		
@@ -94,7 +54,7 @@ public class AutonomousMode extends CommandGroup{
 	   		System.out.println("Dip#3");
 			
 		}
-		
+
 		//4. shoot the high goal
 		
 		else if (!dip.auto1()&&!dip.auto2()&&!dip.auto3()&&dip.auto4())
@@ -113,7 +73,34 @@ public class AutonomousMode extends CommandGroup{
 		
 }
 	
-	
+
+		for( i=10; i>=0; i--)  //slow down to stop
+		{
+			double speed=((double) i)/10.0;
+			addSequential(new Auto_DriveForward(speed));
+			addSequential(new SensorsAction());
+		}		
+//		for(int i=0; i<=10; i++)
+//		{
+//			addSequential(new Auto_Stop())
+//		}		
+		for( i=10; i<=10; i++)
+		{
+			double speed=((double) i)/10.0;
+			addSequential(new Auto_DriveBackward(speed));
+		}		
+		for( i=10; i>=0; i--)  //slow down to stop
+		{
+			double speed=((double) i)/10.0;
+			addSequential(new Auto_DriveBackward(speed));
+		}		
+		for( i=0; i<=10; i++)
+		{
+			addSequential(new Auto_Stop());
+		}		
+	}
+*/
+
 //		for(int i = 0; i<= 30; i++) {
 //			addSequential(new Auto_RaiseTower());
 //			System.out.println("Lifting");
@@ -197,4 +184,5 @@ public class AutonomousMode extends CommandGroup{
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     
-}
+
+
