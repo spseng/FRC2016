@@ -16,7 +16,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class DriveTrain extends Subsystem {
     
-	double deadzone = 0.2;
+	double deadzone = 0.1;
 	double expoIncre = 1;
 	double upperLimit = 0.1;
 	public Talon leftTalons, rightTalons;

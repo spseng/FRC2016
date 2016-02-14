@@ -25,7 +25,7 @@ public class SensorsAction extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	sensors.displaydistance1(); //hopefully this will display distance info
+    	sensors.displaydistance1();  //hopefully this will display distance info
     	
 /*    	if(oi.AButton.get()&&tower.getTLS()&&tower.getTLS2())
     	{
