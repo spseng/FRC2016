@@ -4,43 +4,76 @@ package org.usfirst.frc.team1512.robot.commands;
 import org.usfirst.frc.team1512.robot.subsystems.DipSwitch;
 import org.usfirst.frc.team1512.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.SimpleRobot;
+//import edu.wpi.first.wpilibj.SimpleRobot;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.CommandGroup;
-//import edu.wpi.first.wpilibj.networktables2.util.List;
+
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
-public class AutonomousMode extends CommandGroup{
-
-	//  documentation suggests that analog-input distance-sensors 
-	//	should be set up as generic analog inputs.  Here is
-	//	documentation: http://wpilib.screenstepslive.com/s/4485/m/13810/l/241876-analog-inputs
-
+public class AutonomousMode extends CommandGroup
+{
+	
+//	DipSwitch dip = new DipSwitch();
+	
 	
 	public  AutonomousMode()  
 	{
-		
-		autonomousInit();
-		
-		
-		for(int i=0; i<=10; i++)
+	
+        int i=0;
+        
+		for( i = 0; i <= 5; i++) 
 		{
-			addSequential(new Auto_DriveForward());
-			autonomousPeriodic();
-		}		
-		for(int i=0; i<=10; i++)
+			double speed=((double) i)/10.0;
+			addSequential(new Auto_DriveForward(speed, 0.5));
+			
+		}
+		
+		for( i = 5; i >= 0; i--) 
 		{
-			addSequential(new Auto_Stop());
-			autonomousPeriodic();
+			double speed=((double) i)/10.0;
+			addSequential(new Auto_DriveForward(speed, 0.5));
+			
+		}
+	}
+}
+
+		/*		
+//		for(int i = 0; i <= 10; i++) {
+//			addSequential(new Auto_Timer(0.1));  //I hope this will keep it driving for 1 sec
+//			
+//		}
+		
+		
+		
+		for( i=10; i>=0; i--)  //slow down to stop
+		{
+			double speed=((double) i)/10.0;
+			addSequential(new Auto_DriveForward(speed));
+			addSequential(new SensorsAction());
 		}		
-		for(int i=0; i<=10; i++)
+//		for(int i=0; i<=10; i++)
+//		{
+//			addSequential(new Auto_Stop())
+//		}		
+		for( i=10; i<=10; i++)
+		{
+			double speed=((double) i)/10.0;
+			addSequential(new Auto_DriveBackward(speed));
+					}		
+		for( i=10; i>=0; i--)  //slow down to stop
+		{
+			double speed=((double) i)/10.0;
+			addSequential(new Auto_DriveBackward(speed));
+		}		
+		for( i=0; i<=10; i++)
 		{
 			addSequential(new Auto_DriveBackward());
 			autonomousPeriodic();
 		}		
 	}
+*/
 //		for(int i = 0; i<= 30; i++) {
 //			addSequential(new Auto_RaiseTower());
 //			System.out.println("Lifting");
@@ -124,4 +157,5 @@ public class AutonomousMode extends CommandGroup{
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     
-}
+
+

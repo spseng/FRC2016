@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
+import org.usfirst.frc.team1512.robot.RobotMap;
 import org.usfirst.frc.team1512.robot.commands.Accelerometer;
 import org.usfirst.frc.team1512.robot.commands.AutonomousMode;
 import org.usfirst.frc.team1512.robot.commands.Camera;
@@ -23,16 +24,19 @@ import org.usfirst.frc.team1512.robot.commands.DriveWithJoystick;
 import org.usfirst.frc.team1512.robot.commands.GripperAction;
 import org.usfirst.frc.team1512.robot.commands.Reset;
 import org.usfirst.frc.team1512.robot.commands.TowerAction;
+import org.usfirst.frc.team1512.robot.commands.SensorsAction;
 import org.usfirst.frc.team1512.robot.commands.CommandBase;
 import org.usfirst.frc.team1512.robot.commands.testCompressor;
 import org.usfirst.frc.team1512.robot.subsystems.DipSwitch;
+import org.usfirst.frc.team1512.robot.subsystems.DistanceSensor;
+import org.usfirst.frc.team1512.robot.subsystems.RotationSensor;
 import org.usfirst.frc.team1512.robot.subsystems.DriveTrain;
 
 import com.ni.vision.NIVision;
 import com.ni.vision.NIVision.Image;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.AnalogInput;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -50,22 +54,23 @@ public class Robot extends IterativeRobot {
     DriveWithJoystick drive = new DriveWithJoystick(); 
     Compress compress = new Compress();
     TowerAction tower = new TowerAction();
+    SensorsAction sensors = new SensorsAction();
     GripperAction gripper = new GripperAction();
     testCompressor test = new testCompressor();
     Camera camera = new Camera();
-    Accelerometer accelerometer = new Accelerometer();
     AutonomousMode auto = new AutonomousMode();
     Reset reset = new Reset();
     
     //setting up the analog distance sensor
-    AnalogInput exampleAnalog = new AnalogInput(0);
+/*    AnalogInput exampleAnalog = new AnalogInput(0);
     int bits;
     exampleAnalog.setOversampleBits(4);
     bits = exampleAnalog.getOversampleBits();
     exampleAnalog.setAverageBits(2);
     bits = exampleAnalog.getAverageBits();
     AnalogInput.setGlobalSampleRate(62500);
-
+*/
+   // DistanceSensor distance = new DistanceSensor(0);//distance sensor connected to analog port 0.
     
     /**
      * This function is run when the robot is first started up and should be
@@ -76,6 +81,7 @@ public class Robot extends IterativeRobot {
     	CommandBase.init();
     	System.out.println("robo Initiated");
         // instantiate the command used for the autonomous period
+    	sensors.start();
     }
 	
 	public void disabledPeriodic() {
@@ -88,19 +94,16 @@ public class Robot extends IterativeRobot {
     	compress.start();
     	auto.start();
     	drive.start();
+		
+        SmartDashboard.putNumber("Counter", counter++);	
+    	//if (autonomousCommand != null) autonomousCommand.start();
     }
 
 
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
-	
-		int raw = exampleAnalog.getValue();
-		double volts = exampleAnalog.getVoltage();
-		int averageRaw = exampleAnalog.getAverageValue();
-		double averageVolts = exampleAnalog.getAverageVoltage();
-		
-		SmartDashboard.putString("DB/String 0", "raw" + raw);
-    	SmartDashboard.putString("DB/String 1", "volts" + volts);
+        SmartDashboard.putNumber("Counter2", counter++);
+
         SmartDashboard.putNumber("Counter", counter++);	
     }
 
@@ -115,6 +118,7 @@ public class Robot extends IterativeRobot {
     	compress.start();
     	tower.start();
     	gripper.start();
+    	sensors.start();
     }
 
     /**
