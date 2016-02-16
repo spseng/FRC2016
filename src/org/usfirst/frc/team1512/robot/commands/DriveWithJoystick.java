@@ -29,8 +29,13 @@ public class DriveWithJoystick extends CommandBase {
    //This is an experiment, but I don't see why this won't work.  It uses the DriveTrain class,
    //	where the tank function already has a more sophisticated system of driving
    //	- including a deadzone around 0:
-    	drive.tank(oi.leftDrive.getRawAxis(1), oi.rightDrive.getRawAxis(1));
-    
+    	
+    	//commented out for quick and dirty:
+    	//drive.tank(oi.leftDrive.getRawAxis(1), oi.rightDrive.getRawAxis(1));
+   
+    	
+    	//quick and dirty to get 3rd axis to run shooter
+    	drive.tank(oi.leftDrive.getRawAxis(1), oi.rightDrive.getRawAxis(1), oi.rightDrive.getRawAxis(3));
     }
 
     // Make this return true when this Command no longer needs to run execute()

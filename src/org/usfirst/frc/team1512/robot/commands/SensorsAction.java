@@ -11,10 +11,11 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class SensorsAction extends CommandBase {
 	
+	
     public SensorsAction() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(sensors);
+//    	requires(sensors);
     }
 
     // Called just before this Command runs the first time
@@ -25,7 +26,7 @@ public class SensorsAction extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	sensors.displaydistance1();  //hopefully this will display distance info
+//    	sensors.displaydistance1();  //hopefully this will display distance info
     	
 /*    	if(oi.AButton.get()&&tower.getTLS()&&tower.getTLS2())
     	{

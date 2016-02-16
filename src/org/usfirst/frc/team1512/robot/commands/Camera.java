@@ -6,14 +6,17 @@ import com.ni.vision.NIVision.Image;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc.team1512.robot.subsystems.CameraSystem;
 
 /**
  *
  */
 public class Camera extends CommandBase {
 	int session;
-	Image frame;
-    public Camera() {
+	NIVision.Image frame;
+
+	public Camera() {
+    //	requires(cam);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -30,11 +33,7 @@ public class Camera extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        NIVision.IMAQdxStartAcquisition(session);
-        NIVision.IMAQdxGrab(session, frame, 1);
-        NIVision.IMAQdxStopAcquisition(session);
-        
-        CameraServer.getInstance().setImage(frame);
+    	cam.captureImage();
         Timer.delay(0.005);
     }
 

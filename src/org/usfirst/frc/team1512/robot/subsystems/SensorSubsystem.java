@@ -1,17 +1,16 @@
-package edu.wpi.first.wpilibj;
+package org.usfirst.frc.team1512.robot.subsystems;
+
+//package edu.wpi.first.wpilibj;
 
 /**
  *
  * @author eyal
  */
-public class Encoder {
+public class SensorSubsystem {
 
-    public Encoder(int port1, int port2) {
+    public SensorSubsystem() {
     }
 
-    public double get() {
-        return 0;
-    }
 
     public void start() {
     }

@@ -80,6 +80,7 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() {
         // schedule the autonomous command (example)
     	System.out.println("auto Initiated");
+    	sensors.start();
     	compress.start();
     	auto.start();
     			
