@@ -30,6 +30,7 @@ public class DriveWithJoystick extends CommandBase {
    //	where the tank function already has a more sophisticated system of driving
    //	- including a deadzone around 0:
     	drive.tank(oi.leftDrive.getRawAxis(1), oi.rightDrive.getRawAxis(1));
+    	drive.shoot(oi.xbox.getRawAxis(1));
     
     }
 

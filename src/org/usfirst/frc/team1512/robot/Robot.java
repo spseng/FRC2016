@@ -60,7 +60,7 @@ public class Robot extends IterativeRobot {
     Camera camera = new Camera();
     AutonomousMode auto = new AutonomousMode();
     Reset reset = new Reset();
-    DistanceSensor distance = new DistanceSensor(0);//distance sensor connected to analog port 0.
+    DistanceSensor distance = new DistanceSensor();//distance sensor connected to analog port 0.
 
 //    TowerOp towerOp = new TowerOp();
     
