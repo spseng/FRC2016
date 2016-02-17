@@ -42,20 +42,20 @@ public class ShooterControl extends Subsystem {
 	
 	public void startshooter ()
 	{
-		shooterSC.set(0.5);
-		shooterspeed=0.5;
+		shooterSC.set(-0.4);
+		shooterspeed=-0.4;
 	}
 	
 
 	public void speedupshooter()
 	{
-		shooterspeed = shooterspeed + 0.1;
+		shooterspeed = shooterspeed - 0.025;
 		shooterSC.set(shooterspeed);
 	}
 	
 	public void speeddownshooter()
 	{
-		shooterspeed = shooterspeed - 0.1;
+		shooterspeed = shooterspeed + 0.025;
 		shooterSC.set(shooterspeed);
 	}
 	

@@ -54,7 +54,8 @@ public class ShooterAction extends CommandBase {
     		shooter.stopshooter();
     	}
     		
-    }
+        SmartDashboard.putNumber("Y start X stop A slower B faster Shooter Spped:", shooter.getshooterspeed());	
+   }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         return false;
