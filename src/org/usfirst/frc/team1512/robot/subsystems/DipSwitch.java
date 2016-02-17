@@ -2,7 +2,7 @@ package org.usfirst.frc.team1512.robot.subsystems;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
-
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
@@ -16,10 +16,6 @@ public class DipSwitch extends Subsystem {
 	DigitalInput auto3;
 	DigitalInput auto4;
 
-	boolean switch1;
-	boolean switch2;
-	boolean switch3;
-	boolean switch4;
 	
 	public DipSwitch()
 	{
@@ -29,30 +25,65 @@ public class DipSwitch extends Subsystem {
 		auto3 = new DigitalInput(8);
 		auto4 = new DigitalInput(9);
 		
-		switch1 = auto1.get();
-		switch2 = auto2.get();
-		switch3 = auto3.get();
-		switch4 = auto4.get();
+	}
+		
+	public boolean getswitch(int switchnumber)
+	{
+		switch (switchnumber)
+		{	
+			case 1: return auto1.get();
+			case 2: return auto2.get();
+			case 3: return auto3.get();
+			case 4: return auto4.get();
+		}
+		return false; //hopefully it won't get to this!
+	}
+
+	public int booltoint(int switchnumber)
+	{	boolean switchvalue=false;
+		switch (switchnumber)
+		{
+		case 1:switchvalue=auto1.get(); break;
+		case 2:switchvalue=auto2.get(); break;
+		case 3:switchvalue=auto3.get(); break;
+		case 4:switchvalue=auto4.get(); break;
+		}
+		if (switchvalue==true)
+		{
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
 	}
 	
+	public void displayswitches()
+	{
+		SmartDashboard.putNumber("Dipswitch 1 set to: ", booltoint(1));
+		SmartDashboard.putNumber("Dipswitch 2 set to: ", booltoint(2));
+		SmartDashboard.putNumber("Dipswitch 3 set to: ", booltoint(3));
+		SmartDashboard.putNumber("Dipswitch 4 set to: ", booltoint(4));
+	}
+
 	public boolean auto1()
 	{
-		return switch1;
+		return auto1.get();
 	}
 	
 	public boolean auto2()
 	{
-		return switch2;
+		return auto2.get();
 	}
 	
 	public boolean auto3()
 	{
-		return switch3;
+		return auto3.get();
 	}
 	
 	public boolean auto4()
 	{
-		return switch4;
+		return auto4.get();
 	}
 	
 	

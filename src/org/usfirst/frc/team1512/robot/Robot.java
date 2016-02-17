@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
+import org.usfirst.frc.team1512.robot.RobotMap;
 import org.usfirst.frc.team1512.robot.commands.Accelerometer;
 import org.usfirst.frc.team1512.robot.commands.AutonomousMode;
 import org.usfirst.frc.team1512.robot.commands.Camera;
@@ -24,15 +25,19 @@ import org.usfirst.frc.team1512.robot.commands.GripperAction;
 import org.usfirst.frc.team1512.robot.commands.Reset;
 import org.usfirst.frc.team1512.robot.commands.TowerAction;
 import org.usfirst.frc.team1512.robot.commands.ShooterAction;
+import org.usfirst.frc.team1512.robot.commands.SensorsAction;
 import org.usfirst.frc.team1512.robot.commands.CommandBase;
 import org.usfirst.frc.team1512.robot.commands.testCompressor;
 import org.usfirst.frc.team1512.robot.subsystems.DipSwitch;
+import org.usfirst.frc.team1512.robot.subsystems.DistanceSensor;
+import org.usfirst.frc.team1512.robot.subsystems.RotationSensor;
 import org.usfirst.frc.team1512.robot.subsystems.DriveTrain;
 
 import com.ni.vision.NIVision;
 import com.ni.vision.NIVision.Image;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -43,19 +48,22 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends IterativeRobot {
 		
-    Command autonomousCommand;
+    double counter = 0.0;
+	Command autonomousCommand;
+    OI oi = new OI();
     DigitalInput limit;
     DriveWithJoystick drive = new DriveWithJoystick(); 
     Compress compress = new Compress();
     TowerAction tower = new TowerAction();
     ShooterAction shooter = new ShooterAction();
+    SensorsAction sensors = new SensorsAction();
     GripperAction gripper = new GripperAction();
     testCompressor test = new testCompressor();
-    OI oi = new OI();
     Camera camera = new Camera();
-    Accelerometer accelerometer = new Accelerometer();
     AutonomousMode auto = new AutonomousMode();
     Reset reset = new Reset();
+    DistanceSensor distance = new DistanceSensor(0);//distance sensor connected to analog port 0.
+
 //    TowerOp towerOp = new TowerOp();
     
     
@@ -68,6 +76,7 @@ public class Robot extends IterativeRobot {
     	CommandBase.init();
     	System.out.println("robo Initiated");
         // instantiate the command used for the autonomous period
+    	sensors.start();
     }
 	
 	public void disabledPeriodic() {
@@ -79,12 +88,18 @@ public class Robot extends IterativeRobot {
     	System.out.println("auto Initiated");
     	compress.start();
     	auto.start();
+    			
+		
+        SmartDashboard.putNumber("Counter", counter++);	
     	//if (autonomousCommand != null) autonomousCommand.start();
     }
 
 
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
+        SmartDashboard.putNumber("Counter2", counter++);
+
+        SmartDashboard.putNumber("Counter", counter++);	
     }
 
     public void teleopInit() {
@@ -99,6 +114,7 @@ public class Robot extends IterativeRobot {
     	tower.start();
     	gripper.start();
     	shooter.start();
+    	sensors.start();
     }
 
     /**
@@ -115,7 +131,8 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
         oi.testBack.whenPressed(test);
-        SmartDashboard.putNumber(ShooterControl.getshooterspeed());
+        SmartDashboard.putNumber("Counter", counter++);
+ //       SmartDashboard.putNumber("shooter speed", shooter.getshooterspeed());
         }
     
     /**

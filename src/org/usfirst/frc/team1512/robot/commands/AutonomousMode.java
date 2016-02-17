@@ -6,28 +6,74 @@ import org.usfirst.frc.team1512.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import edu.wpi.first.wpilibj.networktables2.util.List;
+
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 
 /**
  *
  */
-public class AutonomousMode extends CommandGroup{
+public class AutonomousMode extends CommandGroup
+{
 	
-	DipSwitch dip = new DipSwitch();
-    
-	public  AutonomousMode()  {
-		
-		for(int i = 0; i <= 60; i++) {
-			addSequential(new Auto_DriveForward());
-			System.out.println("Driving");
-		}
+//	DipSwitch dip = new DipSwitch();
 	
-		for(int i=0; i<=10; i++)
+	
+	public  AutonomousMode()  
+	{
+	
+        int i=0;
+        
+		for( i = 0; i <= 5; i++) 
 		{
-			addSequential(new Auto_DriveBackward());
+			double speed=((double) i)/10.0;
+			addSequential(new Auto_DriveForward(speed, 0.5));
+			
+		}
+		
+		for( i = 5; i >= 0; i--) 
+		{
+			double speed=((double) i)/10.0;
+			addSequential(new Auto_DriveForward(speed, 0.5));
+			
+		}
+	}
+}
+
+		/*		
+//		for(int i = 0; i <= 10; i++) {
+//			addSequential(new Auto_Timer(0.1));  //I hope this will keep it driving for 1 sec
+//			
+//		}
+		
+		
+		
+		for( i=10; i>=0; i--)  //slow down to stop
+		{
+			double speed=((double) i)/10.0;
+			addSequential(new Auto_DriveForward(speed));
+			addSequential(new SensorsAction());
+		}		
+//		for(int i=0; i<=10; i++)
+//		{
+//			addSequential(new Auto_Stop())
+//		}		
+		for( i=10; i<=10; i++)
+		{
+			double speed=((double) i)/10.0;
+			addSequential(new Auto_DriveBackward(speed));
+		}		
+		for( i=10; i>=0; i--)  //slow down to stop
+		{
+			double speed=((double) i)/10.0;
+			addSequential(new Auto_DriveBackward(speed));
+		}		
+		for( i=0; i<=10; i++)
+		{
+			addSequential(new Auto_Stop());
 		}		
 	}
+*/
 //		for(int i = 0; i<= 30; i++) {
 //			addSequential(new Auto_RaiseTower());
 //			System.out.println("Lifting");
@@ -111,4 +157,5 @@ public class AutonomousMode extends CommandGroup{
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     
-}
+
+

@@ -5,9 +5,11 @@ import org.usfirst.frc.team1512.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Relay;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.Relay.Value;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -18,7 +20,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class ShooterControl extends Subsystem {
 
 	OI oi = new OI();
-	public Talon shooter, collector;
+	Jaguar shooterSC, collectorSC;  //Speed Controls for shooter and selector
+	double shooterspeed = 0.0; //variable to hold current speed of shooter
+	double collectorspeed = 0.0; //variable to hold current speed of collector
 	
 	
 	ShooterControl Shooter;
@@ -28,77 +32,91 @@ public class ShooterControl extends Subsystem {
 	
 	public ShooterControl()
 	{
-		shooter = new Talon(5);
-		collector = new Talon(6);
+		shooterSC = new Jaguar(2);
+		collectorSC = new Jaguar(3);
 	}
 	
 	public double getshooterspeed()
 	{
-		return shooter;
+		return shooterspeed;
 	}
 	
 	public void startshooter ()
 	{
-		shooter.set(0.5);
+		shooterSC.set(0.5);
+		shooterspeed=0.5;
 	}
 	
+
 	public void speedupshooter()
 	{
-		shooter.set(shooter+0.1);
+		shooterspeed = shooterspeed + 0.1;
+		shooterSC.set(shooterspeed);
 	}
 	
 	public void speeddownshooter()
 	{
-		shooter.set(shooter-0.1);
+		shooterspeed = shooterspeed - 0.1;
+		shooterSC.set(shooterspeed);
 	}
 	
 	public void stopshooter()
 	{
-		shooter.set(0);
+		shooterspeed = 0.0;
+		shooterSC.set(shooterspeed);
 	}
 	
 	public double getcollectorspeed()
 	{
-		return collector;
+		return collectorspeed;
 	}
 	
 	public void startcollector()
 	{
-		collector.set(0.5);
+		collectorspeed = 0.5;
+		collectorSC.set(collectorspeed);
 	}
 	
 	public void speedupcollector()
 	{
-		collector.set(collector+0.1);
+		collectorspeed = collectorspeed + 0.1;
+		collectorSC.set(collectorspeed);
 	}
 	
 	public void speeddowncollector()
 	{
-		collector.set(collector-0.1);
+		collectorspeed = collectorspeed - 0.1;
+		collectorSC.set(collectorspeed);
 	}
 	
 	public void stopcollector()
 	{
-		collector.set(0);
+		collectorspeed = 0.0;
+		collectorSC.set(collectorspeed);
 	}
 	
 	public void setcollector(double x)
 	{
-		collector.set(x);
+		collectorspeed = x;
+		collectorSC.set(collectorspeed);
 	}
 	
 	public void shoottop()
 	{
-		collector.set(1);
+		collectorspeed = 1.0;
+		collectorSC.set(collectorspeed);
 		Timer.delay(3);
-		collector.set(0);
+		collectorspeed = 0.0;
+		collectorSC.set(collectorspeed);
 	}
 	
 	public void shootbot()
 	{
-		collector.set(-1);
+		collectorspeed = -1.0;
+		collectorSC.set(collectorspeed);
 		Timer.delay(3);
-		collector.set(0);
+		collectorspeed = 0.0;
+		collectorSC.set(collectorspeed);
 	}
 	
 }

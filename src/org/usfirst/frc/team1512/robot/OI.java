@@ -12,51 +12,50 @@ import org.usfirst.frc.team1512.robot.commands.*;
  */
 public class OI {
 
-	public Joystick stick;
-	public Joystick driveStick;
-	public Joystick shooterStick;
+	public Joystick xbox;
+	public Joystick leftDrive;
+	public Joystick rightDrive;
 	public JoystickButton AButton;
 	public JoystickButton BButton;
 	public JoystickButton XButton;
 	public JoystickButton YButton;
 	public JoystickButton LBumper;
 	public JoystickButton RBumper;
-	
 	public JoystickButton testBack;
 	public JoystickButton testStart;
 	
 	public OI(){
-		stick = new Joystick(0);
-		driveStick = new Joystick(1);
-		shooterStick = new Joystick(2);
-		AButton = new JoystickButton(stick, 1);
-		BButton = new JoystickButton(stick, 2);
-		XButton = new JoystickButton(stick, 3);
-		YButton = new JoystickButton(stick, 4);
-		LBumper = new JoystickButton(stick, 5);
-		RBumper = new JoystickButton(stick, 6);
-		testBack = new JoystickButton(stick, 7);
-		testStart = new JoystickButton(stick, 8);
+		leftDrive = new Joystick(1);
+		rightDrive = new Joystick(0);
+		xbox = new Joystick(2);
+		AButton = new JoystickButton(xbox, 1);
+		BButton = new JoystickButton(xbox, 2);
+		XButton = new JoystickButton(xbox, 3);
+		YButton = new JoystickButton(xbox, 4);
+		LBumper = new JoystickButton(xbox, 5);
+		RBumper = new JoystickButton(xbox, 6);
+		testBack = new JoystickButton(xbox, 7);
+		testStart = new JoystickButton(xbox, 8);
 	}
 	
 //	public double getX(){
-//		double X = stick.getXL();
+//		double X = xbox.getXL();
 //		return X;
 //	}
 //	
 //	public double getY(){
-//		double Y = stick.getYL();
+//		double Y = xbox.getYL();
 //		return Y;
 //	}
 //	
 //	public double getROT(){
-//		double ROT = stick.getXR();
+//		double ROT = xbox.getXR();
 //		return ROT;
 //	}
 //	
 //	public double testLX()
 //	{
-//		if (stick.APressed()){
+//		if (xbox.APressed()){
 //			return getX();
 //		}
 //		return 0;
@@ -65,8 +64,8 @@ public class OI {
     // One type of button is a joystick button which is any button on a joystick.
     // You create one by telling it which joystick it's on and which button
     // number it is.
-    // Joystick stick = new Joystick(port);
-    // Button button = new JoystickButton(stick, buttonNumber);
+    // Joystick xbox = new Joystick(port);
+    // Button button = new JoystickButton(xbox, buttonNumber);
     
     // There are a few additional built in buttons you can use. Additionally,
     // by subclassing Button you can create custom triggers and bind those to
