@@ -26,7 +26,7 @@ public class Camera extends CommandBase {
 	RGBValue c;
 	RectangleDescriptor recDes;
 	CurveOptions curOp;
-	RangeFloat[] angleRange;
+	RangeFloat[] angleRange = new RangeFloat[2];
 	RangeFloat aR1 = new RangeFloat(30, 150);
 	RangeFloat aR2 = new RangeFloat(210, 330);
 	RangeFloat scaleRange;
@@ -45,6 +45,7 @@ public class Camera extends CommandBase {
 //        session = NIVision.IMAQdxOpenCamera("cam0",
 //                NIVision.IMAQdxCameraControlMode.CameraControlModeController);
 //        NIVision.IMAQdxConfigureGrab(session);
+    	roi = NIVision.imaqCreateROI();
     	cam = new USBCamera("cam0");
     	cam.openCamera();
     	cam.setBrightness(20);
@@ -71,8 +72,15 @@ public class Camera extends CommandBase {
     	
     	frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
     	rgb = new int[NIVision.imaqGetImageSize(frame).width][NIVision.imaqGetImageSize(frame).width];
-
-    	NIVision.imaqDetectRectangles(frame, recDes, curOp, shapeOp, roi);
+    	try
+    	{
+    		NIVision.imaqDetectRectangles(frame, recDes, curOp, shapeOp, roi);
+    	}
+    	catch(com.ni.vision.VisionException e)
+    	{
+    		System.out.println("eh");
+    	}
+    	
     	cam.getImage(frame);
     }
 
