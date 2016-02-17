@@ -52,6 +52,7 @@ public class Robot extends IterativeRobot {
     Accelerometer accelerometer = new Accelerometer();
     AutonomousMode auto = new AutonomousMode();
     Reset reset = new Reset();
+    Camera cam = new Camera();
 //    TowerOp towerOp = new TowerOp();
     
     
@@ -94,6 +95,7 @@ public class Robot extends IterativeRobot {
     	compress.start();
     	tower.start();
     	gripper.start();
+    	cam.start();
     }
 
     /**

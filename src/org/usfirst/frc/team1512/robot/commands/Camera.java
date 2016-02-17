@@ -26,11 +26,12 @@ public class Camera extends CommandBase {
 	RGBValue c;
 	RectangleDescriptor recDes;
 	CurveOptions curOp;
-	RangeFloat[] angleRange;
+	RangeFloat[] angleRange = new RangeFloat[2];
 	RangeFloat aR1 = new RangeFloat(30, 150);
 	RangeFloat aR2 = new RangeFloat(210, 330);
 	RangeFloat scaleRange;
 	ShapeDetectionOptions shapeOp;
+	DetectRectanglesResult result;
 	
     public Camera() {
         // Use requires() here to declare subsystem dependencies
@@ -45,9 +46,10 @@ public class Camera extends CommandBase {
 //        session = NIVision.IMAQdxOpenCamera("cam0",
 //                NIVision.IMAQdxCameraControlMode.CameraControlModeController);
 //        NIVision.IMAQdxConfigureGrab(session);
-    	cam = new USBCamera("cam0");
-    	cam.openCamera();
-    	cam.setBrightness(20);
+//    	cam = new USBCamera("cam0");
+    	roi = NIVision.imaqCreateROI();
+//    	cam.openCamera();
+//    	cam.setBrightness(20);
     	ser = CameraServer.getInstance();
     	c = new NIVision.RGBValue(255, 255, 80, 255);
     	NIVision.imaqSetROIColor(roi, c);
@@ -67,13 +69,18 @@ public class Camera extends CommandBase {
 //                
 //        CameraServer.getInstance().setImage(frame);
 //        Timer.delay(0.005);
-    	ser.startAutomaticCapture(cam);
-    	
-    	frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
-    	rgb = new int[NIVision.imaqGetImageSize(frame).width][NIVision.imaqGetImageSize(frame).width];
 
-    	NIVision.imaqDetectRectangles(frame, recDes, curOp, shapeOp, roi);
-    	cam.getImage(frame);
+    	int session = NIVision.IMAQdxOpenCamera("cam0", NIVision.IMAQdxCameraControlMode.CameraControlModeController);
+    	frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
+    	NIVision.IMAQdxGrab(session, frame, 0);
+//    	cam.getImage(frame);
+    	rgb = new int[NIVision.imaqGetImageSize(frame).width][NIVision.imaqGetImageSize(frame).width];
+    	result = NIVision.imaqDetectRectangles(frame, recDes, curOp, shapeOp, roi);
+    	RectangleMatch rec = result.array[0];
+    	System.out.println(rec.height + ", "+ rec.width);
+    	
+    	ser.setImage(frame);
+//    	ser.startAutomaticCapture(cam);
     	//git test
     }
 
