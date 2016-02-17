@@ -7,6 +7,7 @@ import org.usfirst.frc.team1512.robot.commands.DriveWithJoystick;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.RobotDrive.MotorType;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -20,6 +21,7 @@ public class DriveTrain extends Subsystem {
 	double expoIncre = 1;
 	double upperLimit = 0.1;
 	public Talon leftTalons, rightTalons;
+	public Jaguar shooterJaguar;
 	RobotDrive drive;
 	OI oi = new OI();
 	boolean flag;
@@ -32,6 +34,7 @@ public class DriveTrain extends Subsystem {
 	public DriveTrain(){
 		leftTalons = new Talon(0);
 		rightTalons = new Talon(1);
+		shooterJaguar = new Jaguar(2);
 	}
 		
 	
@@ -65,6 +68,20 @@ public class DriveTrain extends Subsystem {
     }
        
    
+    public void tank(double left, double right, double shoot)
+    {
+    	if (Math.abs(left) <= deadzone)
+    		{left = 0.0;}
+    	if (Math.abs(right) <= deadzone)
+    		{right = 0.0;}
+    	
+    	left=left*-1.0; //reverse left motor control
+    	leftTalons.set(left);
+    	rightTalons.set(right);
+    	shooterJaguar.set(shoot);
+   	
+    }
+
     public void driveF(double speed)
     {	double reverse=speed*-1.0;
     	tank(speed,reverse);
