@@ -2,10 +2,8 @@ package org.usfirst.frc.team1512.robot.commands;
 
 import java.awt.geom.Area;
 
-import org.usfirst.frc.team1512.robot.subsystems.ArmControl;
 import org.usfirst.frc.team1512.robot.subsystems.DipSwitch;
 import org.usfirst.frc.team1512.robot.subsystems.DriveTrain;
-import org.usfirst.frc.team1512.robot.subsystems.TowerControl;
 import org.usfirst.frc.team1512.robot.subsystems.SensorSubsystem;
 import org.usfirst.frc.team1512.robot.*;
 
@@ -18,8 +16,6 @@ public abstract class CommandBase extends Command {
 
 	public static OI oi;
 	 static DriveTrain drive = new DriveTrain();
-	 static ArmControl arm = new ArmControl();
-	 static TowerControl tower= new TowerControl();
 	 static DipSwitch dipswitches= new DipSwitch();
 	 static SensorSubsystem sensors= new SensorSubsystem();
 	 
