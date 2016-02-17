@@ -24,7 +24,6 @@ public class ShooterControl extends Subsystem {
 	double shooterspeed = 0.0; //variable to hold current speed of shooter
 	double collectorspeed = 0.0; //variable to hold current speed of collector
 	
-	
 	ShooterControl Shooter;
 	
     // Put methods for controlling this subsystem
@@ -118,5 +117,10 @@ public class ShooterControl extends Subsystem {
 		collectorspeed = 0.0;
 		collectorSC.set(collectorspeed);
 	}
+	
+	public void initDefaultCommand() {
+        // Set the default command for a subsystem here.
+        //setDefaultCommand(new MySpecialCommand());
+    }
 	
 }

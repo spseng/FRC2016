@@ -14,7 +14,7 @@ public class ShooterAction extends CommandBase {
     public ShooterAction() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Shooter);
+    	requires(shooter);
     }
 
     // Called just before this Command runs the first time
@@ -27,29 +27,29 @@ public class ShooterAction extends CommandBase {
     protected void execute() 
     {
     	
-    	ShooterControl.setcollector(oi.xbox.getRawAxis(1));
+    	shooter.setcollector(oi.xbox.getRawAxis(1));
     	
     	if(oi.RBumper.get())
     	{
     		shooter.shoottop();
     	}
-    	else if(oi.xbox.LBumper.get())
+    	else if(oi.LBumper.get())
     	{
     		shooter.shootbot();
     	}
-    	else if(oi.xbox.BButton.get())
+    	else if(oi.BButton.get())
     	{
     		shooter.speedupshooter();
     	}
-    	else if(oi.xbox.ABumper.get())
+    	else if(oi.AButton.get())
     	{
     		shooter.speeddownshooter();
     	}
-    	else if(oi.xbox.YButton.get())
+    	else if(oi.YButton.get())
     	{
     		shooter.startshooter();
     	}
-    	else if(oi.xbox.XButton.get())
+    	else if(oi.XButton.get())
     	{
     		shooter.stopshooter();
     	}

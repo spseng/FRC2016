@@ -63,7 +63,7 @@ public class DistanceSensor extends Subsystem {
 		return (volts * 10.0);	//tests suggest distance in inches = volts value * 10
 	}
 
-		
+
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());

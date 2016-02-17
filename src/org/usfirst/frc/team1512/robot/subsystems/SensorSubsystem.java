@@ -58,12 +58,14 @@ public class SensorSubsystem extends Subsystem
 		
 		SmartDashboard.putString("DB/String 0", "raw" + raw);
 		SmartDashboard.putString("DB/String 1", "volts" + volts);
- 
 	}
+ 
+
 	
     public void start() 
     {
     }
+
 
 	
     public void initDefaultCommand() 
@@ -71,6 +73,7 @@ public class SensorSubsystem extends Subsystem
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+
     public void reset() 
     {
 
