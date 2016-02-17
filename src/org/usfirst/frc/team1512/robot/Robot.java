@@ -24,11 +24,8 @@ import org.usfirst.frc.team1512.robot.commands.DriveWithJoystick;
 import org.usfirst.frc.team1512.robot.commands.GripperAction;
 import org.usfirst.frc.team1512.robot.commands.Reset;
 import org.usfirst.frc.team1512.robot.commands.TowerAction;
-//<<<<<<< HEAD
 import org.usfirst.frc.team1512.robot.commands.ShooterAction;
-//=======
 import org.usfirst.frc.team1512.robot.commands.SensorsAction;
-//>>>>>>> refs/remotes/origin/master
 import org.usfirst.frc.team1512.robot.commands.CommandBase;
 import org.usfirst.frc.team1512.robot.commands.testCompressor;
 import org.usfirst.frc.team1512.robot.subsystems.DipSwitch;
@@ -135,6 +132,7 @@ public class Robot extends IterativeRobot {
         Scheduler.getInstance().run();
         oi.testBack.whenPressed(test);
         SmartDashboard.putNumber("Counter", counter++);
+ //       SmartDashboard.putNumber("shooter speed", shooter.getshooterspeed());
         }
     
     /**

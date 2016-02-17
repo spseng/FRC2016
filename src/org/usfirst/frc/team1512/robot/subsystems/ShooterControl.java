@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.Relay.Value;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -19,20 +20,20 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class ShooterControl extends Subsystem {
 
 	OI oi = new OI();
-	public Talon shooterSC, collectorSC;  //Speed Controls for shooter and selector
-	double shooterspeed=0.0; //variable to hold current speed of shooter
-	double collectorspeed=0.0; //variable to hold current speed of collector
+	Jaguar shooterSC, collectorSC;  //Speed Controls for shooter and selector
+	double shooterspeed = 0.0; //variable to hold current speed of shooter
+	double collectorspeed = 0.0; //variable to hold current speed of collector
 	
 	
-	ShooterControl shooter;
+	ShooterControl Shooter;
 	
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
 	public ShooterControl()
 	{
-		shooterSC = new Talon(5);
-		collectorSC = new Talon(6);
+		shooterSC = new Jaguar(2);
+		collectorSC = new Jaguar(3);
 	}
 	
 	public double getshooterspeed()
@@ -46,6 +47,7 @@ public class ShooterControl extends Subsystem {
 		shooterspeed=0.5;
 	}
 	
+
 	public void speedupshooter()
 	{
 		shooterspeed = shooterspeed + 0.1;
