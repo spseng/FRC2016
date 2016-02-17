@@ -26,8 +26,8 @@ public class ShooterAction extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() 
     {
-    	
-    	shooter.setcollector(oi.xbox.getRawAxis(1));
+    	double collectvalue=oi.xbox.getRawAxis(1) * -1.0;
+    	shooter.setcollector(collectvalue);
     	
     	if(oi.RBumper.get())
     	{
