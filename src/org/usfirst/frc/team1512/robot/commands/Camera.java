@@ -42,8 +42,8 @@ public class Camera extends CommandBase {
     	cam.setBrightness(20);
     	ser = CameraServer.getInstance();
     	rgb = new int[NIVision.imaqGetImageSize(frame).width][NIVision.imaqGetImageSize(frame).width];
-    	c = new RGBVlaue(255, 255, 80, 255);
-    	NIVision.imaqSetROIColor(roi, c);
+//    	c = new RGBVlaue(255, 255, 80, 255);
+//    	NIVision.imaqSetROIColor(roi, c);
     }
 
     // Called repeatedly when this Command is scheduled to run
