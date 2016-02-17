@@ -4,6 +4,7 @@ import org.usfirst.frc.team1512.robot.OI;
 import org.usfirst.frc.team1512.robot.subsystems.TowerControl;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -13,7 +14,7 @@ public class ShooterAction extends CommandBase {
     public ShooterAction() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(shooter);
+    	requires(Shooter);
     }
 
     // Called just before this Command runs the first time

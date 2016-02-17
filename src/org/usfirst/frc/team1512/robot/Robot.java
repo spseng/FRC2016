@@ -115,7 +115,7 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
         oi.testBack.whenPressed(test);
-        
+        SmartDashboard.putNumber(ShooterControl.getshooterspeed());
         }
     
     /**
