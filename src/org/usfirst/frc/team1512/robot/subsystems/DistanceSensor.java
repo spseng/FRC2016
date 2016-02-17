@@ -24,14 +24,14 @@ public class DistanceSensor extends Subsystem {
 	{
 		super();
 		
-		AnalogPin = new AnalogInput(1);
+		AnalogPin = new AnalogInput(0);
 		
 		AnalogPin.setOversampleBits(4);
 		bits = AnalogPin.getOversampleBits();
 		AnalogPin.setAverageBits(2);
 		bits = AnalogPin.getAverageBits();
 		AnalogPin.setGlobalSampleRate(62500);
-}
+	}
 		
 
 	public void DisplayDistance()

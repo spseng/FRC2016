@@ -21,7 +21,6 @@ public class DriveTrain extends Subsystem {
 	double expoIncre = 1;
 	double upperLimit = 0.1;
 	public Talon leftTalons, rightTalons;
-	public Jaguar shooterJag;
 	RobotDrive drive;
 	OI oi = new OI();
 	boolean flag;
@@ -34,7 +33,6 @@ public class DriveTrain extends Subsystem {
 	public DriveTrain(){
 		leftTalons = new Talon(0);
 		rightTalons = new Talon(1);
-		shooterJag = new Jaguar(2);
 	}
 		
 	
@@ -65,13 +63,7 @@ public class DriveTrain extends Subsystem {
     	leftTalons.set(left);
     	rightTalons.set(right);
    	
-    }
-    
-    public void shoot(double speed)
-    {
-    	shooterJag.set(speed);
-    }
-       
+    }  
    
     public void driveF(double speed)
     {	double reverse=speed*-1.0;

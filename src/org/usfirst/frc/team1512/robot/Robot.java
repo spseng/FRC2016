@@ -21,6 +21,7 @@ import org.usfirst.frc.team1512.robot.commands.Accelerometer;
 import org.usfirst.frc.team1512.robot.commands.AutonomousMode;
 import org.usfirst.frc.team1512.robot.commands.Camera;
 import org.usfirst.frc.team1512.robot.commands.DriveWithJoystick;
+import org.usfirst.frc.team1512.robot.commands.ShooterAction;
 import org.usfirst.frc.team1512.robot.commands.CommandBase;
 import org.usfirst.frc.team1512.robot.subsystems.DipSwitch;
 import org.usfirst.frc.team1512.robot.subsystems.DistanceSensor;
@@ -47,9 +48,10 @@ public class Robot extends IterativeRobot {
     OI oi = new OI();
     DigitalInput limit;
     DriveWithJoystick drive = new DriveWithJoystick(); 
-    Camera camera = new Camera();
+    ShooterAction shooter = new ShooterAction();
+    //Camera camera = new Camera();
     AutonomousMode auto = new AutonomousMode();
-    DistanceSensor distance = new DistanceSensor();//distance sensor connected to analog port 0.
+    //DistanceSensor distance = new DistanceSensor();//distance sensor connected to analog port 0.
 
 //    TowerOp towerOp = new TowerOp();
     
@@ -94,8 +96,9 @@ public class Robot extends IterativeRobot {
         // this line or comment it out.
     	CommandBase.init();
     	System.out.println("teleop Initiated");
+    	shooter.start();
     	drive.start();
-    	camera.start();
+    	//camera.start();
     }
 
     /**
