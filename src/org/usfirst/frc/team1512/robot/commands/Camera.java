@@ -1,6 +1,7 @@
 package org.usfirst.frc.team1512.robot.commands;
 
 import com.ni.vision.NIVision;
+import com.ni.vision.NIVision.*;
 import com.ni.vision.NIVision.Image;
 import com.ni.vision.NIVision.RGBValue;
 import com.ni.vision.NIVision.ROI;
@@ -15,6 +16,7 @@ import edu.wpi.first.wpilibj.vision.USBCamera;
  *
  */
 public class Camera extends CommandBase {
+	
 	int session;
 	Image frame;
 	USBCamera cam;
@@ -22,6 +24,13 @@ public class Camera extends CommandBase {
 	int[][] rgb;
 	ROI roi;
 	RGBValue c;
+	RectangleDescriptor recDes;
+	CurveOptions curOp;
+	RangeFloat[] angleRange;
+	RangeFloat aR1 = new RangeFloat(30, 150);
+	RangeFloat aR2 = new RangeFloat(210, 330);
+	RangeFloat scaleRange;
+	ShapeDetectionOptions shapeOp;
 	
     public Camera() {
         // Use requires() here to declare subsystem dependencies
@@ -36,14 +45,18 @@ public class Camera extends CommandBase {
 //        session = NIVision.IMAQdxOpenCamera("cam0",
 //                NIVision.IMAQdxCameraControlMode.CameraControlModeController);
 //        NIVision.IMAQdxConfigureGrab(session);
-    	frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
     	cam = new USBCamera("cam0");
     	cam.openCamera();
     	cam.setBrightness(20);
     	ser = CameraServer.getInstance();
-    	rgb = new int[NIVision.imaqGetImageSize(frame).width][NIVision.imaqGetImageSize(frame).width];
-//    	c = new RGBVlaue(255, 255, 80, 255);
-//    	NIVision.imaqSetROIColor(roi, c);
+    	c = new NIVision.RGBValue(255, 255, 80, 255);
+    	NIVision.imaqSetROIColor(roi, c);
+    	recDes = new RectangleDescriptor(10, 150, 20, 300);
+    	curOp = new CurveOptions(NIVision.ExtractionMode.UNIFORM_REGIONS, 1, NIVision.EdgeFilterSize.NORMAL, 10, 10, 10, 1000, 1, 1);
+    	angleRange[0] = aR1;
+    	angleRange[1] = aR2;
+    	scaleRange = new RangeFloat(1, 1000);
+    	shapeOp = new ShapeDetectionOptions(1, angleRange, scaleRange, 10);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -55,6 +68,11 @@ public class Camera extends CommandBase {
 //        CameraServer.getInstance().setImage(frame);
 //        Timer.delay(0.005);
     	ser.startAutomaticCapture(cam);
+    	
+    	frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
+    	rgb = new int[NIVision.imaqGetImageSize(frame).width][NIVision.imaqGetImageSize(frame).width];
+
+    	NIVision.imaqDetectRectangles(frame, recDes, curOp, shapeOp, roi);
     	cam.getImage(frame);
     }
 
