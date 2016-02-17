@@ -6,6 +6,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.AnalogInput;
+import org.usfirst.frc.team1512.robot.RobotMap;
+
 /**
  *
  * @author eyal
@@ -17,9 +19,14 @@ public class SensorSubsystem extends Subsystem
 		//	should be set up as generic analog inputs.  Here is
 		//	documentation: http://wpilib.screenstepslive.com/s/4485/m/13810/l/241876-analog-inputs
 		
+	int counter=0;
 		AnalogInput DistanceSensor1;
 		int bits;
-		
+		int raw;
+		double volts;
+		int averageRaw;
+		double averageVolts;
+	
 		
 
 		SensorSubsystem sensors;
@@ -31,7 +38,7 @@ public class SensorSubsystem extends Subsystem
 		//	should be set up as generic analog inputs.  Here is
 		//	documentation: http://wpilib.screenstepslive.com/s/4485/m/13810/l/241876-analog-inputs
 		
-		DistanceSensor1 = new AnalogInput(0);
+		DistanceSensor1 = new AnalogInput(RobotMap.distancesensoranalogPort);
 		DistanceSensor1.setOversampleBits(4);
 		bits = DistanceSensor1.getOversampleBits();
 		DistanceSensor1.setAverageBits(2);
@@ -43,18 +50,18 @@ public class SensorSubsystem extends Subsystem
 	
 	public void displaydistance1()
 	{
-		int raw;
-		double volts;
-		int averageRaw;
-		double averageVolts;
+		
 		
 		raw = DistanceSensor1.getValue();
 		volts = DistanceSensor1.getVoltage();
 		averageRaw = DistanceSensor1.getAverageValue();
 		averageVolts = DistanceSensor1.getAverageVoltage();	
 		
-		SmartDashboard.putString("DB/String 0", "raw" + raw);
-		SmartDashboard.putString("DB/String 1", "volts" + volts);
+        SmartDashboard.putNumber("Counter from displaydistance1", counter++);
+        SmartDashboard.putNumber("raw from displaydistance1",  raw);
+		SmartDashboard.putNumber("volts from displaydistance1",  volts);
+		SmartDashboard.putNumber("raw/10.0",  raw/10.0);
+		SmartDashboard.putNumber("inches from displaydistance1",  volts*100.0);
 		
 	}
  	

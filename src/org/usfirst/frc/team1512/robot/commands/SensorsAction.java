@@ -11,6 +11,8 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class SensorsAction extends CommandBase {
 	
+	int counter=0;
+	
     public SensorsAction() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -26,6 +28,7 @@ public class SensorsAction extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	sensors.displaydistance1(); //hopefully this will display distance info
+        SmartDashboard.putNumber("Counter from SensorsAction", counter++);
     	
 /*    	if(oi.AButton.get()&&tower.getTLS()&&tower.getTLS2())
     	{
