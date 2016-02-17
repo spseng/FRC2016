@@ -1,6 +1,7 @@
 package org.usfirst.frc.team1512.robot.subsystems;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
@@ -18,24 +19,12 @@ public class DistanceSensor extends Subsystem {
 	double averageVolts;
 
 	
+		
 	public DistanceSensor()
 	{
 		super();
 		
-		AnalogPin = new AnalogInput(0);
-		
-		AnalogPin.setOversampleBits(4);
-		bits = AnalogPin.getOversampleBits();
-		AnalogPin.setAverageBits(2);
-		bits = AnalogPin.getAverageBits();
-		AnalogPin.setGlobalSampleRate(62500);
-	}
-		
-	public DistanceSensor(int AnalogInputPin)
-	{
-		super();
-		
-		AnalogPin = new AnalogInput(AnalogInputPin);
+		AnalogPin = new AnalogInput(1);
 		
 		AnalogPin.setOversampleBits(4);
 		bits = AnalogPin.getOversampleBits();
@@ -59,16 +48,13 @@ public class DistanceSensor extends Subsystem {
 	public double getDistance()
 	{
 		volts = AnalogPin.getVoltage();
-		Return (volts * 10.0);	//tests suggest distance in inches = volts value * 10
+		return (volts * 10.0);	//tests suggest distance in inches = volts value * 10
 	}
 
 	
 	public void displayswitches()
 	{
-		SmartDashboard.putNumber("Dipswitch 1 set to: ", booltoint(1));
-		SmartDashboard.putNumber("Dipswitch 2 set to: ", booltoint(2));
-		SmartDashboard.putNumber("Dipswitch 3 set to: ", booltoint(3));
-		SmartDashboard.putNumber("Dipswitch 4 set to: ", booltoint(4));
+
 	}
 
 

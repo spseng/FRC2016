@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
@@ -60,7 +61,7 @@ public class Robot extends IterativeRobot {
     Camera camera = new Camera();
     AutonomousMode auto = new AutonomousMode();
     Reset reset = new Reset();
-    DistanceSensor distance = new DistanceSensor(0);//distance sensor connected to analog port 0.
+    DistanceSensor distance = new DistanceSensor();//distance sensor connected to analog port 0.
 
 //    TowerOp towerOp = new TowerOp();
     
@@ -113,6 +114,7 @@ public class Robot extends IterativeRobot {
     	tower.start();
     	gripper.start();
     	sensors.start();
+    	camera.start();
     }
 
     /**

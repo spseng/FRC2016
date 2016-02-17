@@ -1,5 +1,5 @@
 package org.usfirst.frc.team1512.robot.subsystems;
-package edu.wpi.first.wpilibj;
+//package edu.wpi.first.wpilibj;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -13,10 +13,6 @@ import edu.wpi.first.wpilibj.AnalogInput;
 public class SensorSubsystem extends Subsystem 
 {
     
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
-	public class SensorSubsystem {
-
 	//documentation suggests that analog-input distance-sensors 
 		//	should be set up as generic analog inputs.  Here is
 		//	documentation: http://wpilib.screenstepslive.com/s/4485/m/13810/l/241876-analog-inputs
@@ -59,11 +55,12 @@ public class SensorSubsystem extends Subsystem
 		
 		SmartDashboard.putString("DB/String 0", "raw" + raw);
 		SmartDashboard.putString("DB/String 1", "volts" + volts);
- 
 		
-	public Encoder(int port1, int port2) 
+	}
+ 	
+	public void Encoder(int port1, int port2) 
 	{
-    }
+ 
 
 	}
     public double get() 
@@ -81,6 +78,9 @@ public class SensorSubsystem extends Subsystem
     {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+    	
+    }
+    
     public void reset() {
 
     }
