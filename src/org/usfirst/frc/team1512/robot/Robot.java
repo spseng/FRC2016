@@ -79,7 +79,7 @@ public class Robot extends IterativeRobot {
     }
 	
 	public void disabledPeriodic() {
-		Scheduler.getInstance().run();
+		Scheduler.getInstance()   .run();
 	}
 
     public void autonomousInit() {
