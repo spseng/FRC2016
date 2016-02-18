@@ -22,6 +22,7 @@ import org.usfirst.frc.team1512.robot.commands.Camera;
 import org.usfirst.frc.team1512.robot.commands.Compress;
 import org.usfirst.frc.team1512.robot.commands.DriveWithJoystick;
 import org.usfirst.frc.team1512.robot.commands.GripperAction;
+import org.usfirst.frc.team1512.robot.commands.FlipperAction;
 import org.usfirst.frc.team1512.robot.commands.Reset;
 import org.usfirst.frc.team1512.robot.commands.TowerAction;
 import org.usfirst.frc.team1512.robot.commands.ShooterAction;
@@ -58,6 +59,7 @@ public class Robot extends IterativeRobot {
     ShooterAction shooter = new ShooterAction();
     SensorsAction sensors = new SensorsAction();
     GripperAction gripper = new GripperAction();
+    FlipperAction flipper = new FlipperAction();
     testCompressor test = new testCompressor();
     Camera camera = new Camera();
     AutonomousMode auto = new AutonomousMode();
@@ -132,7 +134,6 @@ public class Robot extends IterativeRobot {
         Scheduler.getInstance().run();
         oi.testBack.whenPressed(test);
         SmartDashboard.putNumber("Counter", counter++);
- //       SmartDashboard.putNumber("shooter speed", shooter.getshooterspeed());
         }
     
     /**

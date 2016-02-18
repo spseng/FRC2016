@@ -1,53 +1,45 @@
 package org.usfirst.frc.team1512.robot.commands;
 
 import org.usfirst.frc.team1512.robot.OI;
-import org.usfirst.frc.team1512.robot.subsystems.ShooterControl;
+import org.usfirst.frc.team1512.robot.subsystems.FlipperControl;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class ShooterAction extends CommandBase {
+public class FlipperAction extends CommandBase {
 	
-    public ShooterAction() {
+    public FlipperAction() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(shooter);
+    	requires(flipper);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
-    	
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() 
-    {
-    	double collectvalue=oi.xbox.getRawAxis(1) * -1.0;
-    	shooter.setcollector(collectvalue);
+    protected void execute() {
     	
-    	else if(oi.BButton.get())
+    	if(oi.RBumper.get())
     	{
-    		shooter.speedupshooter();
+    		flipper.OpenGripper();
     	}
-    	else if(oi.AButton.get())
+    	else if(oi.LBumper.get())
     	{
-    		shooter.speeddownshooter();
+    		flipper.CloseGripper();
     	}
-    	else if(oi.YButton.get())
+    	else if (oi.testStart.get())
     	{
-    		shooter.startshooter();
+    		flipper.Compress();
     	}
-    	else if(oi.XButton.get())
+    	else if (oi.testBack.get())
     	{
-    		shooter.stopshooter();
+    		flipper.endC();
     	}
-    		
-        SmartDashboard.putNumber("Y start X stop A slower B faster Shooter Spped:", shooter.getshooterspeed());	
-   }
+
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         return false;
@@ -55,8 +47,6 @@ public class ShooterAction extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
-    	shooter.stopshooter();
-    	shooter.stopcollector();
     }
 
     // Called when another command which requires one or more of the same
