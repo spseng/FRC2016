@@ -16,40 +16,32 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class AutonomousMode extends CommandGroup
 {
 	
-//	DipSwitch dip = new DipSwitch();
-	
-	
 	public  AutonomousMode()  
 	{
-		double speed=0.0;
+		double speed=0.3;
 		//drive forward 
-        int i=0;
         if (dip.auto1()&&!dip.auto2()&&!dip.auto3()&&!dip.auto4())
         {
 			while (sensors.getdistance()> 12.0)
-			{	speed=speed+0.1;
+			{	
 				addSequential(new Auto_DriveForward(speed, 0.5));
 			}
-			addSequential(new Auto_Stop());
 			
-			for( i = 5; i >= 0; i--) 
+			for (int i = 2; i >= 0; i--) 
 			{
 				double speed=((double) i)/10.0;
 				addSequential(new Auto_DriveForward(speed, 0.5));
 			
 			}
+			addSequential(new Auto_Stop());
 		}
 		
         //drive forward through an obstacle
         if (!dip.auto1()&&dip.auto2()&&!dip.auto3()&&!dip.auto4()){
         	
-        	double speed = 0.1;
+        	speed = 0.2;
         	addSequential(new Auto_DriveForward(speed, 0.5));
         	
-        	int distance = sensors.getdistance();
-        	
-        	
-			
         }
 	}
 }
