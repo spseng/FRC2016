@@ -75,7 +75,12 @@ public class SensorSubsystem extends Subsystem
         return 0;
     }
 
-	
+    public double getdistance() 
+    {
+        return volts*100.0;
+    }
+
+    
     public void start() 
     {
     }

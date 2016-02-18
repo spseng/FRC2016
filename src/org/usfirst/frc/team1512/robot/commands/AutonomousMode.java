@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.SimpleRobot;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import org.usfirst.frc.team1512.robot.subsystems.SensorSubsystem;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -20,23 +21,36 @@ public class AutonomousMode extends CommandGroup
 	
 	public  AutonomousMode()  
 	{
-	
+		double speed=0.0;
+		//drive forward 
         int i=0;
-        
-		for( i = 0; i <= 5; i++)
-		{
-			double speed=((double) i)/10.0;
-			addSequential(new Auto_DriveForward(speed, 0.5));
+        if (dip.auto1()&&!dip.auto2()&&!dip.auto3()&&!dip.auto4())
+        {
+			while (sensors.getdistance()> 12.0)
+			{	speed=speed+0.1;
+				addSequential(new Auto_DriveForward(speed, 0.5));
+			}
+			addSequential(new Auto_Stop());
 			
+			for( i = 5; i >= 0; i--) 
+			{
+				double speed=((double) i)/10.0;
+				addSequential(new Auto_DriveForward(speed, 0.5));
+			
+			}
 		}
 		
-		for( i = 5; i >= 0; i--) 
-		{
-			double speed=((double) i)/10.0;
-			addSequential(new Auto_DriveForward(speed, 0.5));
-
-		
-		}
+        //drive forward through an obstacle
+        if (!dip.auto1()&&dip.auto2()&&!dip.auto3()&&!dip.auto4()){
+        	
+        	double speed = 0.1;
+        	addSequential(new Auto_DriveForward(speed, 0.5));
+        	
+        	int distance = sensors.getdistance();
+        	
+        	
+			
+        }
 	}
 }
 
