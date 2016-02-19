@@ -39,6 +39,8 @@ public class FlipperAction extends CommandBase {
     	{
     		flipper.endC();
     	}
+    	
+    	SmartDashboard.putNumber("LBumper close, RBumper open, start start, back stop", 0);	
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
