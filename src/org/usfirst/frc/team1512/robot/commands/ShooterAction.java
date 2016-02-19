@@ -29,7 +29,7 @@ public class ShooterAction extends CommandBase {
     	double collectvalue=oi.xbox.getRawAxis(1) * -1.0;
     	shooter.setcollector(collectvalue);
     	
-    	else if(oi.BButton.get())
+    	if(oi.BButton.get())
     	{
     		shooter.speedupshooter();
     	}
