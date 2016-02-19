@@ -8,7 +8,6 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import org.usfirst.frc.team1512.robot.subsystems.SensorSubsystem;
-
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
@@ -19,7 +18,7 @@ public class AutonomousMode extends CommandGroup
 	public  AutonomousMode()  
 	{
 		double speed=0.3;
-		//drive forward 
+		//drive forward through an obstacle and be infront of the goal, and shoot the low goal
         if (dip.auto1()&&!dip.auto2()&&!dip.auto3()&&!dip.auto4())
         {
 			while (sensors.getdistance()> 12.0)
@@ -34,17 +33,31 @@ public class AutonomousMode extends CommandGroup
 			
 			}
 			addSequential(new Auto_Stop());
+			
+			ShooterControl.shootbot();
 		}
 		
-        //drive forward through an obstacle
-        if (!dip.auto1()&&dip.auto2()&&!dip.auto3()&&!dip.auto4()){
-        	
-        	speed = 0.2;
-        	addSequential(new Auto_DriveForward(speed, 0.5));
-        	
+        //drive forward through an obstacle and be infront of the goal, and shoot the high goal
+        if (!dip.auto1()&&dip.auto2()&&!dip.auto3()&&!dip.auto4())
+        {
+        	while (sensors.getdistance()> 12.0)
+			{	
+				addSequential(new Auto_DriveForward(speed, 0.5));
+			}
+			
+			for (int i = 2; i >= 0; i--) 
+			{
+				double speed=((double) i)/10.0;
+				addSequential(new Auto_DriveForward(speed, 0.5));
+			
+			}
+			addSequential(new Auto_Stop());
+			
+        	ShooterControl.shoottop();
         }
-	}
+    }
 }
+
 
 		/*		
 //		for(int i = 0; i <= 10; i++) {

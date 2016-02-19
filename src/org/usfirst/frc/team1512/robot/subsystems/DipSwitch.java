@@ -20,10 +20,10 @@ public class DipSwitch extends Subsystem {
 	public DipSwitch()
 	{
 		super();
-		auto1 = new DigitalInput(6);
-		auto2 = new DigitalInput(7);
-		auto3 = new DigitalInput(8);
-		auto4 = new DigitalInput(9);
+		auto1 = new DigitalInput(4);
+		auto2 = new DigitalInput(5);
+		auto3 = new DigitalInput(6);
+		auto4 = new DigitalInput(7);
 		
 	}
 		
