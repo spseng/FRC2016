@@ -29,7 +29,6 @@ import org.usfirst.frc.team1512.robot.commands.ShooterAction;
 import org.usfirst.frc.team1512.robot.commands.SensorsAction;
 import org.usfirst.frc.team1512.robot.commands.CommandBase;
 import org.usfirst.frc.team1512.robot.commands.testCompressor;
-import org.usfirst.frc.team1512.robot.subsystems.DipSwitch;
 import org.usfirst.frc.team1512.robot.subsystems.DistanceSensor;
 import org.usfirst.frc.team1512.robot.subsystems.RotationSensor;
 import org.usfirst.frc.team1512.robot.subsystems.DriveTrain;

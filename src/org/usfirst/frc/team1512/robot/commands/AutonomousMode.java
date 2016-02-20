@@ -1,6 +1,6 @@
 package org.usfirst.frc.team1512.robot.commands;
 
-import org.usfirst.frc.team1512.robot.subsystems.DipSwitch;
+
 import org.usfirst.frc.team1512.robot.subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -16,16 +16,60 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class AutonomousMode extends CommandGroup
 {
 	
-	DipSwitch dip;
+	DigitalInput auto1;
+	DigitalInput auto2;
+	DigitalInput auto3;
+	DigitalInput auto4;
 	
 	
 	public  AutonomousMode()  
 	{
 	
-		dip = new DipSwitch();
-		int i=0;
-		dip.displayswitches();
+		auto1 = new DigitalInput(4);
+		auto2 = new DigitalInput(5);
+		auto3 = new DigitalInput(6);
+		auto4 = new DigitalInput(7);
 		
+	
+		SmartDashboard.putNumber("Dipswitch 1 set to: ", booltoint(auto1.get()));
+		SmartDashboard.putNumber("Dipswitch 2 set to: ", booltoint(auto2.get()));
+
+		if (auto1.get()) //if first dipswitch is on
+		{
+			SmartDashboard.putNumber("Set to run program ", 1);
+			//
+			// code for program 1 here:
+			
+		}
+		else if (auto2.get()) //if first dipswitch is on
+		{
+			SmartDashboard.putNumber("Set to run program ", 2);
+			//
+			// code for program 2 here:
+			
+		}
+		else if (auto3.get()) //if first dipswitch is on
+		{
+			SmartDashboard.putNumber("Set to run program ", 3);
+			//
+			// code for program 3 here:
+			
+		}
+		else if (auto4.get()) //if first dipswitch is on
+		{
+			SmartDashboard.putNumber("Set to run program ", 4);
+			//
+			// code for program 4 here:
+			
+		}
+		else  //if NO dipswitch on do this
+		{
+			SmartDashboard.putNumber("Set to run program ", 0);
+			//
+			// code for program 0 here:
+			
+		}
+
 		/*
 		for( i = 0; i <= 5; i++) 
 		{
@@ -42,6 +86,19 @@ public class AutonomousMode extends CommandGroup
 		}
 		*/
 	}
+	
+	public int booltoint(boolean switchvalue)
+	{	
+		if (switchvalue==true)
+		{
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
+	}
+
 }
 
 		/*		
