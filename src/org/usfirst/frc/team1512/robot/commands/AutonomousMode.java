@@ -1,33 +1,136 @@
 package org.usfirst.frc.team1512.robot.commands;
 
-import org.usfirst.frc.team1512.robot.subsystems.DipSwitch;
+
 import org.usfirst.frc.team1512.robot.subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.CommandGroup;
-//import edu.wpi.first.wpilibj.networktables2.util.List;
+
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 
 /**
  *
  */
-public class AutonomousMode extends CommandGroup{
+public class AutonomousMode extends CommandGroup
+{
 	
-	DipSwitch dip = new DipSwitch();
-    
-	public  AutonomousMode()  {
+	DigitalInput auto1;
+	DigitalInput auto2;
+	
+	
+	public  AutonomousMode()  
+	{
+	
+		auto1 = new DigitalInput(4);
+		auto2 = new DigitalInput(5);
 		
-		for(int i = 0; i <= 60; i++) {
-			addSequential(new Auto_DriveForward());
-			System.out.println("Driving");
-		}
 	
-		for(int i=0; i<=10; i++)
+		SmartDashboard.putNumber("Dipswitch 1 set to: ", booltoint(auto1.get()));
+		SmartDashboard.putNumber("Dipswitch 2 set to: ", booltoint(auto2.get()));
+
+		if (auto1.get() && auto2.get() ) //if auto1 on and auto2 on
 		{
-			addSequential(new Auto_DriveBackward());
+			SmartDashboard.putNumber("Set to run program ", 1);
+			//
+			// code for program 1 here:
+			
+		}
+		else if (!auto1.get() && auto2.get()) //if auto1 on and auto2 off
+		{
+			SmartDashboard.putNumber("Set to run program ", 2);
+			//
+			// code for program 2 here:
+			
+		}
+		else if (auto1.get() && !auto2.get()) //if auto1 off and auto2 on
+		{
+			SmartDashboard.putNumber("Set to run program ", 3);
+			//
+			// code for program 3 here:
+			
+		}
+		else if (!auto1.get() && !auto2.get()) //if auto1 off and auto2 off
+		{
+			SmartDashboard.putNumber("Set to run program ", 4);
+			//
+			// code for program 4 here:
+			
+		}
+		else  //if NO dipswitch on do this
+		{
+			SmartDashboard.putNumber("Set to run program ", 0);
+			//
+			// code for program 0 here:
+			
+		}
+
+		/*
+		for( i = 0; i <= 5; i++) 
+		{
+			double speed=((double) i)/10.0;
+			addSequential(new Auto_DriveForward(speed, 0.5));
+			
+		}
+		
+		for( i = 5; i >= 0; i--) 
+		{
+			double speed=((double) i)/10.0;
+			addSequential(new Auto_DriveForward(speed, 0.5));
+			
+		}
+		*/
+	}
+	
+	public int booltoint(boolean switchvalue)
+	{	
+		if (switchvalue==true)
+		{
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
+	}
+
+}
+
+		/*		
+//		for(int i = 0; i <= 10; i++) {
+//			addSequential(new Auto_Timer(0.1));  //I hope this will keep it driving for 1 sec
+//			
+//		}
+		
+		
+		
+		for( i=10; i>=0; i--)  //slow down to stop
+		{
+			double speed=((double) i)/10.0;
+			addSequential(new Auto_DriveForward(speed));
+			addSequential(new SensorsAction());
+		}		
+//		for(int i=0; i<=10; i++)
+//		{
+//			addSequential(new Auto_Stop())
+//		}		
+		for( i=10; i<=10; i++)
+		{
+			double speed=((double) i)/10.0;
+			addSequential(new Auto_DriveBackward(speed));
+		}		
+		for( i=10; i>=0; i--)  //slow down to stop
+		{
+			double speed=((double) i)/10.0;
+			addSequential(new Auto_DriveBackward(speed));
+		}		
+		for( i=0; i<=10; i++)
+		{
+			addSequential(new Auto_Stop());
 		}		
 	}
+*/
 //		for(int i = 0; i<= 30; i++) {
 //			addSequential(new Auto_RaiseTower());
 //			System.out.println("Lifting");
@@ -111,4 +214,5 @@ public class AutonomousMode extends CommandGroup{
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     
-}
+
+
