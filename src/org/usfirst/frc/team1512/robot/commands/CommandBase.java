@@ -22,6 +22,7 @@ public abstract class CommandBase extends Command {
 	 static TowerControl tower= new TowerControl();
 	 static DipSwitch dipswitches= new DipSwitch();
 	 static SensorSubsystem sensors= new SensorSubsystem();
+	 static ScissorSubsystem cut= new ScissorSubsystem();
 	 
 	
     public static void init(){
