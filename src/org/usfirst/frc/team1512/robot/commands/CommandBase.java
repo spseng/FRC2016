@@ -19,8 +19,8 @@ public abstract class CommandBase extends Command {
 
 	public static OI oi;
 	 static DriveTrain drive = new DriveTrain();
-	 static ArmControl arm = new ArmControl();
-	 static TowerControl tower = new TowerControl();
+	 //static ArmControl arm = new ArmControl();
+	 //static TowerControl tower = new TowerControl();
 	 static ShooterControl shooter = new ShooterControl();
 	 static FlipperControl flipper = new FlipperControl();
 	 static SensorSubsystem sensors = new SensorSubsystem();

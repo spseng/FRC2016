@@ -4,6 +4,7 @@ import org.usfirst.frc.team1512.robot.OI;
 import org.usfirst.frc.team1512.robot.subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -30,7 +31,6 @@ public class DriveWithJoystick extends CommandBase {
    //	where the tank function already has a more sophisticated system of driving
    //	- including a deadzone around 0:
     	drive.tank(oi.leftDrive.getRawAxis(1), oi.rightDrive.getRawAxis(1));
-    
     }
 
     // Make this return true when this Command no longer needs to run execute()
