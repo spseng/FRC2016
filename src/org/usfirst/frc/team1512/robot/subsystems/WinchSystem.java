@@ -1,7 +1,7 @@
 package org.usfirst.frc.team1512.robot.subsystems;
 
 import org.usfirst.frc.team1512.robot.OI;
-import org.usfirst.frc.team1512.robot.commands.ShooterAction;
+import org.usfirst.frc.team1512.robot.commands.WinchAction;
 
 import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -9,16 +9,16 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class ShooterSystem extends Subsystem {
+public class WinchSystem extends Subsystem {
     
-	public Jaguar shooterJag;
+	public Jaguar winchJag;
 	OI oi = new OI();
 	
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
-	public ShooterSystem(){
-		shooterJag = new Jaguar(2);
+	public WinchSystem(){
+		winchJag = new Jaguar(3);
 	}
 		
     public void initDefaultCommand() {
@@ -26,9 +26,9 @@ public class ShooterSystem extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     
-    public void shoot(double speed)
+    public void run(double speed)
     {
-    	shooterJag.set(speed);
+    	winchJag.set(speed);
     }
 }
 
