@@ -17,8 +17,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Pneumatics extends Subsystem {
     
 	Compressor main;
-	DoubleSolenoid sissorlift;
-	DoubleSolenoid hopper;
+	DoubleSolenoid sissorlift, hopper;
 	OI oi = new OI();
 
 	

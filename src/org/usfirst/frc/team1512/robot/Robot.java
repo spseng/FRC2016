@@ -101,6 +101,7 @@ public class Robot extends IterativeRobot {
     	CommandBase.init();
     	System.out.println("teleop Initiated");
     	shooter.start();
+    	pneumatics.start();
     	winch.start();
     	drive.start();
     	//camera.start();

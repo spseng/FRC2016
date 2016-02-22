@@ -24,6 +24,15 @@ public class ShooterAction extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	shooter.shoot(oi.xbox.getRawAxis(1));
+    	
+    	if(oi.RBumper.get())
+    	{
+    		shooter.collectorOn();
+    	}
+    	if(oi.LBumper.get())
+    	{
+    		shooter.collectorOff();
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

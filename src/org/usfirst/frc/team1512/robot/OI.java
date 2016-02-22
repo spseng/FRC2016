@@ -21,8 +21,8 @@ public class OI {
 	public JoystickButton YButton;
 	public JoystickButton LBumper;
 	public JoystickButton RBumper;
-	public JoystickButton testBack;
-	public JoystickButton testStart;
+	public JoystickButton Back;
+	public JoystickButton Start;
 
 	
 	public OI(){
@@ -35,8 +35,8 @@ public class OI {
 		YButton = new JoystickButton(xbox, 4);
 		LBumper = new JoystickButton(xbox, 5);
 		RBumper = new JoystickButton(xbox, 6);
-		testBack = new JoystickButton(xbox, 7);
-		testStart = new JoystickButton(xbox, 8);
+		Back = new JoystickButton(xbox, 7);
+		Start = new JoystickButton(xbox, 8);
 	}
 	
 //	public double getX(){

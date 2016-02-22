@@ -4,6 +4,8 @@ import org.usfirst.frc.team1512.robot.OI;
 import org.usfirst.frc.team1512.robot.commands.ShooterAction;
 
 import edu.wpi.first.wpilibj.Jaguar;
+import edu.wpi.first.wpilibj.Relay;
+import edu.wpi.first.wpilibj.Relay.Value;;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -11,14 +13,16 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class ShooterSystem extends Subsystem {
     
-	public Jaguar shooterJag;
+	public Jaguar shooter;
+	public Relay collector;
 	OI oi = new OI();
 	
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
 	public ShooterSystem(){
-		shooterJag = new Jaguar(2);
+		shooter = new Jaguar(2);
+		collector = new Relay(0);
 	}
 		
     public void initDefaultCommand() {
@@ -28,7 +32,17 @@ public class ShooterSystem extends Subsystem {
     
     public void shoot(double speed)
     {
-    	shooterJag.set(speed);
+    	shooter.set(speed);
+    }
+    
+    public void collectorOn()
+    {
+    	collector.set(Value.kForward);
+    }
+    
+    public void collectorOff()
+    {
+    	collector.set(Value.kOff);
     }
 }
 

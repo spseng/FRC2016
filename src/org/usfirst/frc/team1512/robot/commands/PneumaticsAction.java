@@ -18,11 +18,35 @@ public class PneumaticsAction extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	pneumatics.startCompressor();
+    	//pneumatics.startCompressor();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	if(oi.BButton.get())
+    	{
+    		pneumatics.hopperUp();
+    	}
+    	if(oi.AButton.get())
+    	{
+    		pneumatics.hopperDown();
+    	}
+    	if(oi.XButton.get())
+    	{
+    		pneumatics.sissorUp();
+    	}
+    	if(oi.YButton.get())
+    	{
+    		pneumatics.sissorDown();
+    	}
+    	if(oi.Back.get())
+    	{
+    		pneumatics.stopCompressor();
+    	}
+    	if(oi.Start.get())
+    	{
+    		pneumatics.startCompressor();
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
