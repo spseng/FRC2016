@@ -6,6 +6,8 @@ import org.usfirst.frc.team1512.robot.commands.PneumaticsAction;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 
