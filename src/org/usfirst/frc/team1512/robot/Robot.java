@@ -22,6 +22,7 @@ import org.usfirst.frc.team1512.robot.commands.AutonomousMode;
 import org.usfirst.frc.team1512.robot.commands.Camera;
 import org.usfirst.frc.team1512.robot.commands.DriveWithJoystick;
 import org.usfirst.frc.team1512.robot.commands.ShooterAction;
+import org.usfirst.frc.team1512.robot.commands.PneumaticsAction;
 import org.usfirst.frc.team1512.robot.commands.WinchAction;
 import org.usfirst.frc.team1512.robot.commands.CommandBase;
 import org.usfirst.frc.team1512.robot.subsystems.DipSwitch;
@@ -50,6 +51,7 @@ public class Robot extends IterativeRobot {
     DigitalInput limit;
     DriveWithJoystick drive = new DriveWithJoystick(); 
     ShooterAction shooter = new ShooterAction();
+    PneumaticsAction pneumatics = new PneumaticsAction();
     WinchAction winch = new WinchAction();
     //Camera camera = new Camera();
     AutonomousMode auto = new AutonomousMode();
