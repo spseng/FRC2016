@@ -1,5 +1,8 @@
 package org.usfirst.frc.team1512.robot.subsystems;
 
+import org.usfirst.frc.team1512.robot.OI;
+import org.usfirst.frc.team1512.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;

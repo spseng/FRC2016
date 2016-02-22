@@ -20,6 +20,7 @@ import org.usfirst.frc.team1512.robot.RobotMap;
 import org.usfirst.frc.team1512.robot.commands.Accelerometer;
 import org.usfirst.frc.team1512.robot.commands.AutonomousMode;
 import org.usfirst.frc.team1512.robot.commands.Camera;
+import org.usfirst.frc.team1512.robot.commands.ScissorAction;
 import org.usfirst.frc.team1512.robot.commands.Compress;
 import org.usfirst.frc.team1512.robot.commands.DriveWithJoystick;
 import org.usfirst.frc.team1512.robot.commands.GripperAction;
@@ -54,6 +55,7 @@ public class Robot extends IterativeRobot {
     DigitalInput limit;
     DriveWithJoystick drive = new DriveWithJoystick(); 
     Compress compress = new Compress();
+    ScissorAction scissor = new ScissorAction();
     TowerAction tower = new TowerAction();
     SensorsAction sensors = new SensorsAction();
     GripperAction gripper = new GripperAction();
@@ -114,6 +116,7 @@ public class Robot extends IterativeRobot {
     	gripper.start();
     	sensors.start();
     	camera.start();
+    	scissor.start();
     }
 
     /**

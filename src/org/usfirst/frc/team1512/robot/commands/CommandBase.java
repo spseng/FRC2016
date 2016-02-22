@@ -7,6 +7,7 @@ import org.usfirst.frc.team1512.robot.subsystems.DipSwitch;
 import org.usfirst.frc.team1512.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team1512.robot.subsystems.TowerControl;
 import org.usfirst.frc.team1512.robot.subsystems.SensorSubsystem;
+import org.usfirst.frc.team1512.robot.subsystems.ScissorSubsystem;
 import org.usfirst.frc.team1512.robot.*;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -22,7 +23,7 @@ public abstract class CommandBase extends Command {
 	 static TowerControl tower= new TowerControl();
 	 static DipSwitch dipswitches= new DipSwitch();
 	 static SensorSubsystem sensors= new SensorSubsystem();
-	 static ScissorSubsystem cut= new ScissorSubsystem();
+	 static ScissorSubsystem scissor= new ScissorSubsystem();
 	 
 	
     public static void init(){

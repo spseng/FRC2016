@@ -1,7 +1,7 @@
 package org.usfirst.frc.team1512.robot.commands;
 
 import org.usfirst.frc.team1512.robot.OI;
-import org.usfirst.frc.team1512.robot.subsystems.ArmControl;
+import org.usfirst.frc.team1512.robot.subsystems.ScissorSubsystem;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -13,7 +13,7 @@ public class ScissorAction extends CommandBase {
     public ScissorAction() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(cut);
+    	requires(scissor);
     }
 
     // Called just before this Command runs the first time
