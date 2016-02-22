@@ -13,7 +13,7 @@ public class TowerAction extends CommandBase {
     public TowerAction() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(tower);
+    	//requires(tower);
     }
 
     // Called just before this Command runs the first time
@@ -24,15 +24,20 @@ public class TowerAction extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	/*
     	if(oi.AButton.get()&&tower.getTLS()&&tower.getTLS2())
     	{
-        	tower.LiftTower();
+        	//tower.LiftTower();
     	}
     	else if(oi.BButton.get()&&tower.getBLS())
     	{
-    		tower.DropTower();
+    		//tower.DropTower();
     	}
-    	else tower.ResetTower();
+    	else 
+    	{
+    		//tower.ResetTower();
+    	}
+    	*/
     	
     }
     // Make this return true when this Command no longer needs to run execute()

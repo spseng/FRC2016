@@ -13,7 +13,7 @@ public class GripperAction extends CommandBase {
     public GripperAction() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(arm);
+    	//requires(arm);
     }
 
     // Called just before this Command runs the first time
@@ -24,14 +24,17 @@ public class GripperAction extends CommandBase {
     protected void execute() {
     	if (oi.LBumper.get())
     	{
-    		arm.OpenGripper();
+    		//arm.OpenGripper();
     	}
     	else if (oi.RBumper.get())
     	{
-    		arm.CloseGripper();
+    		//arm.CloseGripper();
     	}
     	
-    	else arm.ResetGripper();
+    	else 
+    	{
+    		//arm.ResetGripper();
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

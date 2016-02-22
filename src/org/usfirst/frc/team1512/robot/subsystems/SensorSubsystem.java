@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.AnalogInput;
 public class SensorSubsystem extends Subsystem 
 {
     
+	SensorSubsystem Sensors;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
@@ -20,8 +21,13 @@ public class SensorSubsystem extends Subsystem
 		//	should be set up as generic analog inputs.  Here is
 		//	documentation: http://wpilib.screenstepslive.com/s/4485/m/13810/l/241876-analog-inputs
 		
-		AnalogInput DistanceSensor1;
+//Distance Sensor:
+	AnalogInput DistanceSensor1;
 		int bits;
+		int raw;
+		double volts;
+		int averageRaw;
+		double averageVolts;
 		
 		
 
@@ -46,10 +52,6 @@ public class SensorSubsystem extends Subsystem
 	
 	public void displaydistance1()
 	{
-		int raw;
-		double volts;
-		int averageRaw;
-		double averageVolts;
 		
 		raw = DistanceSensor1.getValue();
 		volts = DistanceSensor1.getVoltage();
@@ -58,8 +60,16 @@ public class SensorSubsystem extends Subsystem
 		
 		SmartDashboard.putString("DB/String 0", "raw" + raw);
 		SmartDashboard.putString("DB/String 1", "volts" + volts);
+		SmartDashboard.putString("DB/String 2", "averageRaw" + averageRaw);
+		SmartDashboard.putString("DB/String 3", "averageVolts" + averageVolts);
+		
 	}
  
+	public double getDistance()
+	{
+		volts = DistanceSensor1.getVoltage();
+		return (volts * 10.0);	//tests suggest distance in inches = volts value * 10
+	}
 
 	
     public void start() 

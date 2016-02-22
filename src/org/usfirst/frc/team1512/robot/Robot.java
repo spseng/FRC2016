@@ -19,18 +19,16 @@ import org.usfirst.frc.team1512.robot.RobotMap;
 import org.usfirst.frc.team1512.robot.commands.Accelerometer;
 import org.usfirst.frc.team1512.robot.commands.AutonomousMode;
 import org.usfirst.frc.team1512.robot.commands.Camera;
-import org.usfirst.frc.team1512.robot.commands.Compress;
+//import org.usfirst.frc.team1512.robot.commands.Compress;
 import org.usfirst.frc.team1512.robot.commands.DriveWithJoystick;
 import org.usfirst.frc.team1512.robot.commands.GripperAction;
 import org.usfirst.frc.team1512.robot.commands.FlipperAction;
-import org.usfirst.frc.team1512.robot.commands.Reset;
 import org.usfirst.frc.team1512.robot.commands.TowerAction;
 import org.usfirst.frc.team1512.robot.commands.ShooterAction;
 import org.usfirst.frc.team1512.robot.commands.SensorsAction;
 import org.usfirst.frc.team1512.robot.commands.CommandBase;
 import org.usfirst.frc.team1512.robot.commands.testCompressor;
-import org.usfirst.frc.team1512.robot.subsystems.DipSwitch;
-import org.usfirst.frc.team1512.robot.subsystems.DistanceSensor;
+import org.usfirst.frc.team1512.robot.subsystems.SensorSubsystem;
 import org.usfirst.frc.team1512.robot.subsystems.RotationSensor;
 import org.usfirst.frc.team1512.robot.subsystems.DriveTrain;
 
@@ -52,18 +50,19 @@ public class Robot extends IterativeRobot {
     double counter = 0.0;
 	Command autonomousCommand;
     OI oi = new OI();
-    DigitalInput limit;
-    DriveWithJoystick drive = new DriveWithJoystick(); 
-    Compress compress = new Compress();
-    TowerAction tower = new TowerAction();
+
+    //Compress compress = new Compress();
+    //TowerAction tower = new TowerAction();
     ShooterAction shooter = new ShooterAction();
     SensorsAction sensors = new SensorsAction();
-    GripperAction gripper = new GripperAction();
+    //GripperAction gripper = new GripperAction();
     FlipperAction flipper = new FlipperAction();
-    testCompressor test = new testCompressor();
+    //testCompressor test = new testCompressor();
     Camera camera = new Camera();
     AutonomousMode auto = new AutonomousMode();
-    Reset reset = new Reset();
+    //Reset reset = new Reset();
+    DriveWithJoystick drive = new DriveWithJoystick(); 
+
  //   DistanceSensor distance = new DistanceSensor(0);//distance sensor connected to analog port 0.
 
 //    TowerOp towerOp = new TowerOp();
@@ -88,7 +87,7 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() {
         // schedule the autonomous command (example)
     	System.out.println("auto Initiated");
-    	compress.start();
+    	//compress.start();
     	auto.start();
     			
 		
@@ -112,9 +111,9 @@ public class Robot extends IterativeRobot {
     	CommandBase.init();
     	System.out.println("teleop Initiated");
     	drive.start();
-    	compress.start();
-    	tower.start();
-    	gripper.start();
+    	//compress.start();
+    	//tower.start();
+    	//gripper.start();
     	shooter.start();
     	sensors.start();
     	flipper.start();
@@ -125,7 +124,7 @@ public class Robot extends IterativeRobot {
      * You can use it to reset subsystems before shutting down.
      */
     public void disabledInit(){
-    	reset.start();
+    	//reset.start();
     }
 
     /**
@@ -133,7 +132,7 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        oi.testBack.whenPressed(test);
+        //oi.testBack.whenPressed(test);
         SmartDashboard.putNumber("Counter", counter++);
         }
     
