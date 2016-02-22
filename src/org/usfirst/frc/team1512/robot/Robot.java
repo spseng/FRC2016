@@ -117,6 +117,7 @@ public class Robot extends IterativeRobot {
     	gripper.start();
     	shooter.start();
     	sensors.start();
+    	flipper.start();
     }
 
     /**

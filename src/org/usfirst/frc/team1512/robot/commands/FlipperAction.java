@@ -49,6 +49,7 @@ public class FlipperAction extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
+    	flipper.endC();
     }
 
     // Called when another command which requires one or more of the same

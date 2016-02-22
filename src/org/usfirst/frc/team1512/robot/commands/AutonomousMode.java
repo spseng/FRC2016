@@ -16,14 +16,17 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class AutonomousMode extends CommandGroup
 {
 	
-//	DipSwitch dip = new DipSwitch();
+	DipSwitch dip;
 	
 	
 	public  AutonomousMode()  
 	{
 	
-        int i=0;
-        
+		dip = new DipSwitch();
+		int i=0;
+		dip.displayswitches();
+		
+		/*
 		for( i = 0; i <= 5; i++) 
 		{
 			double speed=((double) i)/10.0;
@@ -37,6 +40,7 @@ public class AutonomousMode extends CommandGroup
 			addSequential(new Auto_DriveForward(speed, 0.5));
 			
 		}
+		*/
 	}
 }
 

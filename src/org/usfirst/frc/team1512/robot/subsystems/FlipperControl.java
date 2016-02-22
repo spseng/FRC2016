@@ -1,5 +1,8 @@
 package org.usfirst.frc.team1512.robot.subsystems;
 
+import org.usfirst.frc.team1512.robot.OI;
+import org.usfirst.frc.team1512.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
@@ -14,15 +17,15 @@ public class FlipperControl extends Subsystem {
     // here. Call these from Commands.
 	
 	Compressor main;
-	DoubleSolenoid flipper;
+	DoubleSolenoid flipperSolenoid;
 	
-	FlipperControl flipper;
+	FlipperControl Flipper;
 	
 	public FlipperControl()
 	{
 		super();
 		main = new Compressor();
-		flipper = new DoubleSolenoid(2, 3);
+		flipperSolenoid = new DoubleSolenoid(2, 3);
 	}
 
 	public void Compress()
@@ -37,17 +40,17 @@ public class FlipperControl extends Subsystem {
 
 	public void OpenGripper()
 	{
-		flipper.set(Value.kForward);
+		flipperSolenoid.set(Value.kForward);
 	}
 	
 	public void CloseGripper()
 	{
-		flipper.set(Value.kReverse);
+		flipperSolenoid.set(Value.kReverse);
 	}
 	
 	public void ResetGripper()
 	{
-		flipper.set(Value.kOff);
+		flipperSolenoid.set(Value.kOff);
 	}
 
 

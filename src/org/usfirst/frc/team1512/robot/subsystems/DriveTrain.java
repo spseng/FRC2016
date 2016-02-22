@@ -16,7 +16,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class DriveTrain extends Subsystem {
     
-	double deadzone = 0.2;
+	double deadzone = 0.5;
 	double expoIncre = 1;
 	double upperLimit = 0.1;
 	public Talon leftTalons, rightTalons;
@@ -59,9 +59,10 @@ public class DriveTrain extends Subsystem {
     		{right = 0.0;}
     	
     	left=left*-1.0; //reverse left motor control
+    	
     	leftTalons.set(left);
+    	
     	rightTalons.set(right);
-   	
     }
        
    
