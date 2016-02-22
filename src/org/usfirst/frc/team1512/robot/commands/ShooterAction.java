@@ -34,19 +34,19 @@ public class ShooterAction extends CommandBase {
     	}
     	else if(oi.RBumper.get())
     	{
-    		ShooterControl.speedupshooter;
+    		ShooterControl.speedupshooter();
     	}
     	else if(oi.LBumper.get())
     	{
-    		ShooterControl.speeddownshooter;
+    		ShooterControl.speeddownshooter();
     	}
     	else if(oi.YButton.get())
     	{
-    		ShooterControl.startshooter;
+    		ShooterControl.startshooter();
     	}
     	else if(oi.XButton.get())
     	{
-    		ShooterControl.stopshooter;
+    		ShooterControl.stopshooter();
     	}
     	
     }
