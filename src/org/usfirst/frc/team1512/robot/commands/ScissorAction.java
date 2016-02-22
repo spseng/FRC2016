@@ -21,19 +21,20 @@ public class ScissorAction extends CommandBase {
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
+    protected void execute() 
+    {	
     	
-    
     	double collectvalue=oi.xbox.getRawAxis(3);
     	
     	if (collectvalue>0.5)
     	{
-    		cut.RaiseScissor();
+    		scissor.RaiseScissor();
     	}
     	
     	else if (collectvalue<-0.5)
     	{
-    		cut.LowerScissor();
+    		scissor.LowerScissor();
+    }
     }
 
     // Make this return true when this Command no longer needs to run execute()

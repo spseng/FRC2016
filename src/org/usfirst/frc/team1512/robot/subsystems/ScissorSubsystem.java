@@ -17,9 +17,8 @@ public class ScissorSubsystem extends Subsystem {
     // here. Call these from Commands.
 	
 	Compressor main;
-	DoubleSolenoid contract;
-	DoubleSolenoid gripper1;
-	DoubleSolenoid gripper2;
+	//DoubleSolenoid contract;
+	DoubleSolenoid scissor1;
 	
 	ScissorSubsystem cut;
 	
@@ -41,7 +40,7 @@ public class ScissorSubsystem extends Subsystem {
 		main.stop();
 	}
 
-	public void RaiseScissor())
+	public void RaiseScissor()
 	{
 		scissor1.set(Value.kForward);
 	}
