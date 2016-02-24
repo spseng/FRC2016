@@ -21,6 +21,7 @@ public class DriveTrain extends Subsystem {
 	double expoIncre = 1;
 	double upperLimit = 0.1;
 	public Talon leftTalons, rightTalons;
+	public Talon leftT, rightT;
 	RobotDrive drive;
 	OI oi = new OI();
 	boolean flag;
@@ -33,6 +34,8 @@ public class DriveTrain extends Subsystem {
 	public DriveTrain(){
 		leftTalons = new Talon(0);
 		rightTalons = new Talon(1);
+		leftT = new Talon(5);
+		rightT = new Talon(6);
 	}
 		
 	
@@ -62,6 +65,8 @@ public class DriveTrain extends Subsystem {
     	left=left*-1.0; //reverse left motor control
     	leftTalons.set(left);
     	rightTalons.set(right);
+    	leftT.set(left);
+    	rightT.set(right);
    	
     }  
    
