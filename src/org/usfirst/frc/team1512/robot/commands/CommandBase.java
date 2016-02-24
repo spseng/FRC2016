@@ -8,6 +8,7 @@ import org.usfirst.frc.team1512.robot.subsystems.TowerControl;
 import org.usfirst.frc.team1512.robot.subsystems.SensorSubsystem;
 import org.usfirst.frc.team1512.robot.subsystems.ShooterControl;
 import org.usfirst.frc.team1512.robot.subsystems.FlipperControl;
+import org.usfirst.frc.team1512.robot.subsystems.ScissorControl;
 import org.usfirst.frc.team1512.robot.*;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -24,6 +25,7 @@ public abstract class CommandBase extends Command {
 	 static ShooterControl shooter = new ShooterControl();
 	 static FlipperControl flipper = new FlipperControl();
 	 static SensorSubsystem sensors = new SensorSubsystem();
+	 static ScissorControl scissor = new ScissorControl();
 	 
 	
     public static void init(){

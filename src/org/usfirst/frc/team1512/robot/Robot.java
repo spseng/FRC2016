@@ -24,6 +24,7 @@ import org.usfirst.frc.team1512.robot.commands.DriveWithJoystick;
 import org.usfirst.frc.team1512.robot.commands.GripperAction;
 import org.usfirst.frc.team1512.robot.commands.FlipperAction;
 import org.usfirst.frc.team1512.robot.commands.TowerAction;
+import org.usfirst.frc.team1512.robot.commands.ScissorAction;
 import org.usfirst.frc.team1512.robot.commands.ShooterAction;
 import org.usfirst.frc.team1512.robot.commands.SensorsAction;
 import org.usfirst.frc.team1512.robot.commands.CommandBase;
@@ -58,6 +59,7 @@ public class Robot extends IterativeRobot {
     //GripperAction gripper = new GripperAction();
     FlipperAction flipper = new FlipperAction();
     //testCompressor test = new testCompressor();
+    ScissorAction scissor = new ScissorAction();
     Camera camera = new Camera();
     AutonomousMode auto = new AutonomousMode();
     //Reset reset = new Reset();
@@ -117,6 +119,7 @@ public class Robot extends IterativeRobot {
     	shooter.start();
     	sensors.start();
     	flipper.start();
+    	scissor.start();
     }
 
     /**
