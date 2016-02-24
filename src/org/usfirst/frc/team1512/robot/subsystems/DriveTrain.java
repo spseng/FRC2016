@@ -66,23 +66,23 @@ public class DriveTrain extends Subsystem {
     }  
    
     public void driveF(double speed)
-    {	double reverse=speed*-1.0;
-    	tank(speed,reverse);
-    }
-    
-    public void driveB(double speed)
-    {	double reverse=speed*-1.0;
-    	tank(reverse,speed);
-    }
-        
-    public void turnR(double speed)
-    {	double reverse=speed*-1.0;
+    {
     	tank(speed,speed);
     }
     
+    public void driveB(double speed)
+    {
+    	tank(speed,speed);
+    }
+        
+    public void turnR(double speed)
+    {
+    	tank(speed,-1*speed);
+    }
+    
     public void turnL(double speed)
-    {	double reverse=speed*-1.0;
-    	tank(reverse,reverse);
+    {
+    	tank(-1*speed,speed);
     }
     
     public void driveF()

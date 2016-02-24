@@ -26,9 +26,14 @@ public class WinchSystem extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     
-    public void run(double speed)
+    public void run()
     {
-    	winchJag.set(speed);
+    	winchJag.set(1);
+    }
+    
+    public void stop()
+    {
+    	winchJag.set(0);
     }
 }
 
