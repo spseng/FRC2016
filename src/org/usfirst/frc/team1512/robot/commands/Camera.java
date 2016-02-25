@@ -46,14 +46,16 @@ public class Camera extends CommandBase {
 //        session = NIVision.IMAQdxOpenCamera("cam0", NIVision.IMAQdxCameraControlMode.CameraControlModeController);
 //        NIVision.IMAQdxConfigureGrab(session);
 //    	roi = NIVision.imaqCreateROI();
-//    	cam.openCamera();
-//    	cam.setBrightness(20);
+    	cam = new USBCamera("cam0");
     	ser = CameraServer.getInstance();
-//    	cam = new USBCamera("cam0");
+    	cam.openCamera();
+    	cam.setBrightness(20);
+    	ser.startAutomaticCapture(cam);
+    	
+//    	ser = CameraServer.getInstance();
 //    	cam.openCamera();
 //    	cam.setBrightness(20);
-//    	cam.closeCamera();
-    	session = NIVision.IMAQdxOpenCamera("cam0", NIVision.IMAQdxCameraControlMode.CameraControlModeController);
+//    	session = NIVision.IMAQdxOpenCamera("cam0", NIVision.IMAQdxCameraControlMode.CameraControlModeController);
 
 //    	c = new NIVision.RGBValue(255, 255, 80, 255);
 //    	NIVision.imaqSetROIColor(roi, c);
@@ -74,12 +76,12 @@ public class Camera extends CommandBase {
 //        CameraServer.getInstance().setImage(frame);
 //        Timer.delay(0.005);
 
-    	frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
-        NIVision.IMAQdxConfigureGrab(session);
-    	NIVision.IMAQdxStartAcquisition(session);
-    	NIVision.IMAQdxGrab(session, frame, 0);
-    	ser.setImage(frame);
-    	NIVision.IMAQdxStopAcquisition(session);
+//    	frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
+//        NIVision.IMAQdxConfigureGrab(session);
+//    	NIVision.IMAQdxStartAcquisition(session);
+//    	NIVision.IMAQdxGrab(session, frame, 0);
+//    	ser.setImage(frame);
+//    	NIVision.IMAQdxStopAcquisition(session);
 //    	cam.getImage(frame);
 //    	rgb = new int[NIVision.imaqGetImageSize(frame).width][NIVision.imaqGetImageSize(frame).width];
 //    	result = NIVision.imaqDetectRectangles(frame, recDes, null, null, roi);
@@ -97,7 +99,7 @@ public class Camera extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
-//    	cam.closeCamera();
+    	cam.closeCamera();
     }
 
     // Called when another command which requires one or more of the same
