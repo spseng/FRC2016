@@ -43,22 +43,26 @@ public class Camera extends CommandBase {
 //    	frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
 //
 //        // the camera name (ex "cam0") can be found through the roborio web interface
-//        session = NIVision.IMAQdxOpenCamera("cam0",
-//                NIVision.IMAQdxCameraControlMode.CameraControlModeController);
+//        session = NIVision.IMAQdxOpenCamera("cam0", NIVision.IMAQdxCameraControlMode.CameraControlModeController);
 //        NIVision.IMAQdxConfigureGrab(session);
-//    	cam = new USBCamera("cam0");
-    	roi = NIVision.imaqCreateROI();
+//    	roi = NIVision.imaqCreateROI();
 //    	cam.openCamera();
 //    	cam.setBrightness(20);
     	ser = CameraServer.getInstance();
-    	c = new NIVision.RGBValue(255, 255, 80, 255);
-    	NIVision.imaqSetROIColor(roi, c);
-    	recDes = new RectangleDescriptor(10, 150, 20, 300);
-    	curOp = new CurveOptions(NIVision.ExtractionMode.UNIFORM_REGIONS, 1, NIVision.EdgeFilterSize.NORMAL, 10, 10, 10, 1000, 1, 1);
-    	angleRange[0] = aR1;
-    	angleRange[1] = aR2;
-    	scaleRange = new RangeFloat(1, 1000);
-    	shapeOp = new ShapeDetectionOptions(1, angleRange, scaleRange, 10);
+//    	cam = new USBCamera("cam0");
+//    	cam.openCamera();
+//    	cam.setBrightness(20);
+//    	cam.closeCamera();
+    	session = NIVision.IMAQdxOpenCamera("cam0", NIVision.IMAQdxCameraControlMode.CameraControlModeController);
+
+//    	c = new NIVision.RGBValue(255, 255, 80, 255);
+//    	NIVision.imaqSetROIColor(roi, c);
+//    	recDes = new RectangleDescriptor(10, 150, 20, 300);
+//    	curOp = new CurveOptions(NIVision.ExtractionMode.UNIFORM_REGIONS, 1, NIVision.EdgeFilterSize.NORMAL, 10, 10, 10, 1000, 1, 1);
+//    	angleRange[0] = aR1;
+//    	angleRange[1] = aR2;
+//    	scaleRange = new RangeFloat(1, 1000);
+//    	shapeOp = new ShapeDetectionOptions(1, angleRange, scaleRange, 10);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -70,16 +74,18 @@ public class Camera extends CommandBase {
 //        CameraServer.getInstance().setImage(frame);
 //        Timer.delay(0.005);
 
-    	int session = NIVision.IMAQdxOpenCamera("cam0", NIVision.IMAQdxCameraControlMode.CameraControlModeController);
     	frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
+        NIVision.IMAQdxConfigureGrab(session);
+    	NIVision.IMAQdxStartAcquisition(session);
     	NIVision.IMAQdxGrab(session, frame, 0);
-//    	cam.getImage(frame);
-    	rgb = new int[NIVision.imaqGetImageSize(frame).width][NIVision.imaqGetImageSize(frame).width];
-    	result = NIVision.imaqDetectRectangles(frame, recDes, curOp, shapeOp, roi);
-    	RectangleMatch rec = result.array[0];
-    	System.out.println(rec.height + ", "+ rec.width);
-    	
     	ser.setImage(frame);
+    	NIVision.IMAQdxStopAcquisition(session);
+//    	cam.getImage(frame);
+//    	rgb = new int[NIVision.imaqGetImageSize(frame).width][NIVision.imaqGetImageSize(frame).width];
+//    	result = NIVision.imaqDetectRectangles(frame, recDes, null, null, roi);
+//    	RectangleMatch rec = result.array[0];
+//    	System.out.println(rec.height + ", "+ rec.width);
+    	
 //    	ser.startAutomaticCapture(cam);
     	//git test
     }
@@ -91,7 +97,7 @@ public class Camera extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
-    	cam.closeCamera();
+//    	cam.closeCamera();
     }
 
     // Called when another command which requires one or more of the same
