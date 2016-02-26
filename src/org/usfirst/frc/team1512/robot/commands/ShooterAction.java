@@ -8,8 +8,8 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ShooterAction extends CommandBase {	
-	
+public class ShooterAction extends CommandBase {
+
     public ShooterAction() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -18,7 +18,7 @@ public class ShooterAction extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
+
     }
 
     // Called repeatedly when this Command is scheduled to run
