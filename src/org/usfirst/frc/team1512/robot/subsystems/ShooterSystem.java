@@ -36,7 +36,7 @@ public class ShooterSystem extends Subsystem {
 
 	public void startshooter()
 	{
-		shooter.set(shooterspeed)
+		shooter.set(shooterspeed);
 	}
 
 	public void speedupshooter()
@@ -56,9 +56,9 @@ public class ShooterSystem extends Subsystem {
 		shooter.set(0);
 	}
 
-	public void shoot(speed)
+	public void shoot(double speed)
 	{
-		if (shooterspeed + (speed/100) < 1 && hooterspeed + (speed/100) > 0)
+		if (shooterspeed + (speed/100) < 1 && shooterspeed + (speed/100) > 0)
 		{
 			shooterspeed = shooterspeed + (speed/100);
 			shooter.set(shooterspeed);
