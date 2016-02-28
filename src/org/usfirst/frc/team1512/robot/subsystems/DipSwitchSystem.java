@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class DipSwitch extends Subsystem {
+public class DipSwitchSystem extends Subsystem {
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -17,7 +17,7 @@ public class DipSwitch extends Subsystem {
 	DigitalInput auto4;
 
 	
-	public DipSwitch()
+	public DipSwitchSystem()
 	{
 		super();
 		auto1 = new DigitalInput(6);

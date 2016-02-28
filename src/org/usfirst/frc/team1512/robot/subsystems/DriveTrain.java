@@ -9,8 +9,10 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.RobotDrive.MotorType;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -67,6 +69,7 @@ public class DriveTrain extends Subsystem {
     	rightTalons.set(right);
     	leftT.set(left);
     	rightT.set(right);
+    	
    	
     }  
    
@@ -77,7 +80,7 @@ public class DriveTrain extends Subsystem {
     
     public void driveB(double speed)
     {
-    	tank(speed,speed);
+    	tank(-1*speed,-1*speed);
     }
         
     public void turnR(double speed)

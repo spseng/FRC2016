@@ -18,6 +18,8 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team1512.robot.RobotMap;
 import org.usfirst.frc.team1512.robot.commands.Accelerometer;
+import org.usfirst.frc.team1512.robot.commands.testcommand;
+import org.usfirst.frc.team1512.robot.commands.testcommand2;
 import org.usfirst.frc.team1512.robot.commands.AutonomousMode;
 import org.usfirst.frc.team1512.robot.commands.Camera;
 import org.usfirst.frc.team1512.robot.commands.DriveWithJoystick;
@@ -25,7 +27,7 @@ import org.usfirst.frc.team1512.robot.commands.ShooterAction;
 import org.usfirst.frc.team1512.robot.commands.PneumaticsAction;
 import org.usfirst.frc.team1512.robot.commands.WinchAction;
 import org.usfirst.frc.team1512.robot.commands.CommandBase;
-import org.usfirst.frc.team1512.robot.subsystems.DipSwitch;
+import org.usfirst.frc.team1512.robot.subsystems.DipSwitchSystem;
 import org.usfirst.frc.team1512.robot.subsystems.DistanceSensor;
 import org.usfirst.frc.team1512.robot.subsystems.RotationSensor;
 import org.usfirst.frc.team1512.robot.subsystems.DriveTrain;
@@ -33,6 +35,7 @@ import org.usfirst.frc.team1512.robot.subsystems.DriveTrain;
 import com.ni.vision.NIVision;
 import com.ni.vision.NIVision.Image;
 
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
@@ -47,14 +50,19 @@ public class Robot extends IterativeRobot {
 		
     double counter = 0.0;
 	Command autonomousCommand;
+	SendableChooser autoChooser;
     OI oi = new OI();
-    DigitalInput limit;
+   // DigitalInput limit;
     DriveWithJoystick drive = new DriveWithJoystick(); 
     ShooterAction shooter = new ShooterAction();
     PneumaticsAction pneumatics = new PneumaticsAction();
     WinchAction winch = new WinchAction();
     //Camera camera = new Camera();
     AutonomousMode auto = new AutonomousMode();
+    
+    testcommand test = new testcommand();
+    testcommand2 test2 = new testcommand2();
+    
     //DistanceSensor distance = new DistanceSensor();//distance sensor connected to analog port 0.
 
 //    TowerOp towerOp = new TowerOp();
@@ -67,6 +75,12 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
     	
     	CommandBase.init();
+    	
+    	autoChooser = new SendableChooser();
+    	autoChooser.addDefault("Default program", test);
+    	autoChooser.addDefault("second autonomous", test2);
+    	SmartDashboard.putData("Autonmous Mode Chooser", autoChooser);
+    	
     	System.out.println("robo Initiated");
         // instantiate the command used for the autonomous period
     }
@@ -78,19 +92,21 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() {
         // schedule the autonomous command (example)
     	System.out.println("auto Initiated");
-    	auto.start();
+    	autonomousCommand = (Command) autoChooser.getSelected();
+    	autonomousCommand.start();
+    	//auto.start();
     			
 		
-        SmartDashboard.putNumber("Counter", counter++);	
+       //SmartDashboard.putNumber("Counter", counter++);	
     	//if (autonomousCommand != null) autonomousCommand.start();
     }
 
 
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
-        SmartDashboard.putNumber("Counter2", counter++);
+      //  SmartDashboard.putNumber("Counter2", counter++);
 
-        SmartDashboard.putNumber("Counter", counter++);	
+     //   SmartDashboard.putNumber("Counter", counter++);	
     }
 
     public void teleopInit() {
