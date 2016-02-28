@@ -49,14 +49,15 @@ public class Camera extends CommandBase {
     	cam.openCamera();
     	cam.setBrightness(20);
     	ser = CameraServer.getInstance();
-    	c = new NIVision.RGBValue(255, 255, 80, 255);
-    	NIVision.imaqSetROIColor(roi, c);
-    	recDes = new RectangleDescriptor(10, 150, 20, 300);
-    	curOp = new CurveOptions(NIVision.ExtractionMode.UNIFORM_REGIONS, 1, NIVision.EdgeFilterSize.NORMAL, 10, 10, 10, 1000, 1, 1);
-    	angleRange[0] = aR1;
-    	angleRange[1] = aR2;
-    	scaleRange = new RangeFloat(1, 1000);
-    	shapeOp = new ShapeDetectionOptions(1, angleRange, scaleRange, 10);
+    	ser.startAutomaticCapture(cam);
+//    	c = new NIVision.RGBValue(255, 255, 80, 255);
+//    	NIVision.imaqSetROIColor(roi, c);
+//    	recDes = new RectangleDescriptor(10, 150, 20, 300);
+//    	curOp = new CurveOptions(NIVision.ExtractionMode.UNIFORM_REGIONS, 1, NIVision.EdgeFilterSize.NORMAL, 10, 10, 10, 1000, 1, 1);
+//    	angleRange[0] = aR1;
+//    	angleRange[1] = aR2;
+//    	scaleRange = new RangeFloat(1, 1000);
+//    	shapeOp = new ShapeDetectionOptions(1, angleRange, scaleRange, 10);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -67,13 +68,13 @@ public class Camera extends CommandBase {
 //                
 //        CameraServer.getInstance().setImage(frame);
 //        Timer.delay(0.005);
-    	ser.startAutomaticCapture(cam);
+//    	ser.startAutomaticCapture(cam);
     	
-    	frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
-    	rgb = new int[NIVision.imaqGetImageSize(frame).width][NIVision.imaqGetImageSize(frame).width];
-
-    	NIVision.imaqDetectRectangles(frame, recDes, curOp, shapeOp, roi);
-    	cam.getImage(frame);
+//    	frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
+//    	rgb = new int[NIVision.imaqGetImageSize(frame).width][NIVision.imaqGetImageSize(frame).width];
+//
+//    	NIVision.imaqDetectRectangles(frame, recDes, curOp, shapeOp, roi);
+//    	cam.getImage(frame);
     }
 
     // Make this return true when this Command no longer needs to run execute()
