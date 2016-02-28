@@ -10,6 +10,7 @@ import java.awt.*;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.vision.USBCamera;
 
 /**
@@ -32,10 +33,12 @@ public class Camera extends CommandBase {
 	RangeFloat scaleRange;
 	ShapeDetectionOptions shapeOp;
 	DetectRectanglesResult result;
+	double[] val = new double[2];
 	
     public Camera() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(net);
     }
 
     // Called just before this Command runs the first time
@@ -90,6 +93,9 @@ public class Camera extends CommandBase {
     	
 //    	ser.startAutomaticCapture(cam);
     	//git test
+    	net.retrieveVal();
+    	val = net.returnVal(val);
+    	SmartDashboard.putNumber("POINT 1", val[0]);
     }
 
     // Make this return true when this Command no longer needs to run execute()
