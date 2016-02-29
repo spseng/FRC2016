@@ -14,7 +14,7 @@ public class Network extends Subsystem {
     
 
 	NetworkTable tab = NetworkTable.getTable("SmartDashboard");
-	double[] corner;
+	double[] corner = new double[2];
 	double[] empty = new double[2];
 	
     // Put methods for controlling this subsystem
