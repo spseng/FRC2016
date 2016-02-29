@@ -2,11 +2,13 @@ package org.usfirst.frc.team1512.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.command.CommandGroup;
+
 
 /**
  *
  */
-public class testcommand2 extends Command {
+public class testcommand2 extends CommandGroup {
 
     public testcommand2() {
         // Use requires() here to declare subsystem dependencies

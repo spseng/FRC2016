@@ -21,7 +21,6 @@ import org.usfirst.frc.team1512.robot.commands.Accelerometer;
 import org.usfirst.frc.team1512.robot.commands.testcommand;
 import org.usfirst.frc.team1512.robot.commands.testcommand2;
 import org.usfirst.frc.team1512.robot.commands.AutonomousMode;
-import org.usfirst.frc.team1512.robot.commands.Camera;
 import org.usfirst.frc.team1512.robot.commands.DriveWithJoystick;
 import org.usfirst.frc.team1512.robot.commands.ShooterAction;
 import org.usfirst.frc.team1512.robot.commands.PneumaticsAction;
@@ -49,7 +48,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot {
 		
     double counter = 0.0;
-	Command autonomousCommand;
+	testcommand autonomousCommand = new testcommand();
 	SendableChooser autoChooser;
     OI oi = new OI();
    // DigitalInput limit;
@@ -92,7 +91,7 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() {
         // schedule the autonomous command (example)
     	System.out.println("auto Initiated");
-    	autonomousCommand = (Command) autoChooser.getSelected();
+    	
     	autonomousCommand.start();
     	//auto.start();
     			
