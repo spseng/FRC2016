@@ -5,6 +5,7 @@ import org.usfirst.frc.team1512.robot.commands.ShooterAction;
 
 import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Timer;
 
@@ -65,7 +66,10 @@ public class ShooterSystem extends Subsystem {
 
     public void collect(double speed)
     {
+    	if (speed < -0.7) speed = -0.7;
+    	if (speed > 0.7) speed = 0.7;
     	collector.set(speed);
-    }
+       	SmartDashboard.putNumber("COLLECTOR SPEED:", speed);
+            }
 }
 
