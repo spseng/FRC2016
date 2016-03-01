@@ -52,7 +52,7 @@ public class Camera extends CommandBase {
     	cam = new USBCamera("cam0");
     	ser = CameraServer.getInstance();
     	cam.openCamera();
-    	cam.setBrightness(20);
+    	cam.setBrightness(10);
     	ser.startAutomaticCapture(cam);
     	
 //    	ser = CameraServer.getInstance();
@@ -94,8 +94,8 @@ public class Camera extends CommandBase {
 //    	ser.startAutomaticCapture(cam);
     	//git test
     	net.retrieveVal();
-    	val = net.returnVal(val);
-    	SmartDashboard.putNumber("POINT 1", val[0]);
+//    	val = net.returnVal(val);
+//    	SmartDashboard.putNumber("POINT 1", val[0]);
     }
 
     // Make this return true when this Command no longer needs to run execute()

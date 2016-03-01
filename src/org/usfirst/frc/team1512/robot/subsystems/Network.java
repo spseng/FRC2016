@@ -5,6 +5,7 @@ import org.usfirst.frc.team1512.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
+import edu.wpi.first.wpilibj.networktables2.type.NumberArray;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -13,9 +14,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Network extends Subsystem {
     
 
-	NetworkTable tab = NetworkTable.getTable("SmartDashboard");
-	double[] corner = new double[2];
-	double[] empty = new double[2];
+	NetworkTable tab = NetworkTable.getTable("");
+	
+	double fps;
 	
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -32,10 +33,12 @@ public class Network extends Subsystem {
     
     public void retrieveVal()
     {
-    	empty[0] = 999;
 		try
 		{
-			corner = tab.getNumberArray("LINE_CORNER", empty);
+			double[] empty = new double[2];
+			double[] corner = tab.getNumberArray("LINE_CORNER", empty);
+			
+			SmartDashboard.putDouble("TEST", corner[1]);
 			SmartDashboard.putBoolean("retrieve status", true);
 		}
 		catch(edu.wpi.first.wpilibj.networktables.NetworkTableKeyNotDefined e)
@@ -43,12 +46,6 @@ public class Network extends Subsystem {
 			SmartDashboard.putBoolean("retrieve status", false);
 		}
 	
-    }
-    
-    public double[] returnVal(double[] a)
-    {
-    	a = corner;
-    	return a;
     }
 
 }
