@@ -74,8 +74,8 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() {
         // schedule the autonomous command (example)
     	System.out.println("auto Initiated");
-    	compress.start();
-    	auto.start();
+//    	compress.start();
+//    	auto.start();
     	//if (autonomousCommand != null) autonomousCommand.start();
     }
 
@@ -91,10 +91,10 @@ public class Robot extends IterativeRobot {
         // this line or comment it out.
     	CommandBase.init();
     	System.out.println("teleop Initiated");
-    	drive.start();
-    	compress.start();
-    	tower.start();
-    	gripper.start();
+//    	drive.start();
+//    	compress.start();
+//    	tower.start();
+//    	gripper.start();
     	cam.start();
     }
 

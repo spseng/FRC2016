@@ -16,7 +16,7 @@ public class Network extends Subsystem {
 
 	NetworkTable tab = NetworkTable.getTable("");
 	
-	double fps;
+	int fps;
 	
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -37,8 +37,9 @@ public class Network extends Subsystem {
 		{
 			double[] empty = new double[2];
 			double[] corner = tab.getNumberArray("LINE_CORNER", empty);
-			
-			SmartDashboard.putDouble("TEST", corner[1]);
+			fps = tab.getInt("FPS", 0);
+			SmartDashboard.putNumber("TEST", corner[0]);
+			SmartDashboard.putNumber("FPS", fps);
 			SmartDashboard.putBoolean("retrieve status", true);
 		}
 		catch(edu.wpi.first.wpilibj.networktables.NetworkTableKeyNotDefined e)
