@@ -48,7 +48,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot {
 		
     double counter = 0.0;
-	testcommand autonomousCommand = new testcommand();
+	Command autonomousCommand;
 	SendableChooser autoChooser;
     OI oi = new OI();
    // DigitalInput limit;
@@ -58,9 +58,7 @@ public class Robot extends IterativeRobot {
     WinchAction winch = new WinchAction();
     //Camera camera = new Camera();
     AutonomousMode auto = new AutonomousMode();
-    
-    testcommand test = new testcommand();
-    testcommand2 test2 = new testcommand2();
+   
     
     //DistanceSensor distance = new DistanceSensor();//distance sensor connected to analog port 0.
 
@@ -76,9 +74,9 @@ public class Robot extends IterativeRobot {
     	CommandBase.init();
     	
     	autoChooser = new SendableChooser();
-    	autoChooser.addDefault("Default program", test);
-    	autoChooser.addDefault("second autonomous", test2);
-    	SmartDashboard.putData("Autonmous Mode Chooser", autoChooser);
+    	autoChooser.addDefault("Default program", "Mode 1");
+    	autoChooser.addDefault("second autonomous", "Mode 2");
+    	SmartDashboard.putData("Autonmous Mode Chooser:", autoChooser);
     	
     	System.out.println("robo Initiated");
         // instantiate the command used for the autonomous period
@@ -91,6 +89,20 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() {
         // schedule the autonomous command (example)
     	System.out.println("auto Initiated");
+    	
+    	String autoSelected = (String) autoChooser.getSelected();
+		switch (autoSelected) {
+		case "Mode 1":
+		default:
+			autonomousCommand = new AutonomousMode();
+			break;
+		case "Mode 2":
+			autonomousCommand = new AutonomousMode();
+			break;
+		}
+		// schedule the autonomous command (example)
+		if (autonomousCommand != null)
+			autonomousCommand.start();
     	
     	autonomousCommand.start();
     	//auto.start();
