@@ -20,12 +20,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class AutonomousMode extends CommandGroup
 {
 	
-	public  AutonomousMode()  
+	public  AutonomousMode(double speed)  
 	{
 		
 		for(int i = 0; i <= 10; i++) 
 		{
-			double speed=((double) i)/10.0;
+			speed=((double) i)/10.0;
 			addSequential(new Auto_DriveForward(speed, 0.5));
 			
 		}

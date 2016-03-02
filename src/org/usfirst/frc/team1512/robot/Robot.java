@@ -94,10 +94,10 @@ public class Robot extends IterativeRobot {
 		switch (autoSelected) {
 		case "Mode 1":
 		default:
-			autonomousCommand = new AutonomousMode();
+			autonomousCommand = new AutonomousMode(0.5);
 			break;
 		case "Mode 2":
-			autonomousCommand = new AutonomousMode();
+			autonomousCommand = new AutonomousMode(-0.5);
 			break;
 		}
 		// schedule the autonomous command (example)
