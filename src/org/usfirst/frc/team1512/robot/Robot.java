@@ -20,6 +20,8 @@ import org.usfirst.frc.team1512.robot.RobotMap;
 import org.usfirst.frc.team1512.robot.commands.Accelerometer;
 import org.usfirst.frc.team1512.robot.commands.testcommand;
 import org.usfirst.frc.team1512.robot.commands.testcommand2;
+import org.usfirst.frc.team1512.robot.commands.Auto_DriveForward;
+import org.usfirst.frc.team1512.robot.commands.Auto_DriveBackward;
 import org.usfirst.frc.team1512.robot.commands.AutonomousMode;
 import org.usfirst.frc.team1512.robot.commands.DriveWithJoystick;
 import org.usfirst.frc.team1512.robot.commands.ShooterAction;
@@ -76,8 +78,8 @@ public class Robot extends IterativeRobot {
     	CommandBase.init();
     	
     	autoChooser = new SendableChooser();
-    	autoChooser.addDefault("Default program", test);
-    	autoChooser.addDefault("second autonomous", test2);
+    	autoChooser.addDefault("Default program", Auto_DriveForward);
+    	autoChooser.addDefault("second autonomous", Auto_Backward);
     	SmartDashboard.putData("Autonmous Mode Chooser", autoChooser);
     	
     	System.out.println("robo Initiated");
@@ -91,9 +93,8 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() {
         // schedule the autonomous command (example)
     	System.out.println("auto Initiated");
-    	
+    	autonomousCommand = (Command) autoChooser.getSelected();
     	autonomousCommand.start();
-    	//auto.start();
     			
 		
        //SmartDashboard.putNumber("Counter", counter++);	

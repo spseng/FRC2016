@@ -13,28 +13,13 @@ public class testcommand2 extends CommandGroup {
     public testcommand2() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    }
-
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    }
-
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-        SmartDashboard.putNumber("Into autonomous test program", 2);	
-   }
-
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return false;
-    }
-
-    // Called once after isFinished returns true
-    protected void end() {
-    }
-
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
+    	SmartDashboard.putNumber("Into autonomous test program", 2);	
+        for(int i = 0; i <= 5; i++) 
+		{
+        	
+			double speed=((double) i)/10.0;
+			addSequential(new Auto_DriveBackward(speed, 0.5));
+			
+		} 
     }
 }
