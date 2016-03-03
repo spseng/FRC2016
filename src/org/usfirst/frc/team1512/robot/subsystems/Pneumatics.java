@@ -50,6 +50,11 @@ public class Pneumatics extends Subsystem {
 		hopper.set(Value.kReverse);
 	}
 	
+	public void hopperOff()
+	{
+		hopper.set(Value.kOff);
+	}
+	
 	public void sissorDown()
 	{
 		sissorlift.set(Value.kForward);
@@ -61,7 +66,12 @@ public class Pneumatics extends Subsystem {
 	}
 		
 	
-    public void initDefaultCommand() {
+	public void sissorOff()
+	{
+		sissorlift.set(Value.kOff);
+	}
+		
+   public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }

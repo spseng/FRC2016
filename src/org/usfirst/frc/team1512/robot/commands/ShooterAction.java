@@ -25,7 +25,11 @@ public class ShooterAction extends CommandBase {
     protected void execute() {
     	shooter.shoot(oi.xbox.getRawAxis(1));
     	shooter.collect(oi.xbox.getRawAxis(5));
-    }
+    	if(oi.LBumper.get())
+    	{
+    		shooter.takeshot();
+    	}
+   }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {

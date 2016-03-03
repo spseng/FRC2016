@@ -28,12 +28,12 @@ public class WinchSystem extends Subsystem {
     
     public void run()
     {
-    	winchJag.set(1);
+    	winchJag.set(-1.0);
     }
     
     public void stop()
     {
-    	winchJag.set(0);
+    	winchJag.set(0.0);
     }
 }
 

@@ -60,10 +60,10 @@ public class DipSwitch extends Subsystem {
 	
 	public void displayswitches()
 	{
-		SmartDashboard.putNumber("Dipswitch 1 set to: ", booltoint(1));
-		SmartDashboard.putNumber("Dipswitch 2 set to: ", booltoint(2));
-		SmartDashboard.putNumber("Dipswitch 3 set to: ", booltoint(3));
-		SmartDashboard.putNumber("Dipswitch 4 set to: ", booltoint(4));
+		//SmartDashboard.putNumber("Dipswitch 1 set to: ", booltoint(1));
+		//SmartDashboard.putNumber("Dipswitch 2 set to: ", booltoint(2));
+		//SmartDashboard.putNumber("Dipswitch 3 set to: ", booltoint(3));
+		//SmartDashboard.putNumber("Dipswitch 4 set to: ", booltoint(4));
 	}
 
 	public boolean auto1()

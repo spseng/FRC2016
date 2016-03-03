@@ -23,7 +23,7 @@ public abstract class CommandBase extends Command {
 	static Pneumatics pneumatics = new Pneumatics();
 	static WinchSystem winch = new WinchSystem();
 	static DipSwitch dipswitches = new DipSwitch();
-	static DistanceSensor distance = new DistanceSensor();
+	//static DistanceSensor distance = new DistanceSensor();
 	
     public static void init(){
     	oi = new OI();

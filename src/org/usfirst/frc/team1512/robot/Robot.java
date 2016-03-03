@@ -81,17 +81,17 @@ public class Robot extends IterativeRobot {
     	auto.start();
     			
 		
-        SmartDashboard.putNumber("Counter", counter++);	
-    	//if (autonomousCommand != null) autonomousCommand.start();
+
+       
+
+        
+      	//if (autonomousCommand != null) autonomousCommand.start();
     }
 
 
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
-        SmartDashboard.putNumber("Counter2", counter++);
-
-        SmartDashboard.putNumber("Counter", counter++);	
-    }
+     }
 
     public void teleopInit() {
 		// This makes sure that the autonomous stops running when
@@ -119,7 +119,17 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        SmartDashboard.putNumber("Counter", counter++);
+        SmartDashboard.putString("Claw UP", "Y Button");	
+        SmartDashboard.putString("Claw DOWN", "X Button");	
+        SmartDashboard.putString("Collector UP", "B Button");	
+        SmartDashboard.putString("Collector DOWN", "A Button");	
+        SmartDashboard.putString("Collector COLLECT", "XBOX RJoy forw");	
+        SmartDashboard.putString("Collector Low-Goal Shoot", "XBOX RJoy back");	
+        
+        SmartDashboard.putString("Shooter Spin Up", "XBOX LJoy for");	
+        SmartDashboard.putString("Shooter Take a SHOT", "XBOX LBump");	
+        
+        SmartDashboard.putString("RUN WINCH", "XBOX RBump");	        
         }
     
     /**

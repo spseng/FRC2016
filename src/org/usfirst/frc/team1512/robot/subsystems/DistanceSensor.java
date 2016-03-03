@@ -41,8 +41,8 @@ public class DistanceSensor extends Subsystem {
 		averageRaw = AnalogPin.getAverageValue();
 		averageVolts = AnalogPin.getAverageVoltage();	
 		
-		SmartDashboard.putString("DB/String 0", "raw" + raw);
-		SmartDashboard.putString("DB/String 1", "volts" + volts);
+		SmartDashboard.putNumber("Distance (inch):",  (volts * 100) + 10.0);
+	//	SmartDashboard.putString("DB/String 1", "volts" + volts);
 	}
 
 	public double getDistance()

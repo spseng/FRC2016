@@ -27,18 +27,29 @@ public class PneumaticsAction extends CommandBase {
     	{
     		pneumatics.hopperUp();
     	}
-    	if(oi.AButton.get())
+    	else if(oi.AButton.get())
     	{
     		pneumatics.hopperDown();
     	}
+    	else
+    	{
+    		pneumatics.hopperOff();
+    	}
+    	
     	if(oi.XButton.get())
     	{
     		pneumatics.sissorUp();
     	}
-    	if(oi.YButton.get())
+    	else if(oi.YButton.get())
     	{
     		pneumatics.sissorDown();
     	}
+    	else
+    	{
+       		pneumatics.sissorOff();
+       	    		
+    	}
+    	
     	if(oi.Back.get())
     	{
     		pneumatics.stopCompressor();
