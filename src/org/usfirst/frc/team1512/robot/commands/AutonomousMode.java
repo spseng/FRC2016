@@ -33,7 +33,10 @@ public class AutonomousMode extends CommandGroup
 		
       
 		addSequential(new Auto_Stop());
+		
+		shoot(0.4);
 
 	}
+	
 
 }
