@@ -75,15 +75,11 @@ public class Robot extends IterativeRobot {
     	CommandBase.init();
     	
     	autoChooser = new SendableChooser();
-<<<<<<< HEAD
+
     	autoChooser.addDefault("Default program", "Mode 1");
     	autoChooser.addDefault("second autonomous", "Mode 2");
     	SmartDashboard.putData("Autonmous Mode Chooser:", autoChooser);
-=======
-    	autoChooser.addDefault("Default program", Auto_DriveForward);
-    	autoChooser.addDefault("second autonomous", Auto_Backward);
-    	SmartDashboard.putData("Autonmous Mode Chooser", autoChooser);
->>>>>>> origin/oldrobot
+
     	
     	System.out.println("robo Initiated");
         // instantiate the command used for the autonomous period
@@ -96,7 +92,7 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() {
         // schedule the autonomous command (example)
     	System.out.println("auto Initiated");
-<<<<<<< HEAD
+
     	
     	String autoSelected = (String) autoChooser.getSelected();
 		switch (autoSelected) {
@@ -112,9 +108,9 @@ public class Robot extends IterativeRobot {
 		if (autonomousCommand != null)
 			autonomousCommand.start();
     	
-=======
+
     	autonomousCommand = (Command) autoChooser.getSelected();
->>>>>>> origin/oldrobot
+
     	autonomousCommand.start();
     			
 		

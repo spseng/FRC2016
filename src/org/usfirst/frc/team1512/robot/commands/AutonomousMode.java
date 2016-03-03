@@ -25,13 +25,11 @@ public class AutonomousMode extends CommandGroup
 		
 		for(int i = 0; i <= 10; i++) 
 		{
-			speed=((double) i)/10.0;
+			
 			addSequential(new Auto_DriveForward(speed, 0.5));
 			
 		}
 		
-		
-      
 		addSequential(new Auto_Stop());
 
 
