@@ -33,10 +33,38 @@ public class AutonomousMode extends CommandGroup
 		
       
 		addSequential(new Auto_Stop());
-		
-		shoot(0.4);
+
 
 	}
+	
+
+        
+ /*       if (dipswitches.auto1.get()==false)
+     SmartDashboard.putNumber("Autonomous InputDial=", InputDial.getVoltage());	
+     if (InputDial.getVoltage()>0.5)
+        {
+		for( i = 0; i <= 10; i++) 
+			{
+				double speed=((double) i)/10.0;
+				addSequential(new Auto_DriveForward(speed, 0.5));
+				
+			}
+		
+	     }
+        else
+        {
+    		for( i = 0; i <= 5; i++) 
+    		{
+    			double speed=((double) i)/10.0;
+    			addSequential(new Auto_DriveBackward(speed, 0.5));
+    			
+    		}
+     
+        	
+        }
+		addSequential(new Auto_Stop());
+		*/
+
 	
 
 }
