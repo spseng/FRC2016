@@ -76,8 +76,17 @@ public class Robot extends IterativeRobot {
     	
     	autoChooser = new SendableChooser();
 
-    	autoChooser.addDefault("Default program", "Mode 1");
-    	autoChooser.addDefault("second autonomous", "Mode 2");
+    	autoChooser.addDefault("Default program: do nothing", "Mode 0");
+    	autoChooser.addDefault("go forward at speed 0.3", "Mode 1");
+    	
+    	autoChooser.addDefault("go forward at speed 0.5", "Mode 2");
+    	
+    	autoChooser.addDefault("go forward at speed 0.8", "Mode 3");
+    	
+    	autoChooser.addDefault("go forward at speed 1.0", "Mode 4");
+    	
+    	//autoChooser.addDefault("go forward at speed 0.5", "Mode 5");
+    	
     	SmartDashboard.putData("Autonmous Mode Chooser:", autoChooser);
 
     	
@@ -96,13 +105,33 @@ public class Robot extends IterativeRobot {
     	
     	String autoSelected = (String) autoChooser.getSelected();
 		switch (autoSelected) {
-		case "Mode 1":
+		case "Mode 0":
 		default:
 			autonomousCommand = new AutonomousMode(0.0);
 			break;
-		case "Mode 2":
-			autonomousCommand = new AutonomousMode(-0.5);
+			
+		case "Mode 1":
+			autonomousCommand = new AutonomousMode(0.3);
 			break;
+			
+			
+		case "Mode 2":
+			autonomousCommand = new AutonomousMode(0.5);
+			break;
+			
+			
+		case "Mode 3":
+			autonomousCommand = new AutonomousMode(0.8);
+			break;
+			
+		case "Mode 4":
+			autonomousCommand = new AutonomousMode(1.0);
+			break;
+			/*
+		case "Mode 5":
+			autonomousCommand = new AutonomousMode(0.5);
+			break;
+			*/
 		}
 		// schedule the autonomous command (example)
 		//if (autonomousCommand != null)
