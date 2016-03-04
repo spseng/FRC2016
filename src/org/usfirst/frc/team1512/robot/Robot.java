@@ -98,18 +98,18 @@ public class Robot extends IterativeRobot {
 		switch (autoSelected) {
 		case "Mode 1":
 		default:
-			autonomousCommand = new AutonomousMode(0.5);
+			autonomousCommand = new AutonomousMode(0.0);
 			break;
 		case "Mode 2":
 			autonomousCommand = new AutonomousMode(-0.5);
 			break;
 		}
 		// schedule the autonomous command (example)
-		if (autonomousCommand != null)
-			autonomousCommand.start();
+		//if (autonomousCommand != null)
+			//autonomousCommand.start();
     	
 
-    	autonomousCommand = (Command) autoChooser.getSelected();
+    	//autonomousCommand = (Command) autoChooser.getSelected();
 
     	autonomousCommand.start();
     			
