@@ -2,7 +2,7 @@ package org.usfirst.frc.team1512.robot.commands;
 
 import java.awt.geom.Area;
 
-import org.usfirst.frc.team1512.robot.subsystems.DipSwitch;
+//import org.usfirst.frc.team1512.robot.subsystems.DipSwitchSystem;
 import org.usfirst.frc.team1512.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team1512.robot.subsystems.ShooterSystem;
 import org.usfirst.frc.team1512.robot.subsystems.Pneumatics;
@@ -22,8 +22,9 @@ public abstract class CommandBase extends Command {
 	static ShooterSystem shooter = new ShooterSystem();
 	static Pneumatics pneumatics = new Pneumatics();
 	static WinchSystem winch = new WinchSystem();
-	static DipSwitch dipswitches = new DipSwitch();
-	//static DistanceSensor distance = new DistanceSensor();
+//	static DipSwitch dipswitches = new DipSwitch();
+//	static DipSwitchSystem dipswitches;
+//	static DistanceSensor distance = new DistanceSensor();
 	
     public static void init(){
     	oi = new OI();
