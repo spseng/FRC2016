@@ -53,9 +53,8 @@ public class Robot extends IterativeRobot {
     ShooterAction shooter = new ShooterAction();
     PneumaticsAction pneumatics = new PneumaticsAction();
     WinchAction winch = new WinchAction();
-    Camera camera = new Camera();
     AutonomousMode auto = new AutonomousMode();
-    //DistanceSensor distance = new DistanceSensor();//distance sensor connected to analog port 0.
+    Camera cam = new Camera();
 
 //    TowerOp towerOp = new TowerOp();
     
@@ -79,12 +78,8 @@ public class Robot extends IterativeRobot {
         // schedule the autonomous command (example)
     	System.out.println("auto Initiated");
     	auto.start();
-    			
-		
-
        
-
-        
+   
       	//if (autonomousCommand != null) autonomousCommand.start();
     }
 
@@ -104,7 +99,7 @@ public class Robot extends IterativeRobot {
     	pneumatics.start();
     	winch.start();
     	drive.start();
-    	camera.start();
+    	cam.start();
     }
 
     /**
