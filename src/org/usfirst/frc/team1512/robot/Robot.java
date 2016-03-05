@@ -53,7 +53,7 @@ public class Robot extends IterativeRobot {
     ShooterAction shooter = new ShooterAction();
     PneumaticsAction pneumatics = new PneumaticsAction();
     WinchAction winch = new WinchAction();
-    //Camera camera = new Camera();
+    Camera camera = new Camera();
     AutonomousMode auto = new AutonomousMode();
     //DistanceSensor distance = new DistanceSensor();//distance sensor connected to analog port 0.
 
@@ -104,7 +104,7 @@ public class Robot extends IterativeRobot {
     	pneumatics.start();
     	winch.start();
     	drive.start();
-    	//camera.start();
+    	camera.start();
     }
 
     /**

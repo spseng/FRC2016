@@ -24,14 +24,14 @@ public class Auto_DriveForward extends CommandBase {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(drive);
-    	speed=inspeed;
+    	speed=-1*inspeed;
     }
 
 	public Auto_DriveForward(double inspeed, double intimeinseconds) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(drive);
-    	speed=inspeed;
+    	speed=-1*inspeed;
     	timeinseconds=intimeinseconds;
     }
 
