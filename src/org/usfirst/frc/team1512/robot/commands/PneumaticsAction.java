@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class PneumaticsAction extends CommandBase {	
 	
     public PneumaticsAction() {
+
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(pneumatics);
@@ -23,6 +24,7 @@ public class PneumaticsAction extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+
     	if(oi.BButton.get())
     	{
     		pneumatics.hopperUp();
@@ -35,7 +37,7 @@ public class PneumaticsAction extends CommandBase {
     	{
     		pneumatics.hopperOff();
     	}
-    	
+ 	
     	if(oi.XButton.get())
     	{
     		pneumatics.sissorUp();
