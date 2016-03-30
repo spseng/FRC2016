@@ -19,7 +19,6 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team1512.robot.RobotMap;
 import org.usfirst.frc.team1512.robot.commands.Accelerometer;
 import org.usfirst.frc.team1512.robot.commands.AutonomousMode;
-import org.usfirst.frc.team1512.robot.commands.Camera;
 import org.usfirst.frc.team1512.robot.commands.DriveWithJoystick;
 import org.usfirst.frc.team1512.robot.commands.ShooterAction;
 import org.usfirst.frc.team1512.robot.commands.PneumaticsAction;
@@ -53,7 +52,6 @@ public class Robot extends IterativeRobot {
     ShooterAction shooter = new ShooterAction();
     PneumaticsAction pneumatics = new PneumaticsAction();
     WinchAction winch = new WinchAction();
-    Camera camera = new Camera();
     AutonomousMode auto = new AutonomousMode();
     //DistanceSensor distance = new DistanceSensor();//distance sensor connected to analog port 0.
 
@@ -104,7 +102,6 @@ public class Robot extends IterativeRobot {
     	pneumatics.start();
     	winch.start();
     	drive.start();
-    	camera.start();
     }
 
     /**

@@ -31,7 +31,17 @@ public class WinchAction extends CommandBase {
     	{
     		winch.stop();
     	}
+    	if(oi.LBumper.get())
+    	{
+    		winch.runB();
+    	}
+    	else
+    	{
+    		winch.stopB();
+    	}
     }
+    
+   
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {

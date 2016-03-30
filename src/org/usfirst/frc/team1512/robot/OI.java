@@ -37,6 +37,7 @@ public class OI {
 		RBumper = new JoystickButton(xbox, 6);
 		Back = new JoystickButton(xbox, 7);
 		Start = new JoystickButton(xbox, 8);
+		
 	}
 	
 //	public double getX(){

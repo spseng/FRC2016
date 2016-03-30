@@ -44,8 +44,8 @@ public class ShooterSystem extends Subsystem {
 
     public void collect(double speed)
     {
-    	if (speed<-0.55) speed=-0.55;
-    	if (speed>0.55) speed=0.55;
+    	if (speed<-0.61) speed=-0.61;
+    	if (speed>0.61) speed=0.61;
     	collector.set(-1.0*speed);
 	    SmartDashboard.putNumber("Collector Speed", speed);	
 	    distance.DisplayDistance();	
@@ -102,7 +102,9 @@ public class ShooterSystem extends Subsystem {
 	{
 
 			shooterspeed =  speed;
-			shooter.set(shooterspeed);
+			if (speed<-0.75) speed=-0.75;
+	    	if (speed>0.75) speed=0.75;
+	    	shooter.set(-1.0*speed);
 		    SmartDashboard.putNumber("Shooter Speed", speed);	
 		       
 	}
