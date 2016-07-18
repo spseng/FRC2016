@@ -19,24 +19,12 @@ public class DistanceSensor extends Subsystem {
 	double averageVolts;
 
 	
+		
 	public DistanceSensor()
 	{
 		super();
 		
-		AnalogPin = new AnalogInput(0);
-		
-		AnalogPin.setOversampleBits(4);
-		bits = AnalogPin.getOversampleBits();
-		AnalogPin.setAverageBits(2);
-		bits = AnalogPin.getAverageBits();
-		AnalogPin.setGlobalSampleRate(62500);
-	}
-		
-	public DistanceSensor(int AnalogInputPin)
-	{
-		super();
-		
-		AnalogPin = new AnalogInput(AnalogInputPin);
+		AnalogPin = new AnalogInput(1);
 		
 		AnalogPin.setOversampleBits(4);
 		bits = AnalogPin.getOversampleBits();
@@ -64,6 +52,16 @@ public class DistanceSensor extends Subsystem {
 	}
 
 	
+<<<<<<< HEAD
+=======
+	public void displayswitches()
+	{
+
+	}
+
+
+	
+>>>>>>> origin/master
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());

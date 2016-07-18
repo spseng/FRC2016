@@ -24,4 +24,5 @@ public class RobotMap {
 	public static int winchRelay = 0;
 	public static int relay2 = 5;
 	public static double autoSpeed = 0.5;
+	
 }
